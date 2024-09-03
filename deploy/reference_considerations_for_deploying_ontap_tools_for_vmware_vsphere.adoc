@@ -1,0 +1,172 @@
+---
+permalink: deploy/reference_considerations_for_deploying_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: Virtual Storage Console,Storage Replication Adapter 
+summary: Antes de implantar as ferramentas do ONTAP para o VMware vSphere, é uma prática recomendada Planejar sua implantação e decidir como você deseja configurar as ferramentas do ONTAP em seu ambiente. 
+---
+= Considerações para a implantação de ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de implantar as ferramentas do ONTAP para o VMware vSphere, é uma prática recomendada Planejar sua implantação e decidir como você deseja configurar as ferramentas do ONTAP em seu ambiente.
+
+A tabela a seguir apresenta uma visão geral do que você deve considerar antes de implantar as ferramentas do ONTAP.
+
+|===
+
+
+| *Considerações* | *Descrição* 
+
+
+ a| 
+Implantação pela primeira vez de ferramentas do ONTAP
+ a| 
+A implantação das ferramentas do ONTAP para VMware vSphere instala automaticamente os recursos das ferramentas do ONTAP.
+
+link:../deploy/concept_installation_workflow_for_new_users.html["Fluxo de trabalho de implantação para novos usuários de ferramentas do ONTAP para VMware vSphere"]
+
+
+
+ a| 
+Atualizando a partir de uma implantação existente de ferramentas do ONTAP
+ a| 
+O procedimento de atualização de uma implantação existente de ferramentas do ONTAP para ferramentas do ONTAP depende da versão das ferramentas do ONTAP e se você implantou ferramentas do ONTAP. A seção de fluxos de trabalho e atualização de implantação tem mais informações.
+
+link:../deploy/concept_installation_workflow_for_existing_users_of_ontap_tools.html["Fluxo de trabalho de implantação para usuários existentes de ferramentas do ONTAP"]
+
+Práticas recomendadas antes de uma atualização:
+
+* Você deve Registrar informações sobre os sistemas de storage que estão sendo usados e suas credenciais.
++
+Após a atualização, você deve verificar se todos os sistemas de storage foram detetados automaticamente e se eles têm as credenciais corretas.
+
+* Se você modificou qualquer uma das funções padrão das ferramentas do ONTAP, copie essas funções para salvar as alterações.
++
+As ferramentas do ONTAP substituem as funções padrão com os padrões atuais sempre que você reiniciar o serviço de ferramentas do ONTAP.
+
+
+
+
+
+ a| 
+Regenerando um certificado SSL para ferramentas ONTAP
+ a| 
+O certificado SSL é gerado automaticamente quando você implementa as ferramentas do ONTAP. Você pode ter que regenerar o certificado SSL para criar um certificado específico do site.
+
+link:../configure/task_regenerate_an_ssl_certificate_for_vsc.html["Regenerar um certificado SSL para o Virtual Storage Console"]
+
+
+
+ a| 
+Configurando os valores do servidor ESXi
+ a| 
+Embora a maioria dos valores do servidor ESXi sejam definidos por padrão, é uma boa prática verificar os valores. Esses valores são baseados em testes internos. Dependendo do seu ambiente, você pode ter que alterar alguns dos valores para melhorar o desempenho.
+
+* link:../configure/task_configure_esx_server_multipathing_and_timeout_settings.html["Configure as configurações de multipathing e timeout do servidor ESXi"]
+* link:../configure/reference_esxi_host_values_set_by_vsc_for_vmware_vsphere.html["Valores de host ESXi definidos usando as ferramentas do ONTAP para VMware vSphere"]
+
+
+
+
+ a| 
+Valores de tempo limite do sistema operativo convidado
+ a| 
+Os scripts de tempo limite do sistema operacional convidado (SO convidado) definem os valores de tempo limite de e/S SCSI para os sistemas operacionais convidados Linux, Solaris e Windows com suporte para fornecer o comportamento correto de failover.
+
+|===
+A tabela a seguir apresenta uma visão geral do que você precisa para configurar as ferramentas do ONTAP.
+
+|===
+
+
+| *Considerações* | *Descrição* 
+
+
+ a| 
+Requisitos dos controles de acesso baseados em função (RBAC)
+ a| 
+As ferramentas do ONTAP são compatíveis com o vCenter Server RBAC e o ONTAP RBAC. A conta usada para Registrar as ferramentas do ONTAP no vCenter (`\https://<appliance_ip>:8143/Register.html`Server ) deve ser um administrador do vCenter Server (atribuída ao administrador ou à função de administrador do vCenter Server). Se você planeja executar as ferramentas do ONTAP para VMware vSphere como administrador, você deve ter todas as permissões e Privileges necessárias para todas as tarefas.
+
+Se a sua empresa exigir que você restrinja o acesso a objetos vSphere, você poderá criar e atribuir funções padrão de ferramentas do ONTAP aos usuários para atender aos requisitos do vCenter Server.
+
+Você pode criar as funções recomendadas do ONTAP usando o Gerenciador de sistema do ONTAP usando o arquivo JSON fornecido com as ferramentas do ONTAP.
+
+Se um usuário tentar executar uma tarefa sem o Privileges e as permissões corretos, as opções de tarefa serão exibidas em cinza.
+
+* link:../concepts/concept_standard_roles_packaged_with_ontap_tools_for_vmware_vsphere.html["Funções padrão incluídas com ferramentas ONTAP"]
+* link:../concepts/concept_ontap_role_based_access_control_feature_for_ontap_tools.html["Permissões para sistemas de armazenamento ONTAP e objetos vSphere"]
+
+
+
+
+ a| 
+Versão ONTAP
+ a| 
+Seus sistemas de storage precisam estar executando o ONTAP 9.7, 9.8P1 ou posterior.
+
+
+
+ a| 
+Perfis de capacidade de armazenamento
+ a| 
+Para utilizar perfis de capacidade de armazenamento ou para configurar alarmes, tem de ativar o Fornecedor VASA para ONTAP. Depois de ativar o provedor VASA, você pode configurar armazenamentos de dados do VMware Virtual volumes (vVols) e criar e gerenciar perfis e alarmes de capacidade de armazenamento. Os alarmes avisam quando um volume ou um agregado está com capacidade quase total ou quando um datastore não está mais em conformidade com o perfil de capacidade de armazenamento associado.
+
+|===
+
+
+== Considerações adicionais de implantação
+
+Você deve considerar poucos requisitos ao personalizar as ferramentas do ONTAP de implantação.
+
+
+
+=== Senha do usuário do aplicativo
+
+Esta é a palavra-passe atribuída à conta de administrador. Por razões de segurança, recomenda-se que o comprimento da senha tenha de oito a trinta carateres e contenha um mínimo de um caractere superior, um inferior, um dígito e um especial. A senha expira após 90 dias.
+
+
+
+=== Credenciais do console de manutenção do dispositivo
+
+Você deve acessar o console de manutenção usando o nome de usuário "mal". Você pode definir a senha para o usuário "não" durante a implantação. Você pode usar o menu Configuração do aplicativo do console de manutenção das ferramentas do ONTAP para alterar a senha.
+
+
+
+=== Credenciais de administrador do vCenter Server
+
+Você pode definir as credenciais de administrador para o vCenter Server ao implantar as ferramentas do ONTAP.
+
+Se a senha do vCenter Server for alterada, você poderá atualizar a senha do administrador usando o seguinte URL: `\https://<IP>:8143/Register.html` Onde o endereço IP é das ferramentas do ONTAP fornecidas durante a implantação.
+
+
+
+=== Senha do banco de dados Derby
+
+Por razões de segurança, recomenda-se que o comprimento da senha tenha de oito a trinta carateres e contenha um mínimo de um caractere superior, um inferior, um dígito e um especial. A senha expira após 90 dias.
+
+
+
+=== Endereço IP do vCenter Server
+
+* Você deve fornecer o endereço IP (IPv4 ou IPv6) da instância do vCenter Server à qual deseja Registrar as ferramentas do ONTAP.
++
+O tipo de ferramentas do ONTAP para certificados VMware vSphere e VASA gerados depende do endereço IP (IPv4 ou IPv6) fornecido durante a implantação. Ao implantar ferramentas do ONTAP, se você não tiver inserido nenhum detalhe de IP estático e o DHCP, a rede fornecerá endereços IPv4 e IPv6.
+
+* O endereço IP das ferramentas do ONTAP usado para se Registrar no vCenter Server depende do tipo de endereço IP do vCenter Server (IPv4 ou IPv6) inserido no assistente de implantação.
++
+As ferramentas do ONTAP para os certificados VMware vSphere e VASA serão geradas usando o mesmo tipo de endereço IP usado durante o Registro do vCenter Server.
+
++
+
+NOTE: O IPv6 é compatível apenas com o vCenter Server 6,7 e posterior.
+
+
+
+
+
+=== Propriedades da rede do dispositivo
+
+Se você não estiver usando DHCP, especifique um nome de host DNS válido (não qualificado), bem como o endereço IP estático para as ferramentas do ONTAP para VMware vSphere e os outros parâmetros de rede. Todos esses parâmetros são necessários para a instalação e operação adequadas.

@@ -1,0 +1,20 @@
+---
+permalink: concepts/concept_vmware_high_availability_for_vcenter_server.html 
+sidebar: sidebar 
+keywords: ONTAP tools 
+summary: Você pode configurar seu ambiente vSphere onde as ferramentas do ONTAP para VMware vSphere são implantadas para alta disponibilidade. O recurso VMware HA oferece proteção contra failover contra falhas de hardware e falhas do sistema operacional em ambientes virtuais. 
+---
+= VMware vSphere HA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar seu ambiente vSphere no qual as ferramentas do ONTAP para VMware vSphere são implantadas para alta disponibilidade (HA). O recurso VMware HA oferece proteção contra failover contra falhas de hardware e falhas do sistema operacional em ambientes virtuais.
+
+O recurso VMware HA monitora as máquinas virtuais para detetar falhas no sistema operacional e no hardware. Quando uma falha é detetada, o recurso VMware HA reinicia as máquinas virtuais nos outros servidores físicos no pool de recursos. A intervenção manual não é necessária quando é detetada uma falha do servidor.
+
+O procedimento para configurar o VMware HA depende da versão do vCenter Server. Por exemplo, você pode usar o link de referência a seguir e selecionar a versão do vCenter Server necessária para exibir as etapas para configurar o VMware HA.
+
+https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html["Documentação do VMware vSphere: Criando e usando clusters de HA do vSphere"]

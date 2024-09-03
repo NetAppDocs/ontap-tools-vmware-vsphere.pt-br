@@ -1,0 +1,16 @@
+---
+permalink: configure/concept_workflow_for_configuring_the_unified_appliance.html 
+sidebar: sidebar 
+keywords:  
+summary: A configuração de ferramentas do ONTAP envolve a configuração de seus sistemas de storage, a criação de um perfil de capacidade de armazenamento, o provisionamento do armazenamento de dados e, opcionalmente, a configuração do SRA para recuperação de desastres. 
+---
+= Fluxo de trabalho para configurar ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração de ferramentas do ONTAP envolve a configuração de seus sistemas de storage, a criação de um perfil de capacidade de armazenamento, o provisionamento do armazenamento de dados e, opcionalmente, a configuração do SRA para recuperação de desastres.
+
+image::../media/use_case_vsc_users.gif[Fluxo de trabalho para configurar ferramentas do ONTAP]

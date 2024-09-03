@@ -1,0 +1,43 @@
+---
+section: deploy
+title: Implantar e atualizar ferramentas do ONTAP
+entries:
+- title: Fluxo de trabalho de implantação para novos usuários de ferramentas do ONTAP
+    para VMware vSphere
+  url: "/deploy/concept_installation_workflow_for_new_users.html"
+- title: Fluxo de trabalho de implantação para usuários existentes de ferramentas
+    do ONTAP
+  url: "/deploy/concept_installation_workflow_for_existing_users_of_ontap_tools.html"
+- title: Modo de implantação do VMware Cloud Foundation para ferramentas do ONTAP
+  url: "/deploy/vmware_cloud_foundation_mode_deployment.html"
+- title: Ferramentas ONTAP Início rápido
+  url: "/qsg.html"
+- title: Requisitos para implantar as ferramentas do ONTAP
+  entries:
+  - title: Requisitos de porta para ferramentas ONTAP
+    url: "/deploy/reference_port_requirements_for_vsc.html"
+  - title: Requisitos de espaço e dimensionamento para as ferramentas ONTAP
+    url: "/deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html"
+  - title: Sistema de storage compatível, licenciamento e aplicativos para as ferramentas
+      do ONTAP
+    url: "/deploy/concept_supported_storage_system_and_applications.html"
+  - title: Considerações para a implantação de ferramentas do ONTAP
+    url: "/deploy/reference_considerations_for_deploying_ontap_tools_for_vmware_vsphere.html"
+- title: Implantar ferramentas do ONTAP
+  entries:
+  - title: Como baixar as ferramentas do ONTAP
+    url: "/deploy/concept_how_to_download_ontap_tools.html"
+  - title: Como implantar ferramentas do ONTAP
+    url: "/deploy/task_deploy_ontap_tools.html"
+  - title: Habilite o provedor VASA para configurar datastores virtuais
+    url: "/deploy/task_enable_vasa_provider_for_configuring_virtual_datastores.html"
+  - title: Instale o plug-in NFS VAAI
+    url: "/deploy/task_install_the_nfs_vaai_plug_in.html"
+  - title: Limpe os pacotes de plug-in baixados em cache do vSphere
+    url: "/deploy/task_clean_the_vsphere_cached_downloaded_plug_in_packages.html"
+- title: Atualizar as ferramentas do ONTAP
+  entries:
+  - title: Atualize para a versão mais recente das ferramentas do ONTAP
+    url: "/deploy/task_upgrade_to_the_9_8_ontap_tools_for_vmware_vsphere.html"
+  - title: Atualize o adaptador de replicação de armazenamento
+    url: "/deploy/task_upgrade_storage_replication_adapter.html"

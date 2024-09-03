@@ -1,0 +1,33 @@
+---
+settings:
+  name: ONTAP tools for VMware vSphere 9.13
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  versions:
+  - version-number: '9.13'
+    url: "/ontap-tools-vmware-vsphere"
+  - version-number: '9.12'
+    url: "/ontap-tools-vmware-vsphere-912"
+  - version-number: '9.11'
+    url: "/ontap-tools-vmware-vsphere-911"
+  - version-number: '9.10'
+    url: "/ontap-tools-vmware-vsphere-910"
+  - version-number: '9.8'
+    url: "/ontap-tools-vmware-vsphere-98"
+  langs: pt-br,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: Ferramentas do ONTAP para documentos do VMware vSphere 9,13
+    url: "/index.html"
+  - title: Notas de lançamento
+    url: "/release_notes.html"
+  - section: concepts
+  - section: deploy
+  - section: configure
+  - section: protect
+  - section: manage
+  - title: Avisos legais
+    url: "/legal-notices.html"

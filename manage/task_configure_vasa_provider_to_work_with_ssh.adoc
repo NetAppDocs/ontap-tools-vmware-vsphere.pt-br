@@ -1,0 +1,27 @@
+---
+permalink: manage/task_configure_vasa_provider_to_work_with_ssh.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode configurar o provedor VASA para usar o SSH para acesso seguro configurando as ferramentas do ONTAP . 
+---
+= Configure o provedor VASA para trabalhar com SSH
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar o provedor VASA para usar o SSH para acesso seguro configurando as ferramentas do ONTAP .
+
+*Sobre esta tarefa*
+
+Ao configurar o SSH, você deve fazer login como o usuário de manutenção. Isso ocorre porque o acesso root ao provedor VASA foi desativado. Se utilizar outras credenciais de início de sessão, não poderá utilizar SSH para aceder ao Fornecedor VASA.
+
+*Passos*
+
+. No vCenter Server, abra um console para as ferramentas do ONTAP.
+. Inicie sessão como utilizador de manutenção.
+. Digite `3` para selecionar *Configuração do sistema*.
+. Digite `6` para selecionar *Ativar acesso SSH*.
+. Introduza `y` na caixa de diálogo de confirmação.
+

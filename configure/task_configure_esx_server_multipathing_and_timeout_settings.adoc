@@ -1,0 +1,32 @@
+---
+permalink: configure/task_configure_esx_server_multipathing_and_timeout_settings.html 
+sidebar: sidebar 
+keywords:  
+summary: O ONTAP verifica e define as configurações de multipathing do host ESXi e as configurações de tempo limite do HBA que funcionam melhor com os sistemas de armazenamento NetApp. 
+---
+= Configure as configurações de multipathing e timeout do servidor host ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ferramentas do ONTAP para VMware vSphere verificam e definem as configurações de multipath do host ESXi e as configurações de tempo limite do HBA que funcionam melhor com os sistemas de armazenamento NetApp.
+
+*Sobre esta tarefa*
+
+Esse processo pode levar muito tempo, dependendo da configuração e da carga do sistema. O progresso da tarefa é exibido no painel tarefas recentes. À medida que as tarefas são concluídas, o ícone de alerta de status do host é substituído pelo ícone normal ou pelo ícone de reinicialização pendente.
+
+*Passos*
+
+. Na página inicial do VMware vSphere Web Client, clique em *hosts and clusters*.
+. Clique com o botão direito do Mouse em um host e selecione *ações* > *Ferramentas do NetApp ONTAP* > *Definir valores recomendados*.
+. Na caixa de diálogo Configurações recomendadas do NetApp , selecione os valores que funcionam melhor com o sistema.
++
+Os valores padrão recomendados são definidos por padrão.
+
++
+image::../media/vsc_recommended_hosts_settings.gif[Ecrã Definir valores recomendados]
+
+. Clique em *OK*.
+

@@ -1,0 +1,29 @@
+---
+permalink: configure/reference_delete_vvols.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: As ferramentas do ONTAP oferecem suporte a um comando para excluir volumes do FlexVol em seu data center. 
+---
+= Excluir armazenamentos de dados vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Excluir a tarefa de armazenamento de dados vVOL das ferramentas do ONTAP no vCenter faz o seguinte:
+
+* Desmonta o recipiente VVol.
+* Limpa o Igroup. Se o igrop não estiver em uso, remove o iqn do igrop.
+* Elimina o recipiente Vvol.
+* Deixa os volumes Flex no storage array.
+
+
+Siga as etapas abaixo para excluir o armazenamento de dados vVOL das Ferramentas do ONTAP do vCenter:
+
+Passos:
+
+. Na exibição Inventory **, selecione o datastore.
+. Clique com o botão direito do Mouse no datastore vVol e selecione *NetApp ONTAP Tools* > *Delete vVols datastore*.
+. Limpe os volumes Flex no storage array e no igroup.
+

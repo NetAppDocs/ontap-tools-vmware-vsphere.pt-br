@@ -1,0 +1,61 @@
+---
+permalink: configure/reference_rebalance_vvols_datastore.html 
+sidebar: sidebar 
+keywords: vVols datastore,rebalancing 
+summary: As ferramentas do ONTAP dão suporte a um comando para rebalancear os volumes do FlexVol no data center. O principal objetivo é permitir a utilização uniforme do espaço entre os volumes FlexVol. As ferramentas do ONTAP redistribuem vVols pelos volumes existentes com base no uso do espaço, no thin Provisioning, na contagem de LUN e nos perfis de funcionalidades de storage. 
+---
+= Rebalancear armazenamentos de dados vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ferramentas do ONTAP dão suporte a um comando para rebalancear os volumes do FlexVol no data center. O principal objetivo é permitir a utilização uniforme do espaço entre os volumes FlexVol. As ferramentas do ONTAP redistribuem vVols pelos volumes existentes com base no uso do espaço, no thin Provisioning, na contagem de LUN e nos perfis de funcionalidades de storage.
+
+O rebalanceamento do armazenamento de dados vVols é realizado pela movimentação de LUN ou movimentação de arquivos. Os critérios considerados durante o rebalanceamento do vVols são os seguintes:
+
+* Armazenamentos de dados NFS vVol não são compatíveis
+* Os volumes FlexVol existentes não serão redimensionados e nem novos volumes FlexVol serão adicionados
+* Somente os volumes do FlexVol com as mesmas funcionalidades de storage ou atributos de volume são rebalanceados
+* Os volumes FlexVol com maior utilização de espaço são considerados para o rebalanceamento
+* Todos os vVols associados a uma máquina virtual são movidos para os mesmos volumes do FlexVol
+* O limite de contagem de LUN e ficheiro é retido
+* O rebalanceamento não será realizado se o delta entre a utilização de espaço do FlexVol volumes for de 10%
+
+
+O comando rebalanceamento remove volumes FlexVol vazios para fornecer espaço para outros datastores. Assim, o comando permite remover volumes FlexVol indesejados para que eles possam ser removidos do datastore. O comando pretende mover todos os vVols associados a uma máquina virtual para o mesmo FlexVol volume. Há uma pré-verificação realizada pelo comando antes do rebalanceamento ser iniciado para minimizar falhas. Mas mesmo com o pré-check bem-sucedido, a operação de rebalanceamento pode falhar para um ou mais vVols. Quando isso acontece, então não há reversão da operação de rebalanceamento. Assim, vVols associados a uma máquina virtual podem ser colocados em volumes FlexVol diferentes e resultarão em logs de aviso.
+
+[NOTE]
+====
+* As operações de armazenamento de dados paralelo e de máquina virtual não são suportadas.
+* Você precisa executar a operação de redetecção do cluster depois que cada operação de rebalanceamento do vVols for concluída.
+* Durante a operação de rebalanceamento do vVols, se um grande número de armazenamentos de dados do vVols for identificado, a operação de transferência expira após o valor padrão definido.
++
+** Se isso ocorrer, você deve modificar o `vvol.properties` arquivo para definir o valor `offtap.operation.timeout.period.seconds=29700` e reiniciar o serviço do provedor VASA.
+
+
+* Se um FlexVol volume tiver snapshots, durante a operação de rebalanceamento do vVols, os vVols não serão rebalanceados corretamente devido a detalhes insuficientes sobre a utilização do espaço.
+* Você pode definir a propriedade do provedor VASA _enable.update.vvol.through.Discovery_ como true para obter dados consistentes entre as ferramentas do ONTAP para VMware vSphere e ONTAP, quando o tempo limite ocorre durante a operação de rebalanceamento de contentores.
+* Não há APIS REST expostas para re-equilibrar o armazenamento de dados vVol.
+
+
+====
+.*Antes de começar*
+* Gere o token Web-CLI a partir do console de manutenção:
++
+.. Faça login no console de manutenção.
+.. Selecione a opção *1* Appliance Configuration.
+.. Selecione a opção *12* Generate Web-CLI Authentication token.
+
+
+* Obtenha o nome do contentor e o nome do FlexVol volumes no vCenter ou na CLI da Web. Para obter a lista de volumes FlexVol anexados ao contentor, execute o comando _container list_ da CLI da Web. Você pode encontrar os detalhes do comando rebalanceamento de contentores na página Web-CLI.
+
+
+
+NOTE: Você precisa fornecer o nome do contêiner para realizar rebalancear em todos os volumes FlexVol conectados a esse contêiner. No entanto, se o parâmetro FlexVol volume for fornecido, o rebalanceamento será executado somente no FlexVol volume fornecido.
+
+.*Passos*
+. Faça login a partir da Web-CLI usando URL `\https://<OTV-IP>:9083/`
+. Execute o comando: _Container rebalanceance -container_name_<container-name>_
+

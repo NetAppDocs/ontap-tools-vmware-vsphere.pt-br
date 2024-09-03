@@ -1,0 +1,50 @@
+---
+permalink: configure/reference_configure_guest_operating_system_scripts.html 
+sidebar: sidebar 
+keywords: Guest operating system 
+summary: As imagens ISO dos scripts do sistema operacional convidado são montadas nas ferramentas do ONTAP para o servidor VMware vSphere. Para usar os scripts Guest os para definir os tempos limite de armazenamento para máquinas virtuais, você deve montar os scripts do vSphere Client. 
+---
+= Configurar scripts do sistema operacional convidado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As imagens ISO dos scripts do sistema operacional convidado (SO) são montadas em ferramentas para o servidor VMware vSphere. Para usar os scripts Guest os para definir os tempos limite de armazenamento para máquinas virtuais, você deve montar os scripts do vSphere Client.
+
+|===
+
+
+| *Tipo de sistema operacional* | * configurações de tempo limite de 60 segundos* | * configurações de tempo limite de 190 segundos* 
+
+
+ a| 
+Linux
+ a| 
+https://<appliance_ip>:8143/vsc/public/writable/linux_gos_timeout-install.iso
+ a| 
+https://<appliance_ip>:8143/vsc/public/writable/linux_gos_timeout_190-install.iso
+
+
+
+ a| 
+Windows
+ a| 
+https://<appliance_ip>:8143/vsc/public/writable/windows_gos_timeout.iso
+ a| 
+https://<appliance_ip>:8143/vsc/public/writable/windows_gos_timeout_190.iso
+
+
+
+ a| 
+Solaris
+ a| 
+https://<appliance_ip>:8143/vsc/public/writable/solaris_gos_timeout-install.iso
+ a| 
+https://<appliance_ip>:8143/vsc/public/writable/solaris_gos_timeout_190-install.iso
+
+|===
+Você deve instalar o script a partir da cópia da instância do ONTAP Tools registrada no vCenter Server (ELM) que gerencia a máquina virtual. Se o seu ambiente incluir vários vCenter Servers, você deve selecionar a instância que contém a máquina virtual para a qual deseja definir os valores de tempo limite de armazenamento.
+
+Você deve fazer login na máquina virtual e, em seguida, executar o script para definir os valores de tempo limite de armazenamento.

@@ -1,0 +1,31 @@
+---
+permalink: protect/concept_configure_replication_for_vvols_datastore.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode configurar a replicação para o seu datastore vVols usando as ferramentas do ONTAP. O principal objetivo da replicação vVols é proteger máquinas virtuais críticas durante a recuperação de desastres usando o VMware Site Recovery Manager (SRM).' 
+---
+= Configure a replicação para o armazenamento de dados vVols para proteger as máquinas virtuais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar a replicação para o seu datastore vVols usando as ferramentas do ONTAP. O principal objetivo da replicação do vVols é proteger máquinas virtuais críticas durante a recuperação de desastres usando o VMware Site Recovery Manager (SRM).
+
+
+NOTE: Os fluxos de trabalho do vCenter Recovery Manager (SRM) falham no vCenter 8,0 com uma mensagem de erro. A replicação Vvol funciona como esperado na versão do vCenter 7.0u3.
+
+No entanto, para configurar a replicação vVols para ferramentas ONTAP, o recurso de provedor VASA e a replicação vVols devem estar ativados. O provedor VASA está habilitado por padrão nas ferramentas do ONTAP. A replicação baseada em matriz é realizada no nível FlexVol. Cada armazenamento de dados do vVols é mapeado para um contêiner de storage que consiste em um ou mais volumes do FlexVol. Os volumes do FlexVol devem ser pré-configurados com o SnapMirror do ONTAP.
+
+
+WARNING: Você não deve configurar uma combinação de máquinas virtuais protegidas e desprotegidas em um único datastore vVols. Uma operação de reproteção após o failover fará com que as máquinas virtuais desprotegidas sejam excluídas. Certifique-se de que todas as máquinas virtuais em um datastore vVols estejam protegidas ao usar a replicação.
+
+Os grupos de replicação são criados durante o vVols datastore Create workflow para cada FlexVol volume. Para usar a replicação do vVols, você precisará criar políticas de armazenamento de VM que incluam o status e a programação da replicação, juntamente com o perfil de funcionalidade de storage. Um grupo de replicação inclui máquinas virtuais replicadas como parte da recuperação de desastres no site de destino. Você pode configurar grupos de replicação com grupos de proteção e planos de recuperação usando o console SRM, para fluxos de trabalho de DR.
+
+
+NOTE: Se você estiver usando a recuperação de desastres para o armazenamento de dados vVols, não será necessário configurar o Storage Replication Adapter (SRA) separadamente, pois o recurso do provedor VASA é aprimorado para ter replicação vVols.
+
+image::../media/vvols_replication.png[Configurar o fluxo de trabalho dos sistemas ONTAP]
+
+link:../protect/configure_vvols_replication_existing_datastore.html["Configurar a replicação do vVols para armazenamentos de dados existentes"]

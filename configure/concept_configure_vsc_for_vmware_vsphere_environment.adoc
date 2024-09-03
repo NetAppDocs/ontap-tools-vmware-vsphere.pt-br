@@ -1,0 +1,23 @@
+---
+permalink: configure/concept_configure_vsc_for_vmware_vsphere_environment.html 
+sidebar: sidebar 
+keywords:  
+summary: As ferramentas do ONTAP são compatíveis com vários ambientes. Alguns dos recursos nesses ambientes podem exigir configuração adicional. 
+---
+= Configurar as ferramentas do ONTAP para o VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ferramentas do ONTAP são compatíveis com vários ambientes. Alguns dos recursos nesses ambientes podem exigir configuração adicional.
+
+Você pode ter que executar algumas das seguintes tarefas para configurar seus hosts ESXi, sistemas operacionais convidados e ferramentas do ONTAP:
+
+* Verificando as configurações do host ESXi, incluindo as configurações DE DESMAPEAR
+* Adicionando valores de tempo limite para sistemas operacionais convidados
+* Regenerando o certificado SSL das ferramentas ONTAP
+* Criação de perfis de capacidade de armazenamento e alarmes de limite
+* Modificação do arquivo de preferências para permitir a montagem de datastores em diferentes sub-redes
+

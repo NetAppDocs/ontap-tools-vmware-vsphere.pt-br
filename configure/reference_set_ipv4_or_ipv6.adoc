@@ -1,0 +1,70 @@
+---
+permalink: configure/reference_set_ipv4_or_ipv6.html 
+sidebar: sidebar 
+keywords:  
+summary: Há uma nova opção adicionada ao arquivo de preferência kaminoprefs.xmlque você pode definir para habilitar o suporte para IPv4 ou IPv6 para todos os sistemas de armazenamento adicionados às ferramentas do ONTAP. 
+---
+= Defina IPv4 ou IPv6 usando o arquivo de preferências
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os arquivos de preferências contêm configurações que controlam as ferramentas do ONTAP para operações do VMware vSphere. Na maioria das circunstâncias, você não precisa modificar as configurações nesses arquivos. É útil saber quais arquivos de preferência as ferramentas do ONTAP usam.
+
+As ferramentas do ONTAP têm vários arquivos de preferência. Esses arquivos incluem chaves de entrada e valores que determinam como as ferramentas do ONTAP executam várias operações. A seguir estão alguns dos arquivos de preferência que as ferramentas do ONTAP usam:
+
+`/opt/netapp/vscserver/etc/kamino/kaminoprefs.xml`
+
+`/opt/netapp/vscserver/etc/vsc/vscPreferences.xml`
+
+Você pode ter que modificar os arquivos de preferências em determinadas situações. Por exemplo, se você usar iSCSI ou NFS e a sub-rede for diferente entre os hosts ESXi e o sistema de armazenamento, você terá que modificar os arquivos de preferências. Se você não modificar as configurações no arquivo de preferências, o provisionamento do datastore falhará porque as ferramentas do ONTAP não podem montar o datastore.
+
+Há uma nova opção adicionada ao arquivo de preferência `kaminoprefs.xml` que você pode definir para habilitar o suporte para IPv4 ou IPv6 para todos os sistemas de armazenamento adicionados às ferramentas do ONTAP.
+
+* O `default.override.option.provision.mount.datastore.address.family` parâmetro foi adicionado ao `kaminoprefs.xml` arquivo de preferência para definir um protocolo de LIF de dados preferido para provisionamento de datastore.
++
+Essa preferência é aplicável a todos os sistemas de storage adicionados às ferramentas do ONTAP.
+
+* Os valores da nova opção são `IPv4`, `IPv6` e `NONE`.
+* Por padrão, o valor é definido como `NONE`.
+
+
+|===
+
+
+| *Valor* | *Descrição* 
+
+
+ a| 
+NENHUM
+ a| 
+* O provisionamento acontece usando o mesmo tipo de endereço IPv6 ou IPv4 de LIF de dados do tipo de cluster ou LIF de gerenciamento de SVM usado para adicionar o storage.
+* Se o mesmo tipo de endereço IPv6 ou IPv4 de LIF de dados não estiver presente no SVM, o provisionamento acontece por meio do outro tipo de LIF de dados, se disponível.
+
+
+
+
+ a| 
+IPv4
+ a| 
+* O provisionamento acontece usando o LIF de dados do IPv4 no SVM selecionado.
+* Se o SVM não tiver um LIF de dados do IPv4, o provisionamento acontecerá por meio do LIF de dados do IPv6, se estiver disponível no SVM.
+
+
+
+
+ a| 
+IPv6
+ a| 
+* O provisionamento acontece usando o LIF de dados do IPv6 no SVM selecionado.
+* Se o SVM não tiver um LIF de dados do IPv6, o provisionamento acontecerá por meio do LIF de dados do IPv4, se estiver disponível no SVM.
+
+
+|===
+Para configurar o IPv4 ou IPv6 usando a interface do usuário, consulte as seguintes seções:
+
+* link:../configure/add_different_subnets.html["Adicione diferentes sub-redes"]
+* link:../configure/task_enable_datastore_mounting_across_different_subnets.html["Habilite a montagem do datastore em diferentes sub-redes"]
+

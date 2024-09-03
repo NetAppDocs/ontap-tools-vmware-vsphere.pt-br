@@ -1,0 +1,37 @@
+---
+permalink: manage/task_check_for_datastore_compliance_with_the_mapped_storage_capability_profile.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode verificar rapidamente se seus datastores estão em conformidade com os perfis de capacidade de armazenamento mapeados para os datastores. 
+---
+= Verifique a conformidade do datastore com o perfil de capacidade de armazenamento mapeado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode verificar rapidamente se seus datastores estão em conformidade com os perfis de capacidade de armazenamento mapeados para os datastores.
+
+*O que você vai precisar*
+
+* Você deve ter registrado sua instância do provedor VASA com as ferramentas do ONTAP para VMware vSphere.
+* As ferramentas do ONTAP precisam ter descoberto seu storage.
+
+
+*Passos*
+
+. Na página inicial das ferramentas do ONTAP, clique em *Mapeamento de armazenamento*.
+. Revise as informações na coluna Status de conformidade para identificar armazenamentos de dados não compatíveis e revise os alertas por motivo de não conformidade.
++
+
+NOTE: Quando você clica no botão *VERIFICAÇÃO DE CONFORMIDADE*, as ferramentas do ONTAP realizam uma operação de redescoberta para todo o armazenamento, o que pode levar alguns minutos.
+
++
+Se um datastore não for mais compatível com seu perfil, a coluna Status de conformidade exibirá um alerta informando o motivo da não conformidade. Por exemplo, um perfil pode exigir compactação. Se essa configuração tiver sido alterada no storage, a compactação não será mais usada e o datastore não será compatível.
+
+
+
+Quando você descobre um datastore que não é compatível com seu perfil, você pode modificar as configurações no volume que suporta o datastore para tornar o datastore compatível ou atribuir um novo perfil ao datastore.
+
+Pode modificar as definições a partir da página Perfil de capacidade de armazenamento.

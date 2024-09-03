@@ -1,0 +1,39 @@
+---
+permalink: manage/task_edit_a_vvol_datastore.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode editar um datastore VMware Virtual volumes (vVols) existente para alterar o perfil de capacidade de armazenamento padrão. O perfil de capacidade de armazenamento padrão é usado principalmente para Swap vVols.' 
+---
+= Edite um datastore vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode editar um datastore existente do VMware Virtual volumes (vVols) para alterar o perfil de capacidade de armazenamento padrão. O perfil de capacidade de armazenamento padrão é usado principalmente para Swap vVols.
+
+*Passos*
+
+. Na página vSphere Client, clique em *hosts and clusters*.
+. Clique com o botão direito do Mouse no datastore e selecione *NetApp ONTAP Tools* > *Edit Properties of vVols datastore*.
++
+A caixa de diálogo Editar propriedades do armazenamento de dados vVols é exibida.
+
+. Faça as alterações necessárias.
++
+É possível alterar o perfil de capacidade de armazenamento padrão do armazenamento de dados vVols selecionando um novo perfil na lista suspensa na caixa de diálogo Editar armazenamento de dados vVols. Você também pode alterar o nome e a descrição do datastore vVols.
+
++
+
+NOTE: Não é possível alterar o vCenter Server onde o armazenamento de dados vVols está localizado.
+
+. Quando tiver efetuado as alterações, clique em *OK*.
++
+Uma caixa de mensagem pergunta se você deseja atualizar o datastore vVols.
+
+. Clique em *OK* para aplicar as alterações.
++
+Uma mensagem de sucesso aparece para informar que o datastore vVols foi atualizado.
+
+

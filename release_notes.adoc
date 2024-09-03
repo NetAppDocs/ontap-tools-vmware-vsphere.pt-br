@@ -1,0 +1,16 @@
+---
+permalink: release_notes.html 
+sidebar: sidebar 
+keywords: release notes, ontap tools for VMware vSphere 
+summary: Fornece informações importantes sobre esta versão das ferramentas do ONTAP para VMware vSphere, incluindo novos recursos e aprimoramentos, problemas corrigidos, problemas conhecidos, precauções e limitações. 
+---
+= Notas de lançamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Fornece informações importantes sobre esta versão das ferramentas do ONTAP para VMware vSphere, incluindo problemas corrigidos, problemas conhecidos, precauções e limitações.
+
+Para obter mais informações, consulte https://library.netapp.com/ecm/ecm_download_file/ECMLP2886292["Ferramentas do ONTAP para notas de versão do VMware vSphere 9,13"^] .

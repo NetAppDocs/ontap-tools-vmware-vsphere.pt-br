@@ -1,0 +1,58 @@
+---
+permalink: deploy/reference_deployment_customization_requirements.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve considerar algumas limitações ao personalizar as ferramentas do ONTAP de implantação. 
+---
+= Considerações sobre personalização da implantação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve considerar algumas limitações ao personalizar as ferramentas do ONTAP de implantação.
+
+
+
+== Senha de usuário do administrador do dispositivo
+
+Você não deve usar nenhum espaço na senha do administrador.
+
+
+
+== Credenciais do console de manutenção do dispositivo
+
+Você deve acessar o console de manutenção usando o nome de usuário "mal". Você pode definir a senha para o usuário "não" durante a implantação. Você pode usar o menu Configuração do aplicativo do console de manutenção das ferramentas do ONTAP para alterar a senha.
+
+
+
+== Credenciais de administrador do vCenter Server
+
+Você pode definir as credenciais de administrador para o vCenter Server ao implantar as ferramentas do ONTAP.
+
+Se a senha do vCenter Server for alterada, você poderá atualizar a senha do administrador usando o seguinte URL: Https://<IP>:8143/Register.html, onde o endereço IP é de ferramentas do ONTAP fornecidas durante a implantação.
+
+
+
+== Endereço IP do vCenter Server
+
+* Você deve fornecer o endereço IP (IPv4 ou IPv6) da instância do vCenter Server à qual deseja Registrar as ferramentas do ONTAP.
++
+O tipo de ferramentas do ONTAP para certificados VMware vSphere e VASA gerados depende do endereço IP (IPv4 ou IPv6) fornecido durante a implantação. Ao implantar ferramentas do ONTAP, se você não tiver inserido nenhum detalhe de IP estático e o DHCP, a rede fornecerá endereços IPv4 e IPv6.
+
+* O endereço IP das ferramentas do ONTAP usado para se Registrar no vCenter Server depende do tipo de endereço IP do vCenter Server (IPv4 ou IPv6) inserido no assistente de implantação.
++
+As ferramentas do ONTAP para os certificados VMware vSphere e VASA serão geradas usando o mesmo tipo de endereço IP usado durante o Registro do vCenter Server.
+
++
+
+NOTE: : O IPv6 é suportado apenas com o vCenter Server 6,7 e posterior.
+
+
+
+
+
+== Propriedades da rede do dispositivo
+
+Se você não estiver usando DHCP, especifique um nome de host DNS válido (não qualificado), bem como o endereço IP estático para as ferramentas do ONTAP para VMware vSphere e os outros parâmetros de rede. Todos esses parâmetros são necessários para a instalação e operação adequadas.

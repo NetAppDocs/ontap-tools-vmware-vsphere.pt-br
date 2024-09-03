@@ -1,0 +1,50 @@
+---
+permalink: concepts/reference_metrocluster_configurations_supported_by_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: As ferramentas do ONTAP para VMware vSphere são compatíveis com ambientes que usam configurações MetroCluster IP e FC para ONTAP. A maior parte deste suporte é automático. No entanto, você pode notar algumas diferenças ao usar um ambiente MetroCluster com ferramentas ONTAP para VMware vSphere e provedor VASA. 
+---
+= Configurações do MetroCluster compatíveis com as ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ferramentas do ONTAP para VMware vSphere são compatíveis com ambientes que usam configurações MetroCluster IP e FC para ONTAP. A maior parte deste suporte é automático. No entanto, você pode notar algumas diferenças ao usar um ambiente MetroCluster com ferramentas ONTAP para VMware vSphere e provedor VASA.
+
+
+
+== Configurações do MetroCluster e ferramentas ONTAP
+
+Você deve garantir que as ferramentas do ONTAP descubram os controladores do sistema de storage no local principal e no local secundário. Normalmente, as ferramentas do ONTAP para VMware vSphere descobrem automaticamente controladores de storage. Se você estiver usando um LIF de gerenciamento de cluster, é uma boa prática verificar se as ferramentas do ONTAP descobriram os clusters em ambos os locais. Caso contrário, você pode adicionar manualmente os controladores de storage às ferramentas do ONTAP. Você também pode modificar os pares de nome de usuário e senha que as ferramentas do ONTAP usam para se conetar aos controladores de armazenamento.
+
+Quando ocorre um switchover, os SVMs no local secundário assumem o controle. Estes SVMs têm o sufixo "'-mc" anexado aos seus nomes. Se uma operação de switchover ocorrer enquanto você estiver executando operações como o provisionamento de um datastore, o nome do SVM onde o datastore reside será alterado para incluir o sufixo "'-mc". Esse sufixo é descartado quando o switchback ocorre, e os SVMs no local principal retomam o controle.
+
+
+NOTE: Se você adicionou usuários do SVM com configuração do MetroCluster às ferramentas do ONTAP, a alteração no nome do SVM (a adição do sufixo "'-mc") não será refletida. Todas as outras operações de comutação continuam a ser executadas normalmente.
+
+Quando ocorre um switchover ou um switchback, as ferramentas do ONTAP podem levar alguns minutos para detectar e descobrir os clusters automaticamente. Se isso acontecer enquanto você estiver executando uma operação de ferramentas do ONTAP, como o provisionamento de um datastore, você pode ter um atraso.
+
+
+
+== Configurações MetroCluster e Fornecedor VASA
+
+O provedor VASA suporta automaticamente ambientes que usam configurações do MetroCluster. O switchover é transparente em ambientes de provedores VASA. Não é possível adicionar usuários SVM ao provedor VASA.
+
+
+NOTE: O VASA Provider não acrescenta o sufixo "'-mc" aos nomes dos SVMs no local secundário após uma mudança.
+
+
+
+== Configurações MetroCluster e SRA
+
+O adaptador de replicação de storage (SRA) dá suporte a ambientes que usam configurações MetroCluster (MCC) com protocolo NFS, iSCSI e FCP.
+
+Como pré-requisito para a configuração do MCC SRA, todos os nomes da máquina virtual de storage (SVM) devem ser exclusivos nos clusters do MCC. Se os nomes não forem exclusivos, isso causará conflitos e os fluxos de trabalho SRA falharão.
+
+Ações necessárias:
+
+. Depois de executar um switchover MCC ou um switchback, verifique se o comando _SnapMirror list-destinations_ no cluster de origem mostra a saída adequada com o novo nome SVM (<vserver_name>-mc). O comando pode levar até 30 minutos para ser executado.
+. Execute a operação discoverDevices da IU SRM antes de prosseguir com outros fluxos de trabalho SRA. Essa operação garante que o SRM esteja ciente das alterações nos nomes da SVM após um switchover ou um switchback.
+

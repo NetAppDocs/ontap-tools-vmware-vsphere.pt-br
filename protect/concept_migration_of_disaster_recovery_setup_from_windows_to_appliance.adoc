@@ -1,0 +1,26 @@
+---
+permalink: protect/concept_migration_of_disaster_recovery_setup_from_windows_to_appliance.html 
+sidebar: sidebar 
+keywords: Migration 
+summary: 'Se estiver a utilizar o Gestor de recuperação de local (SRM) baseado no Windows para recuperação de desastres e pretender utilizar o dispositivo SRM para a mesma configuração, deve migrar a sua configuração de recuperação de desastres do Windows para o SRM baseado na aplicação.' 
+---
+= Migração do Windows SRM para o dispositivo SRM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você estiver usando o Gerenciador de recuperação de site (SRM) baseado no Windows para recuperação de desastres e quiser usar o utilitário SRM para a mesma configuração, então você deve migrar sua configuração de recuperação de desastres do Windows para o SRM baseado no dispositivo.
+
+As etapas envolvidas na migração da recuperação de desastres são:
+
+. Atualize suas ferramentas existentes do ONTAP para o dispositivo VMware vSphere para a versão mais recente.
++
+link:../deploy/task_upgrade_to_the_9_8_ontap_tools_for_vmware_vsphere.html["Atualize para a versão mais recente das ferramentas do ONTAP"]
+
+. Migrar o adaptador de replicação de armazenamento baseado no Windows para o SRA baseado em appliance.
+. Migrar dados do Windows SRM para o dispositivo SRM.
+
+
+ https://docs.vmware.com/en/Site-Recovery-Manager/8.2/com.vmware.srm.install_config.doc/GUID-F39A84D3-2E3D-4018-97DD-5D7F7E041B43.html["Migrar do Site Recovery Manager para Windows para o Site Recovery Manager Virtual Appliance"]Consulte para obter os passos detalhados

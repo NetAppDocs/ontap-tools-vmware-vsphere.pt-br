@@ -1,0 +1,50 @@
+---
+permalink: configure/task_map_storage_to_storage_capability_profiles.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode mapear os datastores associados ao Fornecedor VASA para ONTAP para perfis de capacidade de armazenamento. Você pode atribuir um perfil a um datastore que não esteja associado a um perfil de capacidade de armazenamento. 
+---
+= Mapeie armazenamentos de dados para perfis de capacidade de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode mapear os datastores associados ao Fornecedor VASA para ONTAP para perfis de capacidade de armazenamento. Você pode atribuir um perfil a um datastore que não esteja associado a um perfil de capacidade de armazenamento.
+
+*O que você vai precisar*
+
+* Você deve ter registrado sua instância do provedor VASA com as ferramentas do ONTAP para VMware vSphere.
+* As ferramentas do ONTAP já devem ter descoberto seu storage.
+
+
+É possível mapear o armazenamento de dados tradicional com um perfil de capacidade de armazenamento ou alterar o perfil de capacidade de armazenamento associado a um armazenamento de dados. O VASA Provider _não_ exibe datastores de volume virtual (VVol) na página Storage Mappings. Todos os armazenamentos de dados a que são referidos nesta tarefa são armazenamentos de dados tradicionais.
+
+*Passos*
+
+. Na página inicial das ferramentas do ONTAP, clique em *Mapeamento de armazenamento*.
++
+Na página Mapeamento de armazenamento, você pode determinar as seguintes informações:
+
++
+** O vCenter Server que está associado ao datastore
+** Quantos perfis correspondem ao datastore
++
+A página Mapeamento de armazenamento exibe apenas datastores tradicionais. Esta página não exibe nenhum datastores VVol ou datastores de qtree.
+
+** Se o datastore está atualmente associado a um perfil
++
+Um datastore pode corresponder a vários perfis, mas um datastore pode ser associado a apenas um perfil.
+
+** Se o datastore está em conformidade com o perfil associado a ele
+
+
+. Para mapear um perfil de capacidade de armazenamento para um datastore ou para alterar o perfil existente de um datastore, selecione o datastore.
++
+Para localizar armazenamentos de dados específicos ou outras informações na página Mapeamento de armazenamento, você pode inserir um nome ou uma string parcial na caixa de pesquisa. As ferramentas do ONTAP exibem os resultados da pesquisa em uma caixa de diálogo. Para retornar à exibição completa, remova o texto da caixa de pesquisa e clique em *Enter*.
+
+. No menu ações, selecione *atribuir perfil correspondente*.
+. Selecione o perfil que deseja mapear para o datastore na lista de perfis correspondentes que é fornecida na caixa de diálogo *Assign profile to datastore* e clique em *OK* para mapear o perfil selecionado para o datastore.
+. Atualize a tela para verificar a nova atribuição.
+

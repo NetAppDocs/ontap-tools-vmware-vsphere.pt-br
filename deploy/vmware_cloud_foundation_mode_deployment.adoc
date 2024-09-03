@@ -1,0 +1,486 @@
+---
+permalink: deploy/vmware_cloud_foundation_mode_deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: As ferramentas do ONTAP para VMware vSphere podem ser implantadas no ambiente de base do VMware Cloud. 
+---
+= Modo de implantação do VMware Cloud Foundation para ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ferramentas do ONTAP para VMware vSphere podem ser implantadas no ambiente VMware Cloud Foundation (VCF). O principal objetivo da implantação do VCF é usar ferramentas do ONTAP em uma configuração de nuvem e criar contentores sem o vCenter Server.
+
+O modo VCF permite que você crie contentores para seu armazenamento sem a necessidade de um vCenter Server. O provedor VASA é habilitado por padrão após a implantação de ferramentas do ONTAP no modo VCF. Após a conclusão da implantação, você pode adicionar, excluir ou modificar sistemas de storage e criar contêineres usando APIs REST.
+
+
+NOTE: Modificar e excluir o sistema de storage é suportado pelas ferramentas do ONTAP para a versão VMware vSphere 9.13P1 em diante.
+
+O artigo a seguir tem o procedimento para adicionar armazenamento a ferramentas do ONTAP quando o VCF está habilitado, https://kb.netapp.com/mgmt/OTV/SRA/Storage_Replication_Adapter%3A_How_to_configure_SRA_in_a_SRM_Shared_Recovery_Site["Adicione armazenamento a ferramentas do ONTAP a partir da Swagger-UI"].
+
+Uma nova API é introduzida para gerar o _appliance-api-token_ que autentica chamadas de API. Algumas das APIs existentes são modificadas para incluir o cabeçalho _appliance-api-token_. A partir da versão 9,12 do ONTAP Tools, o Swagger não suporta APIs 1,0. Os ponteiros que estavam anteriormente no 1,0 são movidos para 2,0 ou 3,0 APIs.
+
+
+NOTE: Das ferramentas do ONTAP para a versão do VMware vSphere 9,13, as APIs do perfil de capacidade de armazenamento do 2,0 não estão mais disponíveis.
+
+As APIs disponíveis para o modo de implantação do VCF são:
+
+|===
+
+
+| *API* | *Método HTTP* | *Novo/modificado* | *Cabeçalho da seção* 
+
+
+ a| 
+/2,0/admin/containers
+ a| 
+OBTER
+ a| 
+Novo
+ a| 
+Recipiente
+
+
+
+ a| 
+/2,0/admin/containers
+ a| 
+POST
+ a| 
+Novo
+ a| 
+Recipiente
+
+
+
+ a| 
+/2,0/vcf/user/login
+ a| 
+POST
+ a| 
+Novo
+ a| 
+Autenticação do usuário
+
+
+
+ a| 
+/3,0/storage/clusters
+ a| 
+OBTER
+ a| 
+Modificado
+ a| 
+Sistemas de storage
+
+
+
+ a| 
+/3,0/storage/clusters
+ a| 
+POST
+ a| 
+Modificado
+ a| 
+Sistemas de storage
+
+
+
+ a| 
+/3,0/storage/clusters
+ a| 
+ELIMINAR
+ a| 
+Novo
+ a| 
+Sistemas de storage
+
+
+
+ a| 
+/3,0/storage/clusters
+ a| 
+COLOQUE
+ a| 
+Novo
+ a| 
+Sistemas de storage
+
+
+
+ a| 
+/2,0/storage/clusters/discover
+ a| 
+POST
+ a| 
+Modificado
+ a| 
+Sistemas de storage
+
+
+
+ a| 
+/2,0/armazenamento/capacidade-perfis
+ a| 
+OBTER
+ a| 
+Modificado
+ a| 
+Perfil de capacidade de armazenamento
+
+
+
+ a| 
+/2,0/tasks/
+ a| 
+OBTER
+ a| 
+Modificado
+ a| 
+Tarefa
+
+|===
+Você só pode trabalhar com armazenamentos de dados vVols no modo de implantação do VCF. Para criar contêiner, você precisa usar APIs REST personalizadas para implantação do VCF. As APIS REST podem ser acessadas a partir da interface Swagger após a conclusão da implantação. Ao criar contêineres no modo VCF, você precisa fornecer nomes de VM, agregado e volume de storage. Você precisa usar APIs do ONTAP para obter esses detalhes, pois as ferramentas do ONTAP OBTÊM APIs para esses recursos não são atualizadas.
+
+|===
+
+
+| *Objeto de armazenamento* | *API* 
+
+
+ a| 
+Armazenamento VM
+ a| 
+api/svm/svms
+
+
+
+ a| 
+Agregado
+ a| 
+storage/agregados
+
+
+
+ a| 
+Volume
+ a| 
+armazenamento/volumes
+
+|===
+Ao executar a API Container Create, você pode adicionar volumes existentes ao contentor. No entanto, você deve garantir que os valores de compactação e deduplicação dos volumes existentes correspondam à funcionalidade de storage do contêiner. A criação da máquina virtual falha quando os valores não coincidem. A tabela a seguir fornece detalhes sobre os valores que os volumes existentes devem ter para os perfis de capacidade de armazenamento correspondentes.
+
+|===
+| * Perfil de capacidade de armazenamento de contentores * | *Desduplicação* | *Compressão* 
+
+
+ a| 
+Platinum_AFF_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+Platinum_AFF_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+Platinum_ASA_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+Platinum_ASA_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_NVMe_AFF_A.
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_NVMe_AFF_C.
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_NVMe_ASA_A.
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_NVMe_ASA_C.
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_thick_AFF_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_thick_AFF_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_thick_ASA_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_thick_ASA_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_default_AFF_A
+ a| 
+Fundo
+ a| 
+Nenhum
+
+
+
+ a| 
+AFF_default_AFF_C
+ a| 
+Fundo
+ a| 
+Nenhum
+
+
+
+ a| 
+AFF_default_ASA_A
+ a| 
+Fundo
+ a| 
+Nenhum
+
+
+
+ a| 
+AFF_default_ASA_C
+ a| 
+Fundo
+ a| 
+Nenhum
+
+
+
+ a| 
+AFF_Tiering_AFF_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Tiering_AFF_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Tiering_ASA_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Tiering_ASA_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_AFF_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_AFF_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_ASA_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_ASA_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Tiering_AFF_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Tiering_AFF_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Tiering_ASA_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Tiering_ASA_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Min50_AFF_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Min50_AFF_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Min50_ASA_A
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+AFF_Encrypted_Min50_ASA_C
+ a| 
+Ambos
+ a| 
+Ambos
+
+
+
+ a| 
+Bronze
+ a| 
+Nenhum
+ a| 
+Nenhum
+
+|===
+Você pode usar a API DE PATCH do ONTAP para definir os valores apropriados.
+
+`\https://<machine_IP>/api/storage/volumes/{uuid}`
+
+A implantação do VCF das ferramentas do ONTAP para VMware vSphere permite apenas fluxos de trabalho de criação de contentor. Se você quiser usar outros fluxos de trabalho, como provisionamento de datastores, criação de perfis de capacidade de armazenamento ou recuperação de desastres, Registre as ferramentas do ONTAP no vCenter Server usando a página de swagger. A partir das ferramentas do ONTAP 9,12, o Registro das ferramentas do ONTAP com o vCenter acontece na página do Swagger. A limitação das ferramentas do ONTAP no modo VCF é que você não pode configurar o SRA para recuperação de desastres até que você Registre o plugin. Quando você implementa ferramentas do ONTAP sem o modo VCF, o Registro acontece automaticamente.
+
+
+NOTE: O Register.html será removido nos próximos lançamentos das ferramentas do ONTAP.
+
+image::../media/VCF_deployment.png[Fluxo de trabalho de implantação do VMware Cloud Foundation]
+
+link:../deploy/task_deploy_ontap_tools.html["Como implantar ferramentas do ONTAP"]

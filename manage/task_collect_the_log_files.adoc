@@ -1,0 +1,34 @@
+---
+permalink: manage/task_collect_the_log_files.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode coletar arquivos de log para as ferramentas do ONTAP para VMware vSphere a partir da opção disponível na interface gráfica do usuário do ONTAP Tools. O suporte técnico pode solicitar que você colete os arquivos de log para ajudar a solucionar um problema. 
+---
+= Recolha os ficheiros de registo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode coletar arquivos de log para as ferramentas do ONTAP para VMware vSphere a partir da opção disponível na interface gráfica do usuário (GUI) das ferramentas do ONTAP. O suporte técnico pode solicitar que você colete os arquivos de log para ajudar a solucionar um problema.
+
+*Sobre esta tarefa*
+
+Se precisar de ficheiros de registo do fornecedor VASA, pode gerar um pacote de suporte a partir do ecrã Painel de controlo do fornecedor. Esta página faz parte dos menus de manutenção do fornecedor VASA, que são acessíveis a partir da consola do dispositivo virtual.
+
+`\https://vm_ip:9083`
+
+Você pode coletar as ferramentas do ONTAP para arquivos de log do VMware vSphere usando o recurso ""Exportar ferramentas do ONTAP para logs do VMware vSphere"" na GUI das ferramentas do ONTAP. Quando você coletar um pacote de log do ONTAP para VMware vSphere com o provedor VASA habilitado, as ferramentas do ONTAP para o pacote de log do VMware vSphere também terão os logs do VP. As etapas a seguir indicam como coletar as ferramentas do ONTAP para arquivos de log do VMware vSphere:
+
+*Passos*
+
+. Na página inicial das ferramentas do ONTAP, clique em *Configuração* > *Exportar ferramentas do ONTAP para o VMware vSphere Logs*.
++
+Esta operação pode demorar vários minutos.
+
+. Quando solicitado, salve o arquivo no computador local.
++
+Você pode então enviar o arquivo _.zip_ para o suporte técnico.
+
+

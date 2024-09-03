@@ -1,0 +1,34 @@
+---
+permalink: manage/task_resize_datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: O redimensionamento de um datastore permite aumentar ou diminuir o armazenamento de seus arquivos de máquina virtual. Talvez seja necessário alterar o tamanho de um armazenamento de dados à medida que os requisitos de infraestrutura mudarem. 
+---
+= Redimensionar datastores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O redimensionamento de um datastore permite aumentar ou diminuir o armazenamento de seus arquivos de máquina virtual. Talvez seja necessário alterar o tamanho de um armazenamento de dados à medida que os requisitos de infraestrutura mudarem.
+
+*Sobre esta tarefa*
+
+Se você quiser que as ferramentas do ONTAP redimensione o volume que contém quando redimensiona o datastore VMFS, você não deve usar a opção *Use existing volume* na seção atributos de armazenamento ao provisionar inicialmente o datastore VMFS, mas, em vez disso, deixá-lo criar automaticamente um novo volume para cada datastore.
+
+Você pode aumentar ou diminuir o tamanho de um datastore NFS, mas para um datastore VMFS, você só pode aumentar o tamanho. O redimensionamento do armazenamento de dados também é compatível com armazenamentos de dados FlexGroup com opção de crescimento automático e redução. Um FlexGroup que faz parte de um datastore tradicional e do FlexVol volume que faz parte de um datastore vVols não pode diminuir abaixo do tamanho existente, mas pode crescer no máximo 120%. Os snapshots padrão são ativados nesses volumes FlexGroup e FlexVol.
+
+
+NOTE: Se você estiver usando todas as plataformas de storage do tipo SAN Array (ASA) com o ONTAP 9.9,1 ou posterior, somente então você poderá criar datastores vVols com tamanho vmdk maior que 16TB.
+
+*Passos*
+
+. Na página inicial do vSphere Client, clique em *hosts and clusters*.
+. No painel de navegação, selecione o data center que contém o datastore.
+. Clique com o botão direito do Mouse no datastore e selecione *NetApp ONTAP Tools* > *Resize non-vVols datastore*.
+. Na caixa de diálogo Redimensionar, especifique um novo tamanho para o datastore e clique em *OK*.
++
+Você pode executar a opção *REREDESCOBRIR TUDO* no menu sistemas de armazenamento para atualizar manualmente a lista de armazenamento em sistemas de armazenamento e painel, ou aguardar a próxima atualização agendada.
+
+

@@ -1,0 +1,35 @@
+---
+permalink: configure/task_automatically_generating_scps.html 
+sidebar: sidebar 
+keywords:  
+summary: O VASA Provider for ONTAP permite gerar automaticamente perfis de funcionalidades de armazenamento para datastores tradicionais existentes. Quando você seleciona a opção de geração automática para um datastore, o provedor VASA cria um perfil que contém os recursos de armazenamento usados por esse datastore. 
+---
+= Gere perfis de capacidade de armazenamento automaticamente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O VASA Provider for ONTAP permite gerar automaticamente perfis de funcionalidades de armazenamento para datastores tradicionais existentes. Quando você seleciona a opção de geração automática para um datastore, o provedor VASA cria um perfil que contém os recursos de armazenamento usados por esse datastore.
+
+*O que você vai precisar*
+
+* Você deve ter registrado sua instância do provedor VASA com as ferramentas do ONTAP.
+* As ferramentas do ONTAP precisam ter descoberto seu storage.
+
+
+*Sobre esta tarefa*
+
+Depois de criar um perfil de capacidade de armazenamento, você pode modificar o perfil para incluir mais recursos. O assistente criar perfil de capacidade de armazenamento fornece informações sobre os recursos que podem ser incluídos em um perfil.
+
+*Passos*
+
+. Na página inicial das ferramentas do NetApp ONTAP, clique em *Mapeamento de armazenamento*.
+. Selecione o datastore na lista disponível.
+. No menu ações, selecione *Auto-Generate*.
+. Quando o processo de geração automática terminar, atualize a tela para exibir informações sobre o novo perfil.
++
+O novo perfil é listado na coluna de perfil associado. O nome do novo perfil baseia-se nos recursos do perfil. Você pode renomear o perfil, se necessário.
+
+

@@ -1,0 +1,57 @@
+---
+section: manage
+title: Gerenciar ferramentas do ONTAP
+entries:
+- title: Gerenciar armazenamentos de dados
+  entries:
+  - title: Monte o datastore em hosts adicionais
+    url: "/manage/task_mount_datastores_on_host.html"
+  - title: Redimensionar datastores
+    url: "/manage/task_resize_datastores.html"
+  - title: Edite um datastore vVols
+    url: "/manage/task_edit_a_vvol_datastore.html"
+  - title: Adicionar storage a um datastore vVols
+    url: "/manage/task_add_storage_to_a_vvol_datastore.html"
+  - title: Remova o storage de um datastore vVols
+    url: "/manage/task_remove_storage_from_a_vvols_datastore.html"
+  - title: Montar um datastore vVols
+    url: "/manage/task_mount_a_vvols_datastore.html"
+- title: Gerenciar máquinas virtuais
+  entries:
+  - title: Considerações para migração ou clonagem de máquinas virtuais
+    url: "/manage/reference_considerations_for_migrating_virtual_machines.html"
+  - title: Migre máquinas virtuais tradicionais para armazenamentos de dados vVols
+    url: "/manage/task_migrate_standard_virtual_machines_to_vvols_datastores.html"
+  - title: Migrar máquinas virtuais com perfis de capacidade de storage mais antigos
+    url: "/manage/task_migrate_virtual_machines_with_older_storage_capability_profiles.html"
+  - title: Limpeza VASA
+    url: "/manage/task_delete_virtual_machines.html"
+- title: Modifique as configurações do host ESXi
+  url: "/manage/task_edit_esxi_host_settings.html"
+- title: Acesse o console de manutenção das ferramentas do ONTAP
+  entries:
+  - title: Visão geral do console de manutenção de ferramentas ONTAP
+    url: "/manage/reference_maintenance_console_of_ontap_tools_for_vmware_vsphere.html"
+  - title: Ferramentas ONTAP e arquivos de log do provedor VASA
+    url: "/manage/concept_virtual_storage_console_and_vasa_provider_log_files.html"
+  - title: Altere a senha do administrador
+    url: "/manage/task_change_the_administrative_password.html"
+  - title: Configure o provedor VASA para trabalhar com SSH
+    url: "/manage/task_configure_vasa_provider_to_work_with_ssh.html"
+  - title: Configure o acesso de diagnóstico remoto
+    url: "/manage/task_configure_vasa_provider_to_use_ssh_for_remote_diag_access.html"
+- title: Recolha os ficheiros de registo
+  url: "/manage/task_collect_the_log_files.html"
+- title: Gerenciar syslog
+  url: "/manage/task_syslog_files.html"
+- title: Monitorar o desempenho de armazenamentos de dados e relatórios vVols
+  entries:
+  - title: Visão geral dos armazenamentos de dados e relatórios de máquinas virtuais
+      do ONTAP Tools
+    url: "/manage/concept_virtual_storage_console_reports.html"
+  - title: Analise dados de desempenho usando o painel tradicional
+    url: "/manage/task_monitor_datastores_using_the_traditional_dashboard.html"
+  - title: Analise dados de desempenho usando o painel do vVols
+    url: "/manage/task_monitor_vvols_datastores_and_virtual_machines_using_vvols_dashboard.html"
+- title: Recuperação de desastres do provedor VASA
+  url: "/manage/vasa_provider_disaster_recovery.html"

@@ -1,0 +1,41 @@
+---
+permalink: protect/task_configure_folder_mappings.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve mapear suas pastas no site protegido e no site de recuperação para permitir a comunicação entre elas. 
+---
+= Configurar mapeamentos de pastas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve mapear suas pastas no site protegido e no site de recuperação para permitir a comunicação entre elas.
+
+*O que você vai precisar*
+
+Você deve ter conetado os sites protegidos e de recuperação.
+
+*Passos*
+
+. Inicie sessão no vCenter Server e clique em *Site Recovery* > *Sites*.
+. Selecione seu site protegido e clique em *Gerenciar*.
+. Na guia Gerenciar, selecione *Mapeamentos de pastas*.
+. Selecione o ícone *pasta* para criar um novo mapeamento de pastas.
++
+O assistente criar mapeamento de pastas é exibido.
+
+. No assistente criar Mapeamento de pastas, execute o seguinte:
++
+.. Selecione *Prepare automaticamente Mapeamentos para pastas com nomes correspondentes* e clique em *Next*.
+.. Selecione os objetos de data center necessários para os sites protegidos e de recuperação e clique em *Adicionar mapeamentos*.
+.. Clique em *Next* depois que os mapeamentos forem criados com sucesso.
+.. Selecione o objeto que foi usado anteriormente para criar mapeamento reverso e clique em *Finish*.
+
+
+
+
+*Resultado*
+
+A página Mapeamentos de pastas exibe os recursos do site protegido e os recursos do site de recuperação. Você pode seguir os mesmos passos para outras redes em seu ambiente.

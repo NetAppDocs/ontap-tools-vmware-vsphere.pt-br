@@ -1,0 +1,55 @@
+---
+permalink: configure/task_configure_user_role_and_privileges.html 
+sidebar: sidebar 
+keywords: user roles 
+summary: Você pode configurar novas funções de usuário para gerenciar sistemas de storage usando o arquivo JSON fornecido com as ferramentas do ONTAP para VMware vSphere e ONTAP System Manager. 
+---
+= Configurar funções de usuário e Privileges
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar novas funções de usuário para gerenciar sistemas de storage usando o arquivo JSON fornecido com as ferramentas do ONTAP para VMware vSphere e ONTAP System Manager.
+
+*O que você vai precisar*
+
+* Você deve ter baixado o arquivo ONTAP Privileges das ferramentas do ONTAP seguindo estas etapas:
++
+** Navegue para `\https://{virtual_appliance_IP}:9083/vsc/config/`
+** Transfira o ficheiro VSC_ONTAP_User_Privileges.zip
+** Extraia o arquivo VSC_ONTAP_User_Privileges.zip baixado
+** Acesse o System Manager
++
+Consulte o artigo da KB https://kb.netapp.com/mgmt/OTV/Virtual_Storage_Console/Virtual_Storage_Console%3A_How_to_retrieve_the_JSON_file_to_configure_user_roles_and_privileges["Console de armazenamento virtual: Como recuperar o arquivo JSON para configurar funções de usuário e Privileges"] - para obter instruções sobre como fazer o download do arquivo ONTAP Privileges a partir da CLI da Web.
+
+
+
+* Você deve ter configurado o armazenamento ONTAP 9.8P1 ou posterior.
+* Você deve ter feito login com o administrador Privileges para o sistema de armazenamento.
+
+
+*Passos*
+
+. Descompacte o arquivo baixado `\https://{virtual_appliance_IP}:9083/vsc/config/VSC_ONTAP_User_Privileges.zip`.
+. Acesse o Gerenciador do sistema do ONTAP.
+. Clique em *cluster* > *Configurações* > *usuários e funções*.
+. Clique em *Add User*.
+. Na caixa de diálogo Adicionar usuário, selecione *Produtos de virtualização*.
+. Clique em *Procurar* para selecionar e carregar o arquivo JSON do ONTAP Privileges.
++
+O CAMPO DE PRODUTO é preenchido automaticamente.
+
+. Selecione a capacidade necessária no menu pendente CAPACIDADE DO PRODUTO.
++
+O campo *ROLE* é preenchido automaticamente com base na capacidade do produto selecionada.
+
+. Introduza o nome de utilizador e a palavra-passe necessários.
+. Selecione o Privileges (descoberta, criação de armazenamento, modificação de armazenamento, destruição de armazenamento) necessário para o usuário e clique em *Adicionar*.
+
+
+A nova função e usuário são adicionados e você pode ver o Privileges detalhado na função que você configurou.
+
+
+NOTE: A operação de desinstalação não remove as funções das ferramentas do ONTAP, mas remove os nomes localizados para o Privileges específico das ferramentas do ONTAP e anexa o prefixo a "XXX privilégio ausente". Esse comportamento acontece porque o vCenter Server não fornece uma opção para remover o Privileges. Quando você reinstalar as ferramentas do ONTAP ou atualizar para uma versão mais recente das ferramentas do ONTAP, todas as funções padrão das ferramentas do ONTAP e Privileges específicas das ferramentas do ONTAP são restauradas.

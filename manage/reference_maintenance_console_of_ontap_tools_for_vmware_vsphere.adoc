@@ -1,0 +1,105 @@
+---
+permalink: manage/reference_maintenance_console_of_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode gerenciar suas configurações de aplicativo, sistema e rede usando o console de manutenção das ferramentas do ONTAP. Pode alterar a palavra-passe do administrador e a palavra-passe de manutenção. Você também pode gerar pacotes de suporte, definir diferentes níveis de log, exibir e gerenciar configurações TLS e iniciar diagnósticos remotos. 
+---
+= Visão geral do console de manutenção de ferramentas ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode gerenciar suas configurações de aplicativo, sistema e rede usando o console de manutenção das ferramentas do ONTAP. Pode alterar a palavra-passe do administrador e a palavra-passe de manutenção. Você também pode gerar pacotes de suporte, definir diferentes níveis de log, exibir e gerenciar configurações TLS e iniciar diagnósticos remotos.
+
+Você deve ter instalado as ferramentas VMware depois de implantar as ferramentas do ONTAP para acessar o console de manutenção. Você deve usar `maint` como nome de usuário e senha configurados durante a implantação para fazer login no console de manutenção das ferramentas do ONTAP. Você deve usar *nano* para editar os arquivos no console de login de manutenção ou raiz.
+
+
+NOTE: Tem de definir uma palavra-passe para `diag` o utilizador enquanto ativa o diagnóstico remoto.
+
+Você deve usar a guia *Resumo* das ferramentas do ONTAP implantadas para acessar o console de manutenção. Quando você clica image:../media/launch_maintenance_console.gif["Botão Play (Reproduzir)"]em , o console de manutenção é iniciado.
+
+|===
+
+
+| *Menu Console* | *Opções* 
+
+
+ a| 
+Configuração da aplicação
+ a| 
+. Apresentar resumo do estado do servidor
+. Inicie o serviço do Virtual Storage Console
+. Interrompa o serviço do Virtual Storage Console
+. Inicie o fornecedor VASA e o serviço SRA
+. Pare o fornecedor VASA e o serviço SRA
+. Altere a palavra-passe do utilizador "administrador"
+. Re-gerar certificados
+. Base de dados de reposição forçada
+. Altere o nível DE LOG do serviço Virtual Storage Console
+. Altere o nível DE LOG para o provedor VASA e o serviço SRA
+. Apresentar a configuração TLS
+. Gerar token de autenticação Web-CLI
+. Inicie o serviço de plug-in das ferramentas do ONTAP
+. Parar o serviço de plug-in das ferramentas do ONTAP
+. Inicie os serviços Log Integrity
+. Serviços Stop Log Integrity
+. Alterar senha do banco de dados
+
+
+
+
+ a| 
+Configuração do sistema
+ a| 
+. Reinicie a máquina virtual
+. Encerre a máquina virtual
+. Altere a palavra-passe do utilizador 'não'
+. Alterar fuso horário
+. Adicionar novo servidor NTP
++
+Você pode fornecer um endereço IPv6 para o seu servidor NTP.
+
+. Ative o acesso SSH
+. Aumentar o tamanho do disco de cadeia (/jail)
+. Atualização
+. Instale o VMware Tools
+
+
+
+
+ a| 
+Configuração de rede
+ a| 
+. Apresentar definições de endereço IP
+. Altere as definições do endereço IP
++
+Você pode usar essa opção para alterar a implantação do endereço IP pós-implantação para IPv6.
+
+. Exibir configurações de pesquisa de nome de domínio
+. Altere as configurações de pesquisa de nome de domínio
+. Apresentar rotas estáticas
+. Alterar rotas estáticas
++
+Pode utilizar esta opção para adicionar uma rota IPv6D.
+
+. Confirmar alterações
+. Faça ping em um host
++
+Você pode usar essa opção para fazer ping para um host IPv6.
+
+. Restaure as predefinições
+
+
+
+
+ a| 
+Suporte e Diagnóstico
+ a| 
+. Gerar pacote de suporte
+. Aceder ao shell de diagnóstico
+. Ative o acesso de diagnóstico remoto
+
+
+|===

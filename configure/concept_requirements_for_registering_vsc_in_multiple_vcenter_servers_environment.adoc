@@ -1,0 +1,45 @@
+---
+permalink: configure/concept_requirements_for_registering_vsc_in_multiple_vcenter_servers_environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Se você estiver usando as ferramentas do ONTAP para VMware vSphere em um ambiente em que um único cliente do VMware vSphere HTML5 esteja gerenciando várias instâncias do vCenter Server, você deve Registrar uma instância de ferramentas do ONTAP com cada vCenter Server para que haja um emparelhamento 1:1 entre as ferramentas do ONTAP para VMware vSphere e vCenter Server. Isso permite que você gerencie todos os servidores que executam o vCenter 6,0 ou posterior no modo vinculado e no modo não vinculado a partir de um único cliente vSphere HTML5.' 
+---
+= Requisitos para Registrar ferramentas do ONTAP em ambientes de vários vCenter Servers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você estiver usando as ferramentas do ONTAP para VMware vSphere em um ambiente em que um único cliente VMware vSphere HTML5 esteja gerenciando várias instâncias do vCenter Server, Registre uma instância de ferramentas do ONTAP com cada vCenter Server para que haja um emparelhamento 1:1 entre as ferramentas do ONTAP para VMware vSphere e vCenter Server. Isso permite que você gerencie todos os servidores que executam o vCenter 7,0 ou posterior no modo vinculado e no modo não vinculado a partir de um único cliente vSphere HTML5.
+
+
+NOTE: Se você quiser usar as ferramentas do ONTAP com um vCenter Server, você deve configurar ou Registrar uma instância de ferramentas do ONTAP para cada instância do vCenter Server que você deseja gerenciar. Cada instância de ferramentas ONTAP registrada deve ter a mesma versão.
+
+O modo vinculado é instalado automaticamente durante a implantação do vCenter Server. O modo vinculado usa o Microsoft ative Directory Application Mode (ADAM) para armazenar e sincronizar dados em vários sistemas do vCenter Server.
+
+O uso do cliente vSphere HTML5 para executar tarefas de ferramentas do ONTAP em vários vCenter Servers requer o seguinte:
+
+* Cada vCenter Server no inventário da VMware que você deseja gerenciar deve ter um único servidor de ferramentas ONTAP registrado com ele em um emparelhamento 1:1 único.
++
+Por exemplo, você pode ter o servidor de ferramentas do ONTAP A registrado no vCenter Server A, o servidor B de ferramentas do ONTAP registrado no vCenter Server B, o servidor C de ferramentas do ONTAP registrado no vCenter Server C e assim por diante.
+
++
+Você *não pode* ter o servidor de ferramentas do ONTAP A registrado no vCenter Server A e no vCenter Server B.
+
++
+Se um inventário da VMware incluir um vCenter Server que não tenha um servidor de ferramentas do ONTAP registrado nele, mas houver um ou mais vCenter Servers registrados com as ferramentas do ONTAP, você poderá visualizar as instâncias das ferramentas do ONTAP para VMware vSphere e executar operações de ferramentas do ONTAP para os vCenter Servers com ferramentas do ONTAP registradas.
+
+* Você deve ter o privilégio Exibir específico das ferramentas do ONTAP para cada vCenter Server registrado no logon único (SSO).
++
+Você também deve ter as permissões RBAC corretas.
+
+
+
+Quando você está executando uma tarefa que exige que você especifique um vCenter Server, o seletor *INSTÂNCIA* no canto superior esquerdo da tela exibe os vCenter Servers disponíveis em ordem alfanumérica. O vCenter Server padrão é sempre o primeiro servidor na lista suspensa.
+
+Se o local do armazenamento for conhecido (por exemplo, quando você usa o assistente de provisionamento e o datastore estiver em um host gerenciado por um vCenter Server específico), a lista do vCenter Server será exibida como uma opção somente leitura. Isso acontece somente quando você usa a opção de clique com o botão direito do Mouse para selecionar um item no vSphere Web Client.
+
+O ONTAP Tools avisa quando você tenta selecionar um objeto que ele não gerencia.
+
+Você pode filtrar sistemas de storage com base em um vCenter Server específico na página de resumo de ferramentas do ONTAP. Uma página de resumo é exibida para todas as instâncias do ONTAP Tools registradas em um vCenter Server. Você pode gerenciar os sistemas de storage associados a uma instância específica de ferramentas do ONTAP e ao vCenter Server, mas deve manter as informações de Registro de cada sistema de storage separadas se estiver executando várias instâncias de ferramentas do ONTAP.

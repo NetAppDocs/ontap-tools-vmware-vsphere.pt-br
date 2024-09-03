@@ -1,0 +1,31 @@
+---
+permalink: configure/concept_considerations_for_creating_and_editing_storage_capability_profiles.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve estar ciente das considerações para criar e editar perfis de capacidade de armazenamento. 
+---
+= Considerações para criar e editar perfis de capacidade de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A seguir estão as considerações para criar e editar perfis de capacidade de armazenamento.
+
+* Você pode configurar IOPS mínimo somente em sistemas AFF.
+* Você pode configurar métricas de QoS em um nível de armazenamento de dados de volume virtual (VVol).
++
+Esse recurso oferece maior flexibilidade na atribuição de métricas de QoS variadas para VMDKs diferentes da mesma máquina virtual provisionada em um datastore virtual.
+
+* Você pode configurar perfis de funcionalidades de storage para armazenamentos de dados híbridos, ASA e AFF em array Flash.
++
+Para sistemas híbridos de array Flash, ASA e AFF, é possível configurar a reserva de espaço para ser espessa ou fina.
+
+* Você pode usar perfis de capacidade de storage para fornecer criptografia para seus datastores.
+* Não é possível modificar os perfis de capacidade de armazenamento existentes (criados antes da versão 7,2) após a atualização de uma versão anterior das ferramentas do ONTAP para VMware vSphere para a versão mais recente das ferramentas do ONTAP.
++
+Os perfis de capacidade de armazenamento legados são retidos para compatibilidade com versões anteriores. Se os modelos padrão não estiverem em uso, durante a atualização para a versão mais recente das ferramentas do ONTAP, os modelos existentes serão substituídos para refletir as novas métricas de QoS relacionadas ao desempenho dos perfis de funcionalidades de storage.
+
+* Não é possível modificar ou usar os perfis de funcionalidades de storage herdados para provisionar novos armazenamentos de dados virtuais ou políticas de storage de VM.
+

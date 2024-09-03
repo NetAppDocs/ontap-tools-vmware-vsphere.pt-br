@@ -1,0 +1,68 @@
+---
+permalink: configure/task_add_storage_systems.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode adicionar manualmente o sistema de storage às ferramentas do ONTAP. 
+---
+= Adicione sistemas de storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar manualmente o sistema de storage às ferramentas do ONTAP.
+
+
+NOTE: Se o cluster ONTAP estiver habilitado para SAML, a comunicação com o ONTAP será feita com autenticação básica.
+
+*Sobre esta tarefa*
+
+Sempre que você iniciar as ferramentas do ONTAP ou selecionar a opção *REREDESCOBRIR tudo*, as ferramentas do ONTAP para VMware vSphere descobrem automaticamente os sistemas de storage disponíveis.
+
+
+NOTE: Os armazenamentos de dados da VVol não são compatíveis com usuários da SVM.
+
+*Passos*
+
+. Adicione um sistema de storage às ferramentas do ONTAP usando uma das opções na página inicial das ferramentas do ONTAP:
++
+** Clique em *sistemas de armazenamento* > *Adicionar*. Ou
+** Clique em *Visão geral* > *Introdução* e, em seguida, clique no botão *ADICIONAR* em Adicionar sistema de armazenamento.
+
+
+. Na caixa de diálogo *Add Storage System* (Adicionar sistema de armazenamento), insira o endereço IP de gerenciamento e as credenciais desse sistema de armazenamento.
++
+Quando você adiciona um sistema de storage, qualquer comunicação entre o plug-in das ferramentas do ONTAP e o sistema de storage deve ser autenticada mutuamente.
+
++
+Também é possível adicionar sistemas de storage usando o endereço IPv6 do cluster ou SVM.
+
++
+Quando você adiciona armazenamento a partir da página sistema de armazenamento de ferramentas do ONTAP, especifique a instância do vCenter Server onde o armazenamento está localizado. A caixa de diálogo Adicionar sistema de armazenamento fornece uma lista suspensa das instâncias disponíveis do vCenter Server. As ferramentas do ONTAP não exibem essa opção se você estiver adicionando armazenamento a um datacenter que já esteja associado a uma instância do vCenter Server.
+
++
+NOTA:
+
++
+** A partir da versão 9,12 das ferramentas ONTAP, todas as comunicações dos sistemas de armazenamento ONTAP acontecem por meio de autenticação baseada em certificados.
+** As ações tradicionais do datastore como Excluir, Redimensionar e montar não são permitidas quando um dos certificados cliente ou cluster não é válido.
+** As ações do armazenamento de dados da vVol, como o Expand Storage, o Mount datastore, não são permitidas quando o certificado do cliente ou do cluster não é válido.
+** Ações como Excluir, Remover armazenamento e Editar Propriedades são permitidas, pois essas ações não requerem comunicação ONTAP.
+** Para adicionar um sistema de armazenamento com o usuário com escopo SVM, o administrador do cluster do sistema de armazenamento deve editar o usuário e adicionar o método de autenticação *Certificate* aos aplicativos HTTP e ONTAPI.
++
+Nas opções avançadas, há duas maneiras de fazer o upload do *certificado de cluster ONTAP*:
+
++
+... *Automaticamente fetch* - obtém automaticamente os certificados.
+... * Manualmente upload* - você precisa navegar manualmente para o local onde o certificado está localizado e fazer o upload do certificado.
+
+
+
+
+. Clique em *OK* depois de adicionar todas as informações necessárias.
++
+A janela pop-up autorizar certificado de cluster é exibida.
+
+. Clique em *Mostrar certificado* para ver os detalhes do certificado. Clique em *Yes* para adicionar o sistema de armazenamento
+

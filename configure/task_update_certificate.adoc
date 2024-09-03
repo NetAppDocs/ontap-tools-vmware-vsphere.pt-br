@@ -1,0 +1,18 @@
+---
+permalink: configure/task_update_certificate.html 
+sidebar: sidebar 
+keywords:  
+summary: Você precisa atualizar o certificado quando o certificado expirar ou quando o certificado for alterado manualmente. Quando o certificado do cliente ou do cluster expirar ou não corresponder, a comunicação com o sistema ONTAP é interrompida. 
+---
+= Atualizar certificado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário atualizar o certificado quando o certificado do cliente ou do cluster estiver prestes a expirar ou tiver expirado, ou quando o certificado do cluster for alterado manualmente. Quando o certificado do cliente ou do cluster expirar ou não corresponder, a comunicação com o sistema ONTAP é interrompida.
+
+O certificado de cluster é o certificado do servidor que é gerado no lado ONTAP pelo administrador de armazenamento. O certificado de cliente pode ser gerado nas ferramentas do ONTAP. Quando o certificado do cluster expirar, o administrador de armazenamento precisa gerar o novo certificado no lado ONTAP. A janela Modificar sistema de armazenamento obteve automaticamente o certificado do cluster a partir do armazenamento ONTAP e você precisa autorizar o certificado do cluster.
+
+Quando o certificado estiver prestes a expirar ou se já tiver expirado, siga o procedimento na link:../configure/task_modify_storage_system.html["Modificar sistemas de storage"] secção para atualizar o certificado.

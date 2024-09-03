@@ -1,0 +1,39 @@
+---
+permalink: protect/task_configure_sra_on_srm_appliance.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Depois de implementar o dispositivo SRM, deve configurar o SRA no dispositivo SRM. A configuração bem-sucedida do SRA permite que o SRM Appliance se comunique com o SRA para gerenciamento de recuperação de desastres. Você deve armazenar as credenciais de ferramentas ONTAP (endereço IP e senha de administrador) no dispositivo SRM para permitir a comunicação entre o dispositivo SRM e o SRA.' 
+---
+= Configure o SRA no dispositivo SRM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de implementar o dispositivo SRM, deve configurar o SRA no dispositivo SRM. A configuração bem-sucedida do SRA permite que o SRM Appliance se comunique com o SRA para gerenciamento de recuperação de desastres. Deve guardar as credenciais das ferramentas ONTAP (endereço IP e palavra-passe de administrador) no dispositivo SRM para permitir a comunicação entre o dispositivo SRM e o SRA.
+
+*O que você vai precisar*
+
+Você deve ter baixado o arquivo _tar.gz_ do https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["Site de suporte da NetApp"].
+
+*Sobre esta tarefa*
+
+A configuração do SRA no dispositivo SRM armazena as credenciais SRA no dispositivo SRM.
+
+*Passos*
+
+. No menu do cliente vSphere, selecione *Ferramentas do NetApp ONTAP* > *Configurações* > *Configurações administrativas* > *Gerenciar recursos* > *Ativar adaptador de replicação de armazenamento (SRA)*
+. No ecrã do dispositivo SRM, clique em *Storage Replication Adapter* > *New Adapter* (adaptador de replicação de armazenamento*).
+. Carregue o ficheiro _.tar.gz_ para o SRM.
+. Volte a verificar os adaptadores para verificar se os detalhes estão atualizados na página adaptadores de replicação de armazenamento SRM.
+. Inicie sessão utilizando a conta de administrador no dispositivo SRM utilizando o putty.
+. Mude para o usuário root usando o comando: `su root`
+. Execute o comando `cd /var/log/vmware/srm` para navegar para o diretório de log.
+. Na localização do log, digite o comando para obter o ID do docker usado pelo SRA: `docker ps -l`
+. Para fazer login no ID do contentor, digite o comando: `docker exec -it -u srm <container id> sh`
+. Configure o SRM com o endereço IP e a senha das ferramentas ONTAP usando o comando: `perl command.pl -I <otv-IP> administrator <otv-password>`. Você precisa ter uma única cotação em torno do valor da senha.
++
+Uma mensagem de sucesso confirmando que as credenciais de armazenamento são armazenadas é exibida. O SRA pode se comunicar com o servidor SRA usando o endereço IP, porta e credenciais fornecidos.
+
+

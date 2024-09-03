@@ -1,0 +1,22 @@
+---
+permalink: configure/reference_configure_the_vsc_preferences_files.html 
+sidebar: sidebar 
+keywords: preferences files 
+summary: Os arquivos de preferências contêm configurações que controlam as ferramentas do ONTAP para operações do VMware vSphere. Na maioria das circunstâncias, você não precisa modificar as configurações nesses arquivos. É útil saber quais arquivos de preferência as ferramentas do ONTAP usam. 
+---
+= Configure os arquivos de preferências das ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os arquivos de preferências contêm configurações que controlam as ferramentas do ONTAP para operações do VMware vSphere. Na maioria das circunstâncias, você não precisa modificar as configurações nesses arquivos. É útil saber quais arquivos de preferência as ferramentas do ONTAP usam.
+
+As ferramentas do ONTAP têm vários arquivos de preferência. Esses arquivos incluem chaves de entrada e valores que determinam como as ferramentas do ONTAP executam várias operações. A seguir estão alguns dos arquivos de preferência que as ferramentas do ONTAP usam:
+
+`/opt/netapp/vscserver/etc/kamino/kaminoprefs.xml`
+
+`/opt/netapp/vscserver/etc/vsc/vscPreferences.xml`
+
+Você pode ter que modificar os arquivos de preferências em determinadas situações. Por exemplo, se você usar iSCSI, NFS ou NVMe/FC e a sub-rede for diferente entre os hosts ESXi e o sistema de storage, será necessário modificar os arquivos de preferências. Se você não modificar as configurações no arquivo de preferências, o provisionamento do datastore falhará porque as ferramentas do ONTAP não podem montar o datastore.

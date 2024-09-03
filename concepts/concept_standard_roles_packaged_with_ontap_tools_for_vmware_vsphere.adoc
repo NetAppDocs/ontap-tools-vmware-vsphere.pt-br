@@ -1,0 +1,88 @@
+---
+permalink: concepts/concept_standard_roles_packaged_with_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Para simplificar o trabalho com o vCenter Server Privileges e o controle de acesso baseado em funções (RBAC), as ferramentas ONTAP fornecem funções padrão de ferramentas ONTAP que permitem executar tarefas importantes de ferramentas ONTAP. Há também uma função somente leitura que permite visualizar as informações, mas não executar nenhuma tarefa.' 
+---
+= Funções padrão incluídas com ferramentas ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para simplificar o trabalho com o vCenter Server Privileges e o controle de acesso baseado em funções (RBAC), as ferramentas do ONTAP fornecem funções padrão de ferramentas do ONTAP que permitem executar tarefas importantes de ferramentas do ONTAP. Há também uma função somente leitura que permite visualizar as informações, mas não executar nenhuma tarefa.
+
+As funções de ferramentas padrão do ONTAP têm o Privileges específico de ferramentas do ONTAP necessário e o vCenter Server Privileges nativo, necessários para que os usuários realizem tarefas de ferramentas do ONTAP. Além disso, as funções são configuradas para que tenham o Privileges necessário em todas as versões com suporte do vCenter Server.
+
+Como administrador, você pode atribuir essas funções aos usuários, conforme necessário.
+
+
+NOTE: Quando você atualiza as ferramentas do ONTAP para a versão mais recente, as funções padrão são atualizadas automaticamente para funcionar com a nova versão da ferramenta.
+
+Você pode exibir as funções padrão das ferramentas do ONTAP clicando em *Roles* na página inicial do vSphere Client.
+
+As funções que as ferramentas do ONTAP fornecem permitem que você execute as seguintes tarefas:
+
+|===
+
+
+| *Função* | *Descrição* 
+
+
+ a| 
+Administrador do VSC
+ a| 
+Fornece todas as Privileges nativas específicas das ferramentas do vCenter Server Privileges e do ONTAP necessárias para executar todas as tarefas das ferramentas do ONTAP.
+
+
+
+ a| 
+VSC somente leitura
+ a| 
+Fornece acesso somente leitura às ferramentas do ONTAP. Esses usuários não podem executar nenhuma ferramenta do ONTAP para ações do VMware vSphere controladas por acesso.
+
+
+
+ a| 
+Provisão de VSC
+ a| 
+Fornece todas as Privileges nativas específicas das ferramentas do vCenter Server Privileges e do ONTAP necessárias para provisionar o storage. Você pode executar as seguintes tarefas:
+
+* Crie novos datastores
+* Destrua armazenamentos de dados
+* Ver informações sobre perfis de capacidade de armazenamento
+
+
+|===
+
+
+== Diretrizes para o uso de funções padrão das ferramentas do ONTAP
+
+Quando você trabalha com ferramentas padrão do ONTAP para funções do VMware vSphere, há certas diretrizes que você deve seguir.
+
+Você não deve modificar diretamente as funções padrão. Se o fizer, as ferramentas do ONTAP substituirão as alterações sempre que atualizar. O instalador atualiza as definições de função padrão cada vez que você atualiza as ferramentas do ONTAP. Isso garante que as funções sejam atuais para a sua versão das ferramentas do ONTAP para VMware vSphere, bem como para todas as versões com suporte do vCenter Server.
+
+No entanto, você pode usar as funções padrão para criar funções adaptadas ao seu ambiente. Para fazer isso, você deve copiar a função padrão das ferramentas do ONTAP e, em seguida, editar a função copiada. Ao criar uma nova função, você pode manter essa função mesmo quando você reiniciar ou atualizar o serviço Windows das ferramentas do ONTAP.
+
+Algumas das maneiras pelas quais você pode usar as funções padrão das ferramentas do ONTAP incluem o seguinte:
+
+* Use as funções de ferramentas padrão do ONTAP para todas as tarefas de ferramentas do ONTAP.
++
+Nesse cenário, as funções padrão fornecem todo o Privileges que um usuário precisa para executar as tarefas de ferramentas do ONTAP.
+
+* Combine funções para expandir as tarefas que um usuário pode executar.
++
+Se as funções padrão das ferramentas do ONTAP fornecerem muita granularidade para o seu ambiente, você poderá expandir as funções criando grupos de nível mais alto que contenham várias funções.
+
++
+Se um usuário precisar executar outras tarefas de ferramentas que não sejam do ONTAP que exijam o vCenter Server Privileges nativo adicional, você poderá criar uma função que forneça esses Privileges e adicioná-los ao grupo também.
+
+* Crie papéis mais refinados.
++
+Se a sua empresa exigir que você implemente funções mais restritivas do que as funções de ferramentas padrão do ONTAP, use as funções de ferramentas do ONTAP para criar novas funções.
+
++
+Nesse caso, você clonaria as funções necessárias das ferramentas do ONTAP e editaria a função clonada para que ela tenha apenas o Privileges que seu usuário precisa.
+
+

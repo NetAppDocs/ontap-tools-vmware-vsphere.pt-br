@@ -1,0 +1,59 @@
+---
+permalink: manage/concept_what_vasa_provider_reports_do.html 
+sidebar: sidebar 
+keywords: ONTAP tools, VASA Provider, and SRA 
+summary: Os relatórios vVols exibem informações detalhadas sobre os datastores do VMware Virtual volumes e as máquinas virtuais criadas nesses datastores. O dashboard do vVols permite que você analise e identifique possíveis problemas com os datastores e máquinas virtuais do vVols no vCenter Server. 
+---
+= Relatórios vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os relatórios do vVols exibem informações detalhadas sobre os armazenamentos de dados do VMware Virtual volumes (vVols) e as máquinas virtuais criadas nesses armazenamentos de dados. O dashboard do vVols permite que você analise e identifique possíveis problemas com os datastores e máquinas virtuais do vVols no vCenter Server.
+
+Você pode exibir, organizar e exportar relatórios. Os dados do relatório de datastores e máquinas virtuais do vVols são fornecidos pelo ONTAP.
+
+O vVols fornece os seguintes relatórios pré-definidos:
+
+* Relatório do vVols datastore
+* Relatório vVols VM
+
+
+*Relatório de armazenamento de dados vVols*
+
+O menu Relatório do armazenamento de dados vVols fornece informações sobre os seguintes parâmetros para datastores:
+
+* Nome do datastore do vVols
+* Espaço livre
+* Espaço utilizado
+* Espaço total
+* Porcentagem de espaço utilizado
+* Percentagem de espaço disponível
+* IOPS
+* As métricas de desempenho de latência estão disponíveis para armazenamentos de dados vVols baseados em NFS no ONTAP 9.8 e posterior. Você também pode verificar a hora em que o relatório foi gerado. O menu Relatório de armazenamento de dados vVols permite organizar o relatório de acordo com suas necessidades e, em seguida, exportar o relatório organizado usando o botão *Exportar para CSV*. Cada nome do armazenamento de dados SAN vVols no relatório é um link que navega para a guia Monitor do armazenamento de dados SAN vVols selecionado, que você pode usar para exibir as métricas de desempenho.
+
+
+*Relatório de máquina virtual vVols*
+
+O menu Relatório de Resumo da Máquina Virtual vVols fornece as métricas de desempenho para todas as máquinas virtuais que usam os datastores SAN vVols que são provisionados pelo Fornecedor VASA para ONTAP para um vCenter Server selecionado. As métricas da máquina virtual exibidas nos relatórios de VM são dados históricos que são coletados a cada 10 minutos para máquinas virtuais em datastores vVols. "Last refresh Time" e "Next refresh Time" são adicionados à tabela para fornecer informações sobre quando os dados foram coletados e quando será a próxima coleta de dados.
+
+* Nome da máquina virtual
+* Capacidade comprometida
+* Tempo de atividade
+* IOPS
+* Taxa de transferência
++
+O relatório mostra se a máquina virtual está ligada ou desligada.
+
+* Espaço lógico
+* Host
+* Estado de alimentação
+* Latência
++
+O relatório exibe a latência das máquinas virtuais em todos os datastores vVols associados às máquinas virtuais.
+
+
+
+Cada nome de máquina virtual no relatório é um link para a guia Monitor da máquina virtual selecionada. Você pode organizar o relatório da máquina virtual de acordo com sua exigência, exportar o relatório em formato .CSV e, em seguida, salvar o relatório em seu sistema local. O carimbo de data/hora do relatório é anexado ao relatório salvo.

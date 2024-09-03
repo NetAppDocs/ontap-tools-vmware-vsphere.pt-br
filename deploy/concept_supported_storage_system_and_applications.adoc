@@ -1,0 +1,38 @@
+---
+permalink: deploy/concept_supported_storage_system_and_applications.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve estar ciente dos requisitos básicos do sistema de storage, requisitos de aplicativos e requisitos de licença antes de começar a implantar as ferramentas do ONTAP para o VMware vSphere. 
+---
+= Sistema de storage compatível, licenciamento e aplicativos para as ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve estar ciente dos requisitos básicos do sistema de storage, requisitos de aplicativos e requisitos de licença antes de começar a implantar as ferramentas do ONTAP para o VMware vSphere.
+
+A ferramenta de Matriz de interoperabilidade (IMT) contém as informações mais recentes sobre as versões suportadas do ONTAP, vCenter Server, hosts ESXi, aplicativos plug-in e SRM (Site Recovery Manager).
+
+https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["Ferramenta de Matriz de interoperabilidade"^]
+
+Você deve habilitar a licença do FlexClone para executar operações de snapshot de máquina virtual e operações de clone para datastores do VMware Virtual volumes (vVols).
+
+O adaptador de replicação de armazenamento (SRA) requer as seguintes licenças:
+
+* Licença SnapMirror
++
+Você deve habilitar a licença SnapMirror para executar operações de failover para SRA.
+
+* Licença FlexClone
++
+Você deve habilitar a licença FlexClone para executar operações de failover de teste para SRA.
+
+
+
+Para exibir o IOPS de um datastore, você deve habilitar o controle de e/S de armazenamento ou desmarcar a caixa de seleção desabilitar coleção de estatísticas de e/S de armazenamento na configuração de controle de e/S de armazenamento. Você pode ativar o controle de e/S de storage somente se tiver a licença Enterprise Plus da VMware.
+
+* https://kb.vmware.com/s/article/1022091["Solução de problemas de controle de e/S de storage"]
+* https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-37CC0E44-7BC7-479C-81DC-FFFC21C1C4E3.html["Requisitos de controle de e/S de storage"]
+

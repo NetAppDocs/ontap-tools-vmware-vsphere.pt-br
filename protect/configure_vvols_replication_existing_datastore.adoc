@@ -1,0 +1,54 @@
+---
+permalink: protect/configure_vvols_replication_existing_datastore.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode configurar o Storage Replication Adapter (SRA) usando o assistente Array Manager do Site Recovery Manager (SRM) para habilitar interações entre SRM e máquinas virtuais de armazenamento (SVMs).' 
+---
+= Configurar a replicação do vVols para armazenamentos de dados existentes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O recurso de replicação vVols é aprimorado para fornecer replicação vVols para máquinas virtuais existentes que foram criadas antes da configuração do SRM. Isso permite que você recupere máquinas virtuais existentes e as proteja no site de recuperação.
+
+*O que você vai precisar*
+
+* Cluster e SVM são peered.
+* Datastores e volumes FlexVol são criados em sites de origem e destino.
+* Os sites de origem e destino têm os mesmos perfis de capacidade de armazenamento.
+* Os volumes do FlexVol estão com a mesma programação do SnapMirror.
+* A replicação do vVols está ativada.
+
+
+Um datastore existente não tem grupos de replicação criados.
+
+*Passos*
+
+. Acesse a interface Swagger.
+. Execute a API REST para configurar o grupo de replicação para o datastore existente.
++
+API: /3,0/admin/(datastore)/grupos de replicação
+
+. Criar política de armazenamento de dados VM para o armazenamento de dados vVols existente com o perfil de capacidade de armazenamento que foi usado para criar o armazenamento de dados.
++
+Adicione a política de replicação, o agendamento de replicação e o datastore compatível a partir da lista disponível.
+
+
+
+
+NOTE: Se você estiver usando o Gerenciador de sistema para proteger os volumes do FlexVol e o perfil de capacidade de armazenamento tem a política de QoS como 'nenhum', certifique-se de que a opção *impor limite de desempenho* esteja desmarcada para que a recuperação de desastres seja bem-sucedida.
+
+. Acesse a máquina virtual desprotegida e edite a política de armazenamento de VM.
+. Selecione a política do armazenamento de dados e o armazenamento de dados da VM.
+. Adicione o grupo de replicação à máquina virtual desprotegida.
+
+
+image::../media/vvols_replication_existing_datastore.png[Novo usuário e fluxo de trabalho de usuário existente]
+
+*NOTA:*
+
+* Ao configurar uma máquina virtual para habilitar a replicação para um datastore existente, verifique o FlexVol volume que tem um Config vVols.
+* Quando os vVols de uma máquina virtual existente estiverem espalhados por vários datastores, você deverá mover todos os vVols dessa máquina virtual usando o vMotion para um único datastore antes de habilitar a replicação.
+

@@ -1,0 +1,50 @@
+---
+permalink: deploy/task_upgrade_storage_replication_adapter.html 
+sidebar: sidebar 
+keywords: SRA, upgrade 
+summary: 'Depois de atualizar as ferramentas do ONTAP ou implantar a versão mais recente das ferramentas do ONTAP, você precisa atualizar seu adaptador de replicação de armazenamento (SRA).' 
+---
+= Atualize o adaptador de replicação de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após atualizar as ferramentas do ONTAP ou implantar a versão mais recente das ferramentas do ONTAP, você precisa atualizar o adaptador de replicação de armazenamento (SRA).
+
+*Passo*
+
+. Você deve atualizar para o adaptador mais recente usando um dos seguintes procedimentos com base no adaptador:
++
+|===
+
+
+| *Para...* | *Execute o seguinte...* 
+
+
+ a| 
+Windows
+ a| 
+.. Inicie sessão no SRM Windows Server.
+.. Altere o caminho do sistema para `C:\Program Files\VMware\VMware vCenter Site Recovery Manager\external\perl\c\bin`
+.. Introduza o endereço IP e a palavra-passe das ferramentas do ONTAP implementadas .
+
+
+
+
+ a| 
+Adaptador baseado no dispositivo
+ a| 
+.. Inicie sessão na página SRM Appliance Management (Gestão de dispositivos SRM).
+.. Clique em *Storage Replication Adapter* e clique em *Delete* para remover o SRA existente.
+.. Clique em *novo adaptador* > *Procurar*.
+.. Clique para selecionar o arquivo de tarball SRA mais recente que você baixou do site de suporte da NetApp e clique em *Instalar*.
+.. Configure o SRA no dispositivo SRM.
++
+link:../protect/task_configure_sra_on_srm_appliance.html["Configurar o SRA no dispositivo SRM"]
+
+
+
+|===
+

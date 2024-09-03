@@ -1,0 +1,50 @@
+---
+indexpage:
+  title: Ferramentas do ONTAP para documentação do VMware vSphere
+  lead: As ferramentas do ONTAP para o VMware vSphere permitem configurar, gerenciar
+    e proteger seus datastores virtuais no ambiente do vCenter Server.
+  tiles:
+  - title: Comece agora
+    links:
+    - title: Notas de lançamento
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886292
+    - title: Saiba mais sobre as ferramentas do ONTAP para VMware vSphere
+      url: "/concepts/concept_virtual_storage_console_overview.html"
+    - title: Ferramentas ONTAP Início rápido
+      url: "/qsg.html"
+    - title: Implantar ferramentas do ONTAP
+      url: "/deploy/task_deploy_ontap_tools.html"
+    - title: Atualizar as ferramentas do ONTAP
+      url: "/deploy/task_upgrade_to_the_9_8_ontap_tools_for_vmware_vsphere.html"
+  - title: Use as ferramentas do ONTAP
+    links:
+    - title: Provisionar armazenamentos de dados tradicionais
+      url: "/configure/task_provision_datastores.html"
+    - title: Provisione armazenamentos de dados vVols
+      url: "/configure/task_provision_vvols_datastores.html"
+    - title: Configurar controles de acesso baseados em função
+      url: "/concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html"
+    - title: Configure o diagnóstico remoto
+      url: "/manage/task_configure_vasa_provider_to_use_ssh_for_remote_diag_access.html"
+    - title: Configurar a alta disponibilidade
+      url: "/concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html"
+  - title: Proteja e gerencie armazenamentos de dados
+    links:
+    - title: Proteja seus datastores
+      url: "/protect/task_enable_storage_replication_adapter.html"
+    - title: Proteja máquinas virtuais
+      url: "/protect/concept_configure_replication_for_vvols_datastore.html"
+    - title: Monitore armazenamentos de dados tradicionais e máquinas virtuais
+      url: "/manage/task_monitor_datastores_using_the_traditional_dashboard.html"
+    - title: Monitore armazenamentos de dados e máquinas virtuais do vVols
+      url: "/manage/task_monitor_vvols_datastores_and_virtual_machines_using_vvols_dashboard.html"
+  - title: Mais recursos
+    links:
+    - title: Documentação para versões anteriores das ferramentas do ONTAP para VMware
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63792
+    - title: Base de Conhecimento NetApp - ONTAP Tools
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/VSC_and_VASA_Provider
+    - title: Utilitário de importação NetApp - Vídeo
+      url: https://www.youtube.com/watch?v=CEQmIEzNVfA
+    - title: Comunidade NetApp - Ferramentas ONTAP
+      url: https://community.netapp.com/t5/VMware-Solutions-Discussions/bd-p/vmware-solutions-discussions

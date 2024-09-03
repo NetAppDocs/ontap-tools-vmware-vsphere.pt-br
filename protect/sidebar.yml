@@ -1,0 +1,51 @@
+---
+section: protect
+title: Proteja armazenamentos de dados e máquinas virtuais
+entries:
+- title: Ative o Storage Replication Adapter para proteger os datastores
+  url: "/protect/task_enable_storage_replication_adapter.html"
+- title: Configurar o sistema de storage para recuperação de desastres
+  entries:
+  - title: Configurar sistemas de storage para SAN e nas
+    url: "/protect/task_configure_storage_replication_adapter_for_san_environment.html"
+  - title: Configure o armazenamento para ambientes altamente dimensionados
+    url: "/protect/reference_configure_storage_replication_adapter_for_highly_scaled_environment.html"
+  - title: Configure o SRA com o SRM em uma configuração de site de recuperação compartilhada
+    url: "/protect/configure_sra_with_srm_shared_site.html"
+- title: Configure o SRA no dispositivo SRM
+  url: "/protect/task_configure_sra_on_srm_appliance.html"
+- title: Atualizar credenciais SRA
+  url: "/protect/task_update_sra_credentials.html"
+- title: Migrar o Windows SRM para o dispositivo SRM
+  url: "/protect/concept_migration_of_disaster_recovery_setup_from_windows_to_appliance.html"
+- title: Configure a replicação para o armazenamento de dados vVols para proteger
+    as máquinas virtuais
+  url: "/protect/concept_configure_replication_for_vvols_datastore.html"
+- title: Configurar a replicação do vVols para armazenamentos de dados existentes
+  url: "/protect/configure_vvols_replication_existing_datastore.html"
+- title: Proteja máquinas virtuais desprotegidas
+  url: "/protect/task_protect_non_protected_virtual_machines.html"
+- title: Configurar sites protegidos e de recuperação
+  entries:
+  - title: Configurar políticas de armazenamento de VM
+    url: "/protect/task_configure_vm_storage_policies.html"
+  - title: Configurar grupos de proteção
+    url: "/protect/task_configure_protection_groups.html"
+  - title: Emparelhe locais protegidos e de recuperação
+    url: "/protect/task_pair_protected_and_recovery_sites.html"
+  - title: Configurar recursos do site protegidos e de recuperação
+    entries:
+    - title: Configurar mapeamentos de rede
+      url: "/protect/task_configure_network_mappings.html"
+    - title: Configurar mapeamentos de pastas
+      url: "/protect/task_configure_folder_mappings.html"
+    - title: Configurar mapeamentos de recursos
+      url: "/protect/task_configure_resource_mappings.html"
+    - title: Mapear políticas de armazenamento
+      url: "/protect/task_map_storage_policies.html"
+    - title: Configurar datastores de espaço reservado
+      url: "/protect/task_configure_placeholder_datastores.html"
+    - title: Configure o SRA usando o gerenciador de array
+      url: "/protect/task_configure_array_manager.html"
+  - title: Verifique os sistemas de storage replicados
+    url: "/protect/task_verify_the_replicated_storage_environment.html"

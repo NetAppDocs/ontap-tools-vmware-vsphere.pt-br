@@ -1,0 +1,92 @@
+---
+permalink: configure/concept_configure_storage_capability_profiles.html 
+sidebar: sidebar 
+keywords: storage capability profiles 
+summary: O provedor VASA para ONTAP permite criar perfis de capacidade de armazenamento e mapeá-los para o seu armazenamento. Isso ajuda a manter a consistência em todo o storage. Você também pode usar o provedor VASA para verificar a conformidade entre o armazenamento e os perfis de capacidade de armazenamento. 
+---
+= Visão geral dos perfis de capacidade de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O provedor VASA para ONTAP permite criar perfis de capacidade de armazenamento e mapeá-los para o seu armazenamento. Isso ajuda a manter a consistência em todo o storage. Você também pode usar o provedor VASA para verificar a conformidade entre o armazenamento e os perfis de capacidade de armazenamento.
+
+As funcionalidades de storage são um conjunto de atributos do sistema de storage que identifica um nível específico de performance de storage, eficiência de storage e outras funcionalidades, como criptografia para o objeto de storage associado à funcionalidade de storage.
+
+Para armazenamentos de dados tradicionais, você pode usar um perfil de capacidade de armazenamento para criar armazenamentos de dados de forma consistente com atributos comuns e atribuir política de QoS a eles. Durante o provisionamento, as ferramentas do ONTAP exibem clusters, SVMs e agregados que correspondem ao perfil de funcionalidades de storage. Você pode gerar um perfil de capacidade de armazenamento a partir de datastores tradicionais existentes usando a opção *GLOBAL auto-GENERATE PROFILES* no menu Storage Mapping. Depois que o perfil for criado, você poderá usar as ferramentas do ONTAP para monitorar a conformidade dos datastores com o perfil.
+
+
+NOTE: Os armazenamentos de dados da VVol não são compatíveis com usuários da SVM.
+
+Quando usado com armazenamentos de dados vVols, o assistente de provisionamento pode usar vários perfis de capacidade de storage para criar volumes FlexVol diferentes no armazenamento de dados. Você pode usar a política de armazenamento de VM para criar automaticamente vVols para uma máquina virtual em volumes FlexVol apropriados, conforme definido. Por exemplo, você pode criar perfis para classes de armazenamento comuns (como limites de desempenho e outros recursos, como criptografia ou FabricPool). Posteriormente, você pode criar políticas de armazenamento de VM no vCenter Server representando classes de negócios de máquinas virtuais e vinculá-las ao perfil de capacidade de armazenamento apropriado por nome (por exemplo, produção, Teste, RH).
+
+Quando usado com vVols, o perfil de capacidade de armazenamento também é usado para definir o desempenho de armazenamento para a máquina virtual individual e colocá-lo no FlexVol volume no datastore vVols que melhor satisfaz o requisito de desempenho. Você pode especificar uma política de QoS com IOPS mínimo e/ou máximo para performance. Você pode usar as políticas padrão ao provisionar inicialmente uma máquina virtual ou alterar a política de armazenamento de VM mais tarde, se os requisitos da empresa mudarem.
+
+
+NOTE: O perfil de funcionalidades de storage do ASA-C é compatível com as ferramentas do ONTAP para VMware vSphere 9.13P1 em diante.
+
+Os perfis de capacidade de armazenamento padrão para esta versão de ferramentas do ONTAP:
+
+* Platinum_AFF_A
+* Platinum_AFF_C
+* Platinum_ASA_A
+* Platinum_ASA_C
+* AFF_NVMe_AFF_A.
+* AFF_NVMe_AFF_C.
+* AFF_NVMe_ASA_A.
+* AFF_NVMe_ASA_C.
+* AFF_thick_AFF_A
+* AFF_thick_AFF_C
+* AFF_thick_ASA_A
+* AFF_thick_ASA_C
+* AFF_default_AFF_A
+* AFF_default_AFF_C
+* AFF_default_ASA_A
+* AFF_default_ASA_C
+* AFF_Tiering_AFF_A
+* AFF_Tiering_AFF_C
+* AFF_Tiering_ASA_A
+* AFF_Tiering_ASA_C
+* AFF_Encrypted_AFF_A
+* AFF_Encrypted_AFF_C
+* AFF_Encrypted_ASA_A
+* AFF_Encrypted_ASA_C
+* AFF_Encrypted_Tiering_AFF_A
+* AFF_Encrypted_Tiering_AFF_C
+* AFF_Encrypted_Tiering_ASA_A
+* AFF_Encrypted_Tiering_ASA_C
+* AFF_Encrypted_Min50_AFF_A
+* AFF_Encrypted_Min50_AFF_C
+* AFF_Encrypted_Min50_ASA_A
+* AFF_Encrypted_Min50_ASA_C
+* Bronze
+
+
+Em seguida, o vCenter Server associa a capacidade de armazenamento de um LUN ou volume ao datastore que é provisionado nesse LUN ou volume. Isso permite provisionar uma máquina virtual em um datastore que corresponda ao perfil de armazenamento da máquina virtual e garantir que todos os datastores em um cluster de datastore tenham os mesmos níveis de serviço de armazenamento.
+
+Com as ferramentas do ONTAP, você pode configurar cada armazenamento de dados de volume virtual (vVols) com um novo perfil de capacidade de storage que suporte o provisionamento de máquinas virtuais com vários requisitos de IOPS no mesmo datastore vVols. Durante a execução do fluxo de trabalho de provisionamento de VM com o requisito de IOPS, todos os datastores vVols são listados na lista de datastore compatível.
+
+
+
+== Considerações para criar e editar perfis de capacidade de armazenamento
+
+Você deve estar ciente das considerações para criar e editar perfis de capacidade de armazenamento.
+
+* Você pode configurar IOPS mínimo somente em sistemas AFF.
+* Você pode configurar métricas de QoS em um nível de armazenamento de dados de volume virtual (vVols).
++
+Esse recurso oferece maior flexibilidade na atribuição de métricas de QoS variadas para VMDKs diferentes da mesma máquina virtual provisionada em um datastore virtual.
+
+* Você pode configurar perfis de funcionalidades de storage para armazenamentos de dados híbridos, ASA e AFF em array Flash.
++
+Para sistemas híbridos, ASA e AFF de array Flash, é possível configurar a reserva de espaço para ser espessa ou fina.
+
+* Você pode usar perfis de capacidade de storage para fornecer criptografia para seus datastores.
+* Não é possível modificar os perfis de capacidade de armazenamento existentes (criados antes da versão 7,2) após a atualização de uma versão anterior das ferramentas do ONTAP para VMware vSphere para a versão mais recente das ferramentas do ONTAP.
++
+Os perfis de capacidade de armazenamento legados são retidos para compatibilidade com versões anteriores. Se os modelos padrão não estiverem em uso, durante a atualização para a versão mais recente das ferramentas do ONTAP, os modelos existentes serão substituídos para refletir as novas métricas de QoS e políticas de disposição em camadas relacionadas ao desempenho dos perfis de funcionalidades de storage.
+
+* Não é possível modificar ou usar os perfis de funcionalidades de storage herdados para provisionar novos armazenamentos de dados virtuais ou políticas de storage de VM.
+

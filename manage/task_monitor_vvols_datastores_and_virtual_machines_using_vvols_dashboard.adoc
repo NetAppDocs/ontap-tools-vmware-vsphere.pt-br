@@ -1,0 +1,74 @@
+---
+permalink: manage/task_monitor_vvols_datastores_and_virtual_machines_using_vvols_dashboard.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode monitorar o desempenho e visualizar os cinco principais datastores SAN e nas do VMware Virtual volumes (vVols) no vCenter Server com base nos parâmetros selecionados usando o painel vVols das ferramentas do ONTAP.' 
+---
+= Analise dados de desempenho usando o painel do vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode monitorar o desempenho e visualizar os cinco principais datastores SAN e nas do VMware Virtual volumes (vVols) no vCenter Server com base nos parâmetros selecionados usando o painel vVols das ferramentas do ONTAP.
+
+*O que você vai precisar*
+
+* Você deve usar o ONTAP 9.7 ou posterior para seu sistema de storage.
+
+
+Os dados de IOPS fornecidos pelo ONTAP são arredondados e exibidos no painel do vVols. Pode haver uma diferença entre o valor de IOPS real fornecido pelo ONTAP e o valor de IOPS exibido no painel do vVols. As ferramentas do ONTAP fornecem monitoramento de desempenho para armazenamentos de dados vVols baseados em NFS.
+
+* Os dados do painel do vVols são atualizados periodicamente, com um intervalo de 10 minutos.
+* Se você adicionou, modificou ou excluiu um sistema de armazenamento de sua instância do vCenter Server, talvez você não perceba nenhuma alteração nos dados no painel do vVols por algum tempo.
+* O valor total de IOPS que é exibido no portlet Visão geral do painel vVols não é um valor cumulativo do valor ler IOPS e escrever IOPS.
+* Os vVols de dados baseados em NFS provisionados no ONTAP 9.8 e acima são registrados automaticamente para monitoramento de desempenho no painel do vVols.
+
+
+*Passos*
+
+. Na página inicial do vSphere Client, clique em *Ferramentas do ONTAP*.
+. Selecione o vCenter Server necessário usando o seletor *INSTANCE* para exibir os datastores.
+. Clique em *Overview > vVols Dashboard*.
++
+O portlet de datastores fornece os seguintes detalhes:
+
++
+** O número de armazenamentos de dados vVols gerenciados pelo provedor VASA em sua instância do vCenter Server
+** Os cinco principais armazenamentos de dados vVols com base nos parâmetros de desempenho e uso dos recursos, você pode alterar a listagem dos armazenamentos de dados com base no espaço utilizado, IOPS ou latência e na ordem necessária.
+
+
+. Veja os detalhes das máquinas virtuais usando o portlet máquinas virtuais.
++
+O portlet máquinas virtuais fornece os seguintes detalhes:
+
++
+** Número de máquinas virtuais que usam datastores ONTAP no vCenter Server
+** Cinco principais máquinas virtuais baseadas em IOPS, latência, taxa de transferência, capacidade comprometida, tempo de atividade e espaço lógico, você pode personalizar como as cinco principais máquinas virtuais são listadas no painel do vVols.
+
+
+
+
+
+
+== Requisitos de dados do painel do vVols
+
+Você deve verificar alguns requisitos importantes do painel do vVols para exibir detalhes dinâmicos dos datastores e máquinas virtuais do VMware Virtual volumes (vVols).
+
+A tabela a seguir apresenta uma visão geral do que você deve verificar se o painel vVols não exibe as métricas de desempenho dos datastores SAN vVols provisionados e das máquinas virtuais.
+
+|===
+| *Considerações* | *Descrição* 
+
+
+ a| 
+Sistema de storage
+ a| 
+* Você está usando o ONTAP 9.7 ou posterior.
+* Você está usando as credenciais apropriadas para o sistema de storage.
+* Seu sistema de storage está ativo e acessível.
+* A máquina virtual selecionada deve estar usando pelo menos um datastore vVols e as operações de e/S estão sendo executadas no disco da máquina virtual.
+
+
+|===

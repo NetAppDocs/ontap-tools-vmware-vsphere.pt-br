@@ -1,0 +1,32 @@
+---
+section: concepts
+title: Conceitos
+entries:
+- title: Visão geral das ferramentas do ONTAP
+  url: "/concepts/concept_virtual_storage_console_overview.html"
+- title: Configurações do provedor VASA para vVols
+  url: "/concepts/concept_configure_vvols_datastores.html"
+- title: Adaptador de replicação de armazenamento para recuperação de desastres
+  url: "/concepts/concept_manage_disaster_recovery_setup_using_srm.html"
+- title: Controle de acesso baseado em função
+  entries:
+  - title: Visão geral do controle de acesso baseado em funções para ferramentas ONTAP
+    url: "/concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html"
+  - title: Componentes das permissões do vCenter Server
+    url: "/concepts/reference_components_that_make_up_vcenter_server_permissions.html"
+  - title: Principais pontos sobre a atribuição e modificação de permissões para o
+      vCenter Server
+    url: "/concepts/reference_key_points_about_assigning_and_modifying_permissions.html"
+  - title: Funções padrão incluídas com ferramentas ONTAP
+    url: "/concepts/concept_standard_roles_packaged_with_ontap_tools_for_vmware_vsphere.html"
+  - title: Privileges necessário para tarefas de ferramentas do ONTAP
+    url: "/concepts/concept_privileges_required_for_vsc_tasks.html"
+  - title: Permissões para sistemas de armazenamento ONTAP e objetos vSphere
+    url: "/concepts/concept_ontap_role_based_access_control_feature_for_ontap_tools.html"
+  - title: Como configurar o controle de acesso baseado em função para ferramentas
+      do ONTAP
+    url: "/concepts/concept_how_to_configure_data_ontap_role_based_access_control_for_vsc_for_vmware_vsphere.html"
+- title: Configurar a alta disponibilidade para ferramentas ONTAP
+  url: "/concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html"
+- title: Configurações do MetroCluster compatíveis com as ferramentas do ONTAP
+  url: "/concepts/reference_metrocluster_configurations_supported_by_ontap_tools_for_vmware_vsphere.html"

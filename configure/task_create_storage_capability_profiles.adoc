@@ -1,0 +1,158 @@
+---
+permalink: configure/task_create_storage_capability_profiles.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode usar as ferramentas do ONTAP para criar manualmente perfis de funcionalidades de storage, gerar automaticamente um perfil com base nos recursos de um armazenamento de dados ou modificar um perfil para atender aos seus requisitos. 
+---
+= Crie perfis de capacidade de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar as ferramentas do ONTAP para criar manualmente perfis de funcionalidades de storage, gerar automaticamente um perfil com base nos recursos de um armazenamento de dados ou modificar um perfil para atender aos seus requisitos.
+
+*O que você vai precisar*
+
+Você deve ter registrado sua instância do provedor VASA com as ferramentas do ONTAP para VMware vSphere.
+
+Depois de configurar um perfil, pode editar o perfil conforme necessário.
+
+*Passos*
+
+. Na página inicial das ferramentas do ONTAP, clique em *políticas e perfis*.
+. Crie um perfil ou edite um perfil existente, conforme necessário:
++
+|===
+
+
+| *Se você quiser...* | *Faça isso...* 
+
+
+ a| 
+Crie um perfil
+ a| 
+Clique em *CREATE*.
+
+
+
+ a| 
+Editar um perfil existente
+ a| 
+Clique no perfil que deseja modificar a partir dos perfis listados na página *Perfis de capacidade de armazenamento*.
+
+|===
++
+
+NOTE: Para exibir os valores associados a um perfil existente, clique no nome do perfil na página Perfil de capacidades de armazenamento. Em seguida, o provedor VASA exibe a página Resumo para esse perfil.
+
+. Em *New datastore* > *Storage Systems*, clique em *Create Storage Capability profile*.
++
+Você recebe a seguinte mensagem para confirmar a navegação na janela do datastore.
+
++
+_Isso removerá os dados inseridos fechando o fluxo de trabalho atual e abre o fluxo de trabalho criar perfil de capacidade de armazenamento. Deseja continuar?_
+
+. Clique em *YES* para abrir a janela criar perfil de capacidade de armazenamento.
+. Preencha as páginas no assistente criar perfil de capacidade de armazenamento para configurar um perfil ou editar valores para modificar um perfil existente.
++
+A maioria dos campos neste assistente são auto-explicativos. A tabela a seguir descreve alguns dos campos para os quais você pode precisar de orientação.
+
++
+|===
+
+
+| *Campo* | *Explicação* 
+
+
+ a| 
+Identificar vários perfis
+ a| 
+Você pode usar o campo *Description* na guia Nome e Descrição para descrever a finalidade do perfil de capacidade de armazenamento (SCP). Fornecer uma boa descrição é útil porque é uma boa prática configurar perfis diferentes com base nas aplicações que estão sendo usadas.
+
+Por exemplo, uma aplicação essencial aos negócios requer um perfil com recursos que deem suporte a uma performance mais alta, como a plataforma AFF e ASA. Um armazenamento de dados usado para teste ou treinamento pode usar um perfil com uma plataforma híbrida Flash Array de performance inferior e permitir que todos os recursos de eficiência de storage e disposição em camadas controlem os custos. A combinação do tipo de plataforma e do sinalizador assimétrico determina o tipo de SCPs. Por exemplo: Platinum_ASA_A, Platinum_ASA_C, Platinum_AFF_A, Platinum_AFF_C.
+
+Se você ativou o modo "'Linked'" para seus vCenter Servers, então você deve selecionar o vCenter Server para o qual você está criando o perfil de capacidade de armazenamento.
+
+
+
+ a| 
+Plataforma
+ a| 
+A partir das ferramentas do ONTAP para VMware vSphere 9,13, você pode criar perfis de capacidade de armazenamento usando a combinação dos seguintes itens:
+
+.. Tipo de plataforma: Storage híbrido, capacidade e performance
+.. Sinalizador assimétrico - indica o status de SAN otimizado do sistema de armazenamento (All SAN Array).
++
+*** Quando o tipo de plataforma é *Performance* e a sinalização assimétrica é *True*, ele considera o sistema de armazenamento do tipo AFF-A
+*** Quando o tipo de plataforma é *desempenho* e o sinalizador assimétrico é *Falso*, ele considera o sistema de armazenamento do tipo ASA-A
+*** Quando o tipo de plataforma é *Capacity* e o sinalizador assimétrico é *true*, ele considera o sistema de armazenamento do tipo AFF-C.
+*** Quando o tipo de plataforma é *matriz híbrida Flash* e sinalizador assimétrico é na, ele considera o sistema de armazenamento do tipo FAS
+
+
+
+
+As opções nos ecrãs subsequentes são atualizadas com base na seleção do tipo de sistema de armazenamento.
+
+
+
+ a| 
+Protocolo
+ a| 
+Você pode selecionar entre os protocolos disponíveis listados com base na plataforma selecionada para o sistema de storage. Ao configurar máquinas virtuais, você pode configurar políticas de armazenamento de VM com perfil de capacidade de armazenamento e o campo de protocolo filtra datastores com base em protocolo específico. O campo "any" permite-lhe trabalhar com todos os protocolos.
+
+
+
+ a| 
+Desempenho
+ a| 
+Você pode definir políticas tradicionais de QoS para seu sistema de storage usando a guia desempenho.
+
+** Quando você seleciona *nenhum*, uma política de QoS sem limite (infinito) é aplicada a um VVol de dados.
+** Quando você seleciona *QoS Policy Group*, uma política de QoS tradicional é aplicada a uma VVol.
++
+Você pode definir o valor para *IOPS máximo* e *IOPS mínimo*, que permite usar a funcionalidade de QoS. Se você selecionar Infinite IOPS, o campo Max IOPS será desativado. Quando aplicada a um datastore tradicional, uma política de QoS com valor máximo de IOPS é criada e atribuída a um FlexVol volume. Quando usada com um datastore vVols, uma política de QoS com valores de IOPS máximo e IOPS mínimo é criada para cada datastore vVols de dados.
+
++
+*NOTA*:
+
++
+*** IOPS máximo e IOPS mínimo também podem ser aplicados ao FlexVol volume para um armazenamento de dados tradicional.
+*** Você deve garantir que as métricas de performance também não sejam definidas separadamente em um nível de máquina virtual de storage (SVM), em um nível de agregado ou no nível de FlexVol volume.
+
+
+
+
+
+
+ a| 
+Atributos de storage
+ a| 
+Os atributos de armazenamento que você pode habilitar nesta guia dependem do tipo de armazenamento selecionado na guia personalidade.
+
+** Se você selecionar armazenamento híbrido Flash Array, poderá configurar a reserva de espaço (espessa ou fina), ativar deduplicação, compactação e criptografia.
++
+O atributo disposição em camadas é desativado porque esse atributo não é aplicável ao storage híbrido do Flash Array.
+
+** Se você selecionar AFF Storage, poderá habilitar a criptografia e a disposição em camadas.
++
+A deduplicação e a compactação são habilitadas por padrão para o armazenamento AFF e não podem ser desativadas.
+
+** Se você selecionar ASA Storage, poderá habilitar a criptografia e a disposição em camadas.
++
+A deduplicação e a compactação são habilitadas por padrão para o armazenamento ASA e não podem ser desativadas.
+
++
+O atributo disposição em camadas permite o uso de volumes que fazem parte de um agregado habilitado para FabricPool (compatível com o fornecedor VASA para sistemas AFF com o ONTAP 9.4 e posterior). Você pode configurar uma das seguintes políticas para o atributo de disposição em camadas:
+
+** Nenhum: Impede que os dados de volume sejam movidos para o nível de capacidade
+** Snapshot: Move blocos de dados de usuários de cópias Snapshot de volume que não estão associados ao sistema de arquivos ativo para a camada de capacidade
+
+
+|===
+. Revise suas seleções na página Resumo e clique em *OK*.
++
+Depois de criar um perfil, você pode retornar à página Mapeamento do armazenamento para exibir quais perfis correspondem a quais datastores.
+
+

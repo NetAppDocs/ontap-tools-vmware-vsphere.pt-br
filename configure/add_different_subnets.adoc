@@ -1,0 +1,24 @@
+---
+permalink: configure/add_different_subnets.html 
+sidebar: sidebar 
+keywords:  
+summary: Agora você pode adicionar diferentes sub-redes para a montagem do datastore usando a interface de ferramentas do ONTAP. 
+---
+= Adicione diferentes sub-redes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a interface de ferramentas do ONTAP ou APIs REST para adicionar diferentes sub-redes de hosts ESXi. Isso permite que você permita ou restrinja as sub-redes para a operação de montagem de datastore após o provisionamento de sistemas de armazenamento. Se você não adicionar sub-redes de hosts ESXi, as ferramentas do ONTAP bloquearão a operação de montagem de datastore para essas sub-redes.
+
+*Passos*
+
+. Faça login na instância do vCenter Server e acesse as ferramentas do ONTAP.
+. Na página inicial, clique em *Configurações* > *Gerenciar acesso à sub-rede*.
+. Na caixa de diálogo Gerenciar acesso à sub-rede, clique na opção *Selected* em sub-redes permitidas para acesso a sub-redes NFS.
+. Insira os valores das sub-redes necessárias e clique em *ADD*.
+. Selecione *nenhum* ou *selecionado* para sub-redes restritas.
+. Repita as etapas acima para acesso a sub-redes iSCSI e clique em *Apply*.
+

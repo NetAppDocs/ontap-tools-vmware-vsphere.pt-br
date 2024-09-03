@@ -1,0 +1,109 @@
+---
+permalink: deploy/task_upgrade_to_the_9_8_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: Virtual Storage Console, Storage Replication Adapter 
+summary: Você pode executar uma atualização no local para a versão mais recente das ferramentas do ONTAP a partir de sua configuração existente 9,10 ou posterior, seguindo as instruções fornecidas aqui. 
+---
+= Atualize para a versão mais recente das ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode executar uma atualização no local para a versão mais recente das ferramentas do ONTAP da versão 9,10 ou posterior existente, seguindo as instruções fornecidas aqui.
+
+*O que você vai precisar*
+
+A ferramenta de Matriz de interoperabilidade (IMT) contém as informações mais recentes sobre as versões suportadas do ONTAP, vCenter Server, hosts ESXi, aplicativos plug-in e SRM (Site Recovery Manager).  https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["Ferramenta de Matriz de interoperabilidade"^]Consulte para obter todas as informações sobre o caminho de atualização suportado.
+
+* Você deve ter baixado o arquivo _.iso_ para a versão mais recente das ferramentas do ONTAP.
+* Você deve ter reservado pelo menos 12 GB de RAM para que as ferramentas do ONTAP funcionem de forma otimizada após a atualização.
+* Você deve limpar o cache do navegador do vSphere Client.
++
+link:../deploy/task_clean_the_vsphere_cached_downloaded_plug_in_packages.html["Limpe os pacotes de plug-in baixados em cache do vSphere"]
+
+
+
+Execute as seguintes etapas para validar o arquivo _.iso_, se necessário. Este é um passo opcional:
+
+. Extraia a chave pública do certificado de assinatura de código emitido pelo Entrust (OTV_ISO_CERT.pem) openssl X509 -in OTV_ISO_CERT.pem -pubkey -noout > csc-prod-OTV-SRA-TGZ.pub
+. Verifique a assinatura no resumo usando a chave pública (esta etapa deve acontecer no sistema do usuário final antes de instalar o binário. Pacote de certificados deve ser incluído no pacote de implantação)
++
+openssl dgst -sha256 -verificar csc-prod-OTV-SRA-TGZ.pub -assinatura NetApp-ONTAP-tools-for-VMware-vsphere-9,12-9327-upgrade-iso.sig NetApp-ONTAP-tools-for-vmware-vsphere-9.12-9327-upgrade.iso
+
+
+
+O status do provedor VASA da implantação existente é mantido após a atualização. Você deve ativar ou desativar manualmente o provedor VASA com base em suas necessidades após o upgrade. No entanto, é melhor habilitar o provedor VASA mesmo que o VMware Virtual volumes (vVols) não esteja em uso, pois permite perfis de capacidade de armazenamento para provisionamento tradicional de armazenamento de dados e alarmes de armazenamento.
+
+
+NOTE: Você pode executar uma atualização no local para a versão mais recente das ferramentas do ONTAP apenas a partir de suas versões 9,10 ou posteriores existentes.
+
+
+NOTE: A partir das ferramentas do ONTAP 9,12 atualizar todos os sistemas de armazenamento de autenticação e processo de comunicação são alterados de autenticação básica para autenticação baseada em certificado, confiando automaticamente nos certificados de armazenamento ONTAP. Não é necessária qualquer ação do utilizador.
+
+A adição de um sistema de armazenamento sem autenticação de certificado é restrita.
+
+Se o sistema de armazenamento for adicionado ao usuário com escopo de cluster criado personalizado usando o arquivo json e você quiser atualizar para 9,12 e versões posteriores, execute os comandos abaixo na CLI do ONTAP antes de atualizar para habilitar a comunicação baseada em certificado entre as ferramentas do ONTAP para VMware vSphere e ONTAP.
+
+. _security login role create -role <existing-role-name> -cmddirname "security login show" -access all_
+. _security login role create -role <existing-role-name> -cmddirname "security certificate show" -access all_
+. _security login role create -role <existing-role-name> -cmddirname "security certificate install" -access all_
+
+
+Se o sistema de storage for adicionado ao usuário com escopo SVM criado sob medida usando o arquivo json e você quiser atualizar para 9,12 e versões posteriores, execute os comandos abaixo na CLI do ONTAP com acesso de administrador de cluster antes da atualização para habilitar a comunicação baseada em certificado entre as ferramentas do ONTAP para VMware vSphere e ONTAP:
+
+. _security login role create -role <existing-role-name> -cmddirname "security certificate install" -access all -vserver <vserver-name>_
+. _security login role create -role <existing-role-name> -cmddirname "security certificate show" -access all -vserver <vserver-name>_
+. _security login create -user-or-group-name <user> -application http -authentication-method cert -role <existing-role-name> -vserver <vserver-name>_
+. _security login create -user-or-group-name <user> -application ontapi -authentication-method cert -role <existing-role-name> -vserver <vserver-name>_
+
+
+*Passos*
+
+. Monte o arquivo _.iso_ baixado nas ferramentas do ONTAP:
++
+.. Clique em *Edit Settings* (Editar definições) > *DVD/CD-ROM Drive* (Unidade de DVD/CD-ROM).
+.. Selecione *arquivo ISO* do datastore na lista suspensa.
+.. Procure e selecione o arquivo _.iso_ baixado e, em seguida, marque a caixa de seleção *conetar ao ligar*.
+
+
+. Acesse a guia Resumo das ferramentas do ONTAP implantadas.
+. Inicie a consola de manutenção.
+. No prompt ""Menu Principal"", insira a opção `2` *Configuração do sistema* e insira a opção `8` *Upgrade*.
++
+Depois que a atualização terminar, as ferramentas do ONTAP serão reiniciadas. As ferramentas do ONTAP são registradas no vCenter Server com o mesmo endereço IP que antes da atualização.
+
+. Se você quiser que as ferramentas do ONTAP sejam registradas no vCenter Server com o endereço IPv6, execute o seguinte procedimento:
++
+.. Anular o registo das ferramentas do ONTAP.
+.. Registre o endereço IPv6 das ferramentas do ONTAP no vCenter Server usando a página *Register*.
+.. Regenerar as ferramentas do ONTAP para os certificados do provedor VMware vSphere e VASA após o Registro.
+
+
++
+
+IMPORTANT: O IPv6 é compatível apenas com o vCenter Server 6,7 e posterior.
+
+. Faça logout e faça login novamente no vSphere Client para visualizar as ferramentas do ONTAP implantadas.
++
+.. Faça logout do seu cliente da Web vSphere ou do vSphere Client existente e feche a janela.
+.. Faça login no vSphere Client.
++
+Pode levar alguns minutos para que o plug-in seja atualizado no vSphere Client.
+
+
+
+
+
+[NOTE]
+====
+* A partir das ferramentas do ONTAP para VMware vSphere 9,12, a autenticação com o ONTAP é feita por meio de certificado. Você pode adicionar um certificado assinado pela CA ou um certificado autoassinado. Consulte, link:../configure/task_modify_storage_system.html["Modificar sistemas de storage"] para obter instruções.
+* Se estiver atualizando da versão 7,0 das ferramentas do ONTAP para a versão mais recente das ferramentas do ONTAP, você deve primeiro criar perfis de capacidade de armazenamento antes de tentar editar uma política de armazenamento de VM existente ou você pode obter um erro que há valores incorretos ou ausentes.
+* Se estiver atualizando de uma versão anterior para a versão mais recente das ferramentas do ONTAP, será descoberto que a `vvol.rebalance.threshold` propriedade está ausente no arquivo 'vvol.properties.
++
+O valor padrão da propriedade é definido como 85%.* Depois de atualizar para a versão mais recente das ferramentas do ONTAP que tem o FIPS habilitado, mas você tem uma versão mais antiga do vCenter onde o FIPS não é compatível, a implantação ainda funcionará. Mas se você atualizar o vCenter para a versão mais recente suportada pelo FIPS e tiver uma versão anterior das ferramentas do ONTAP, a implantação funcionará somente se o FIPS estiver desativado no vCenter.
+
+
+
+====

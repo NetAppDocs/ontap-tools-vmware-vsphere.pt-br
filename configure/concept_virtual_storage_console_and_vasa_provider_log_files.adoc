@@ -1,0 +1,36 @@
+---
+permalink: configure/concept_virtual_storage_console_and_vasa_provider_log_files.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode verificar os arquivos de log no diretório /opt/NetApp/vscserver/log e no diretório /opt/NetApp/vpserver/log quando encontrar erros. 
+---
+= Arquivos de log do Virtual Storage Console e do provedor VASA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode verificar os arquivos de log no diretório '/opt/NetApp/vscserver/log' e no diretório '/opt/NetApp/vpserver/log' quando encontrar erros.
+
+Os três arquivos de log a seguir podem ser úteis para identificar problemas:
+
+* 'cxf.log', contendo informações sobre o tráfego da API dentro e fora do provedor VASA *'kaminoPrefs.xml', contendo informações sobre as configurações das ferramentas do ONTAP
+* 'Vvolvp.log', contendo todas as informações de log sobre o provedor VASA
+
+
+O menu de manutenção das ferramentas do ONTAP para VMware vSphere permite que você defina diferentes níveis de log para suas necessidades. Os seguintes níveis de log estão disponíveis:
+
+* Informações
+* Depurar
+* Erro
+* Traçado
+
+
+Quando você define os níveis de log, os seguintes arquivos são atualizados:
+
+* Servidor de ferramentas ONTAP: 'kamino.log' e 'vvolvp.log'
+* Servidor do provedor VASA: 'Vvolvp.log', 'error.log' e 'NetApp.log'
+
+
+Além disso, a página da interface de linha de comando (CLI) da Web do provedor VASA contém as chamadas de API que foram feitas, os erros que foram retornados e vários contadores relacionados ao desempenho. A página CLI da Web está localizada em `\https://<IP_address_or_hostname>:9083/stats`.

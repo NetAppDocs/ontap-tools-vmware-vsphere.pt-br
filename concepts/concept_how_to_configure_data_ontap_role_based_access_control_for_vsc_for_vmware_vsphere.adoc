@@ -1,0 +1,66 @@
+---
+permalink: concepts/concept_how_to_configure_data_ontap_role_based_access_control_for_vsc_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve configurar os controles de acesso baseados em função do ONTAP no sistema de storage se quiser usar os controles de acesso baseados em função com as ferramentas do ONTAP para o VMware vSphere. Você pode criar uma ou mais contas de usuário personalizadas com Privileges de acesso limitado com o recurso RBAC do ONTAP. 
+---
+= Como configurar o controle de acesso baseado em função do ONTAP para ferramentas do ONTAP para VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve configurar o controle de acesso baseado em função (RBAC) do ONTAP no sistema de storage se quiser usar os controles de acesso baseados em função com as ferramentas do ONTAP para VMware vSphere. Você pode criar uma ou mais contas de usuário personalizadas com Privileges de acesso limitado com o recurso RBAC do ONTAP.
+
+As ferramentas do ONTAP para VMware vSphere e SRA podem acessar sistemas de storage no nível do cluster ou no nível da SVM (Storage Virtual Machine). Se você estiver adicionando sistemas de storage no nível do cluster, forneça as credenciais do usuário admin para fornecer todas as funcionalidades necessárias. Se você estiver adicionando sistemas de storage diretamente detalhes da SVM, você deve estar ciente de que o usuário "vsadmin" não tem todas as funções e recursos necessários para executar determinadas tarefas.
+
+O VASA Provider só pode acessar sistemas de armazenamento no nível do cluster. Se o provedor VASA for necessário para um controlador de armazenamento específico, o sistema de armazenamento deve ser adicionado às ferramentas do ONTAP para VMware vSphere no nível do cluster, mesmo que você esteja usando ferramentas ONTAP ou SRA.
+
+Para criar um novo usuário e conectar um cluster ou um SVM às ferramentas do ONTAP, faça o seguinte:
+
+* Crie um administrador de cluster ou uma função de administrador da SVM usando o Gerenciador de sistemas do ONTAP 9.8P1 ou posterior. Consulte link:../configure/task_configure_user_role_and_privileges.html["Configurar funções de usuário e Privileges"] para obter mais informações.
+* Crie usuários com a função atribuída e o conjunto de aplicativos apropriado usando o ONTAP
++
+Você precisa dessas credenciais do sistema de storage para configurar os sistemas de storage para ferramentas do ONTAP. Você pode configurar sistemas de storage para ferramentas do ONTAP inserindo as credenciais nas ferramentas do ONTAP. Sempre que você fizer login em um sistema de storage com essas credenciais, terá permissões para as funções das ferramentas do ONTAP configuradas no ONTAP enquanto cria as credenciais.
+
+* Adicione o sistema de storage às ferramentas do ONTAP para VMware vSphere e forneça as credenciais do usuário que você acabou de criar
+
+
+
+
+== Funções das ferramentas do ONTAP
+
+As ferramentas do ONTAP classificam o ONTAP Privileges no seguinte conjunto de funções de ferramentas do ONTAP:
+
+* Detecção
++
+Permite a descoberta de todos os controladores de storage conectados
+
+* Crie armazenamento
++
+Permite a criação de volumes e número de unidade lógica (LUNs)
+
+* Modificar armazenamento
++
+Permite o redimensionamento e a deduplicação de sistemas de armazenamento
+
+* Destrua o armazenamento
++
+Permite a destruição de volumes e LUNs
+
+
+
+
+
+== Funções do Fornecedor VASA
+
+Você pode criar somente Gerenciamento baseado em políticas no nível do cluster. Essa função permite o gerenciamento baseado em políticas do storage usando perfis de recursos de storage.
+
+
+
+== Funções do SRA
+
+O SRA classifica o ONTAP Privileges em uma função SAN ou nas no nível do cluster ou do SVM. Isto permite que os utilizadores executem operações SRM.
+
+As ferramentas do ONTAP executam uma validação de privilégios inicial das funções RBAC do ONTAP quando você adiciona o cluster às ferramentas do ONTAP. Se você adicionou um IP de storage do usuário do SVM, as ferramentas do ONTAP não realizam a validação inicial. As ferramentas do ONTAP verificam e reforçam o Privileges posteriormente no fluxo de trabalho da tarefa.

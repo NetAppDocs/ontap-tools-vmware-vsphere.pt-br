@@ -1,0 +1,226 @@
+---
+sidebar: sidebar 
+permalink: qsg.html 
+keywords: QSG, ONTAP tools for VMware vSphere, Quick start guide, Installing 
+summary: Fornece instruções para implantar e inicializar ferramentas do ONTAP para VMware vSphere. 
+---
+= Ferramentas do ONTAP para o início rápido do VMware vSphere
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+As ferramentas do ONTAP para VMware vSphere são um único plug-in do vCenter Server que inclui as ferramentas do ONTAP, as extensões do provedor VASA e do adaptador de replicação de armazenamento (SRA). As ferramentas do ONTAP são recomendadas para todos os ambientes do ONTAP vSphere, pois configuram as configurações do host ESXi e provisionam o armazenamento do ONTAP usando as práticas recomendadas. O provedor VASA é necessário para suporte a volumes virtuais (vVols), e o SRA trabalha em conjunto com o VMware Site Recovery Manager.
+
+
+
+== Preparando-se para a instalação
+
+Você implanta o plug-in como um dispositivo virtual, o que reduz o esforço de instalar e Registrar cada produto separadamente com o vCenter Server.
+
+
+
+=== Requisitos de implantação
+
+As ferramentas do ONTAP podem ser usadas com um vCSA (VMware vCenter Server Virtual Appliance). Você deve implantar as ferramentas do ONTAP em um vSphere compatível que inclua o sistema ESXi.
+
+Os requisitos mínimos de espaço e dimensionamento do host são:
+
+[cols="25,75"]
+|===
+| *Sistema* | *Requisitos mínimos* 
+
+
+| Espaço | 2,1 GB para instalações com provisionamento reduzido, 54,0 GB para instalações com provisionamento reduzido 
+
+
+| Dimensionamento do host | Memória recomendada: 12 GB, CPUs recomendadas: 2 
+|===
+Você deve estar ciente das seguintes licenças:
+
+[cols="25,75"]
+|===
+| *Licença* | *Descrição* 
+
+
+| SnapMirror | (Opcional) necessário para executar operações de failover para SRA e Fornecedor VASA se u usando replicação vVols. 
+
+
+| FlexClone | (Opcional) necessário para executar operações de failover de teste para SRA e para operações vVols do provedor VASA. 
+|===
+As ferramentas do ONTAP usam as seguintes portas TCP bidirecionais padrão:
+
+|===
+
+
+| * Requisitos adicionais * | * Descrição coluna* 
+
+
+ a| 
+9083
+ a| 
+Quando ativado, o provedor VASA e o adaptador de replicação de armazenamento (SRA) usam essa porta para se comunicar com o vCenter Server. Essa porta também é necessária para obter as configurações TCP/IP. Essa porta precisa ser habilitada no firewall desde os hosts ESXi até as ferramentas do ONTAP para o dispositivo VMware vSphere. Essa porta é usada para baixar o pacote de suporte VP, acessar a interface de usuário da Web-CLI e controlar a comunicação de caminho do VMware para o VP.
+
+
+
+ a| 
+443
+ a| 
+Dependendo de como você configurou suas credenciais, o VMware vCenter Server e os sistemas de armazenamento escutam comunicações seguras nessa porta. A porta é usada na arquitetura de comunicação cliente-servidor. A porta 443 é ativada por padrão para conexões seguras. O cliente, que pode ser qualquer cliente de automação que usa API REST, inicia a conexão com o servidor e os pontos finais trocam dados.
+
+
+
+ a| 
+8143
+ a| 
+As ferramentas do ONTAP escutam comunicações seguras nesta porta. A porta é usada na arquitetura de comunicação cliente-servidor. O cliente, que pode ser qualquer cliente de automação que usa API REST, inicia a conexão com o servidor e os pontos finais trocam dados. Esta porta está ativada para os serviços de ferramentas do ONTAP e para exportar logs do servidor de ferramentas do ONTAP. A página register.html está hospedada nesta porta. O Swagger RESTANTE está exposto neste porto.
+
+
+
+ a| 
+8443
+ a| 
+Essa porta é usada para ferramentas do ONTAP para o serviço de plug-in do VMware vSphere.
+
+|===
+Requisitos mínimos de storage e aplicação:
+
+|===
+| *Armazenamento, host e aplicativos* | *Requisitos de versão* 
+
+
+| ONTAP | ONTAP 9.7, 9.8P1 ou posterior. 
+
+
+| VMware vSphere, vCenter Server, ESXi hosts, Site Recovery Manager (SRM), aplicativos plug-in e bancos de dados coluna 1 | Consulte https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["Ferramenta de Matriz de interoperabilidade"^] 
+|===
+
+
+=== Requisitos das ferramentas do ONTAP
+
+* Configure e configure seu ambiente do vCenter Server.
+* Transfira o ficheiro .ova.
+* As credenciais de login para sua instância do vCenter Server.
+* Exclua o cache do navegador para evitar qualquer problema de cache do navegador durante a implantação das ferramentas do ONTAP.
+* Configure o gateway padrão a ser usado pelo appliance virtual para responder aos pings ICMP.
+* Um nome de host DNS válido para o dispositivo virtual.
+
+
+
+
+=== Requisitos opcionais para SRA
+
+Se você estiver implantando o dispositivo virtual para uso com o VMware Site Recovery Manager, então você deve ter: * Baixado o `.tar.gz` arquivo para SRA se estiver usando o dispositivo SRM.
+
+
+
+== Implantação de ferramentas do ONTAP
+
+.Passos
+. Faça download `.zip` do arquivo que contém binários e certificados assinados do https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["Site de suporte da NetApp"^] para um sistema vSphere Client para implantar as ferramentas do ONTAP.
+. Extraia o `.zip` arquivo e implante o `.ova` arquivo.
++
+Você deve implantar o `.ova` arquivo nos sites de origem e de destino se estiver implantando o SRA.
+
+. Faça login no vSphere Web Client, selecione *Home* > *Host and clusters*.
+. Clique com o botão direito do rato no centro de dados pretendido e, em seguida, clique em *Deploy OVF template*.
++
+Se você estiver usando vCenter7.0u3e e versões posteriores execute as seguintes ações, caso contrário, avance para o passo 5. Este é um passo opcional para verificar se a integridade binária OVA não é adulterada.
+
++
+** Faça o download do arquivo _OTV_INTER_ROOT_CERT_chain.pem_ do site de suporte da NetApp.
+** Navegue até *vcenter* > *Administration* > *Certificate Management*.
+** Clique na opção *Add Trusted root certificate* (Adicionar certificado raiz fidedigno).
+** Clique em *Browse* e forneça o caminho para o arquivo _OTV_INTER_ROOT_CERT_chain.pem_.
+** Clique em *Add*.
++
+
+NOTE: A mensagem Entrust Code Signing - OVCS2 (certificado confiável) confirma a integridade do ARQUIVO OVA baixado. Se você vir a mensagem Entrust Code Signing - OVCS2 (certificado inválido), atualize o VMware vCenter Server para a versão 7.0U3E ou superior.
+
+
+
+. Você pode inserir o URL do arquivo .ova ou navegar para a pasta onde o arquivo .ova é salvo e, em seguida, clique em *Next*.
+. Insira os detalhes necessários para concluir a implantação.
+
+
+
+NOTE: (Opcional) se você quiser criar contentores sem se Registrar no vCenter Server, marque a caixa de seleção Habilitar VMware Cloud Foundation (VCF) na seção Configurar vCenter ou Habilitar VCF.
+
+Você pode ver o progresso da implantação na guia *Tasks* e esperar que a implantação seja concluída.
+
+Como parte das verificações da soma de verificação da implantação são realizadas. Se a implantação falhar, faça o seguinte:
+
+. Verifique vpserver/logs/checksum.log. Se ele disser "verificação da soma de verificação falhou", você poderá ver a verificação do jar com falha no mesmo log.
++
+O arquivo de log contém a execução de _sha256sum -c /opt/NetApp/vpserver/conf/checksums_.
+
+. Verifique vscserver/log/checksum.log. Se ele disser "verificação da soma de verificação falhou", você poderá ver a verificação do jar com falha no mesmo log.
++
+O arquivo de log contém a execução de _sha256sum -c /opt/NetApp/vserver/etc/checksums_.
+
+
+
+
+
+=== Implantando o SRA no SRM
+
+Você pode implantar o SRA no servidor SRM do Windows ou no dispositivo SRM 8,2.
+
+
+
+==== Carregar e configurar o SRA no SRM Appliance
+
+.Passos
+. Transfira o `.tar.gz` ficheiro a partir do https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["Site de suporte da NetApp"^].
+. No ecrã do dispositivo SRM, clique em *Storage Replication Adapter* > *New Adapter* (adaptador de replicação de armazenamento*).
+. Carregue o `.tar.gz` ficheiro para o SRM.
+. Volte a verificar os adaptadores para verificar se os detalhes estão atualizados na página adaptadores de replicação de armazenamento SRM.
+. Inicie sessão utilizando a conta de administrador no dispositivo SRM utilizando a massa de vidraceiro.
+. Mude para o usuário raiz: `su root`
+. No comando log location ENTER para obter a ID do docker usada pelo sra docker: `docker ps -l`
+. Faça login no ID do contentor: `docker exec -it -u srm <container id> sh`
+. Configure o SRM com o endereço IP e a palavra-passe das ferramentas ONTAP `perl command.pl -I <otv-IP> administrator <otv-password>`: . Você precisa ter uma única cotação em torno do valor da senha. Uma mensagem de sucesso confirmando que as credenciais de armazenamento são armazenadas é exibida. O SRA pode se comunicar com o servidor SRA usando o endereço IP, porta e credenciais fornecidos.
+
+
+
+
+==== Atualizando credenciais SRA
+
+.Passos
+. Exclua o conteúdo do diretório /srm/sra/conf usando:
++
+.. `cd /srm/sra/conf`
+.. `rm -rf *`
+
+
+. Execute o comando perl para configurar o SRA com as novas credenciais:
++
+.. `cd /srm/sra/`
+.. `perl command.pl -I <otv-IP> administrator <otv-password>`. Você precisa ter uma única cotação em torno do valor da senha.
++
+Uma mensagem de sucesso confirmando que as credenciais de armazenamento são armazenadas é exibida. O SRA pode se comunicar com o servidor SRA usando o endereço IP, porta e credenciais fornecidos.
+
+
+
+
+
+
+
+==== Habilitando o provedor VASA e o SRA
+
+.Passos
+. Faça login no cliente da Web vSphere usando o vCenter IP fornecido durante a implantação de ferramentas DO OVA ONTAP.
+. Na página de atalhos, clique em *Ferramentas do NetApp ONTAP* na seção plug-ins.
+. No painel esquerdo das ferramentas do ONTAP, *Configurações > Configurações administrativas > Gerenciar recursos* e habilite os recursos necessários.
++
+
+NOTE: O Fornecedor VASA está ativado por predefinição. Se você quiser usar a capacidade de replicação para armazenamentos de dados vVols, use o botão de alternância Ativar replicação vVols.
+
+. Insira o endereço IP das ferramentas do ONTAP para VMware vSphere e a senha do administrador e clique em *Apply*.
+

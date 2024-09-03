@@ -1,0 +1,28 @@
+---
+permalink: configure/task_assign_qos_policies.html 
+sidebar: sidebar 
+keywords:  
+summary: O provisionamento de datastores FlexGroup não suporta a atribuição de perfis de capacidade de armazenamento aos datastores. Mas você pode atribuir políticas de QoS a máquinas virtuais criadas em datastores com suporte do FlexGroup. 
+---
+= Atribuir políticas de QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O provisionamento de datastores FlexGroup não suporta a atribuição de perfis de capacidade de armazenamento aos datastores. Mas você pode atribuir políticas de QoS a máquinas virtuais criadas em datastores com suporte do FlexGroup.
+
+*Sobre esta tarefa*
+
+As políticas de QoS podem ser aplicadas em um nível de máquina virtual ou em um nível de datastore. As políticas de QoS são necessárias para que um datastore configure os limites de taxa de transferência (IOPS máximo e mínimo). Quando você define a QoS em um datastore, ela é aplicada às máquinas virtuais que residem no datastore e não no volume FlexGroup. Mas se você definir QoS em todas as máquinas virtuais em um datastore, todas as configurações de QoS individuais para as máquinas virtuais serão substituídas. Isso é aplicável apenas às máquinas virtuais disponíveis no datastore e não a nenhuma máquina virtual migrada ou adicionada. Se você quiser aplicar QoS a máquinas virtuais recém-adicionadas ou migradas de um datastore específico, então você precisa definir manualmente os valores de QoS.
+
+
+NOTE: Você não pode aplicar configurações de QoS em um armazenamento de dados ou em uma máquina virtual para armazenamentos de dados que são provisionados em VMs de armazenamento direto porque o ONTAP não oferece suporte a QoS no nível de gerenciamento de VM de armazenamento.
+
+*Passos*
+
+. Na página inicial das ferramentas do ONTAP, clique em *Menu* > *Host e clusters*.
+. Clique com o botão direito do rato no datastore ou na máquina virtual pretendida e clique em *Ferramentas NetApp ONTAP* > *atribuir QoS*.
+. Na caixa de diálogo atribuir QoS, insira os valores de IOPS necessários e clique em *aplicar*.
+

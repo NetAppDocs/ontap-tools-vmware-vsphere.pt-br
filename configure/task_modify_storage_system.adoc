@@ -1,0 +1,40 @@
+---
+permalink: configure/task_modify_storage_system.html 
+sidebar: sidebar 
+keywords:  
+summary: Você precisa atualizar o certificado quando o certificado expirar ou quando o certificado for alterado manualmente. Quando o certificado do cliente ou do cluster expirar ou não corresponder, a comunicação com o sistema ONTAP é interrompida. 
+---
+= Modificar sistemas de storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Use o procedimento a seguir para modificar os sistemas de armazenamento.
+
+*Passos*
+
+. A partir das *Ferramentas NetApp ONTAP* selecione *sistemas de armazenamento*.
+. Clique no botão sistema de armazenamento *Ação disponível* (três pontos verticais) onde deseja atualizar o certificado.
+. Selecione *Modificar*.
++
+
+NOTE: É recomendável que antes do cluster ou do certificado do cliente expirar, você obtenha o certificado renovado do ONTAP ou gere o certificado do cliente a partir das ferramentas do ONTAP para VMware vSphere.
+
+. Na janela *Modificar sistema de armazenamento*, no campo *carregar certificado*, *Procurar* para o local onde o certificado ONTAP é armazenado e carregar o certificado.
++
+Para certificado de cluster:
+
++
+** Se tiver modificado o certificado de cluster no ONTAP, terá de carregar manualmente o certificado modificado para as ferramentas do ONTAP. Este é um passo obrigatório.
+** Quando o certificado do cluster expirou, o status do sistema de armazenamento muda para certificado do cluster expirado. Quando o certificado do cluster expirar, o administrador de armazenamento precisa gerar o novo certificado no lado ONTAP. A janela *Modify Storage system* (Modificar sistema de armazenamento*) obtém automaticamente o certificado do cluster a partir do armazenamento ONTAP e tem de autorizar o certificado do cluster.
+
+
+. Quando o certificado de cliente expirou, o status do sistema de armazenamento muda para certificado de cliente expirado.
++
+Se o certificado de cliente expirou, na janela *Modificar sistema de armazenamento*, selecione *gerar um novo certificado de cliente para ONTAP* para regenerar o certificado.
+
+
+
+Uma vez instalados os certificados, a comunicação com o ONTAP é restaurada.

@@ -1,0 +1,125 @@
+---
+permalink: configure/reference_esxi_host_values_set_by_vsc_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode definir tempos limite e outros valores nos hosts ESXi usando as ferramentas do ONTAP para VMware vSphere para garantir o melhor desempenho e o failover bem-sucedido. Os valores que as ferramentas ONTAP definem são baseados no teste interno do NetApp. 
+---
+= Valores do host ESXi definidos usando ferramentas do ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode definir tempos limite e outros valores nos hosts ESXi usando as ferramentas do ONTAP para VMware vSphere para garantir o melhor desempenho e o failover bem-sucedido. Os valores que as ferramentas ONTAP definem são baseados no teste interno do NetApp.
+
+Você pode definir os seguintes valores em um host ESXi:
+
+
+
+== Configuração avançada do host ESXi
+
+* *VMFS3.HardwareAcceleratedLocking*
++
+Você deve definir esse valor como 1.
+
+* *VMFS3.EnableBlockDelete*
++
+Você deve definir esse valor como 0.
+
+
+
+
+
+== Definições NFS
+
+* *Net.TcpipHeapSize*
++
+Defina este valor como 32.
+
+* *Net.TcpipHeapMax*
++
+Defina este valor como 1024MB.
+
+* *NFS.MaxVolumes*
++
+Defina este valor como 256.
+
+* *NFS41.MaxVolumes*
++
+Defina este valor como 256.
+
+* *NFS.MaxQueueDepth*
++
+Defina esse valor como 128 ou superior para evitar gargalos de enfileiramento.
+
+* *NFS.HeartbeatMaxFailures*
++
+Defina esse valor como 10 para todas as configurações NFS.
+
+* *Frequência NFS.HeartbeatFrequency*
++
+Defina esse valor como 12 para todas as configurações NFS.
+
+* *NFS.HeartbeatTimeout*
++
+Defina esse valor como 5 para todas as configurações NFS.
+
+* *SunRPC.MaxConnPerIP*
++
+Se você estiver usando o vSphere 7,0 ou posterior, defina esse valor como 128.
+
+
+
+
+
+== Configurações FC/FCoE
+
+* *Política de seleção de caminho*
++
+Defina esse valor como "'RR'" (round robin) quando os caminhos FC com ALUA são usados.
+
++
+Defina esse valor como "FIXO" para todas as outras configurações.
+
++
+Definir esse valor como ""RR"" ajuda a fornecer balanceamento de carga em todos os caminhos ativos/otimizados. O valor FIXO é usado para configurações mais antigas e não-ALUA e ajuda a impedir e/S de proxy
+
+* *Disk.QFullSampleSize*
++
+Defina este valor como 32 para todas as configurações. Definir este valor ajuda a evitar erros de e/S.
+
+* *Disk.QFullThreshold*
++
+Defina este valor como 8 para todas as configurações. Definir este valor ajuda a evitar erros de e/S.
+
+* *Tempos limite de Emulex FC HBA*
++
+Use o valor padrão.
+
+* *Tempos limite de tempo do QLogic FC HBA*
++
+Use o valor padrão.
+
+
+
+
+
+== Definições iSCSI
+
+* *Política de seleção de caminho*
++
+Defina esse valor como "'RR'" para todos os caminhos iSCSI.
+
++
+Definir esse valor como ""RR"" ajuda a fornecer balanceamento de carga em todos os caminhos ativos/otimizados.
+
+* *Disk.QFullSampleSize*
++
+Defina este valor como 32 para todas as configurações. Definir este valor ajuda a evitar erros de e/S.
+
+* *Disk.QFullThreshold*
++
+Defina este valor como 8 para todas as configurações. Definir este valor ajuda a evitar erros de e/S.
+
+

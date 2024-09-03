@@ -1,0 +1,42 @@
+---
+permalink: concepts/concept_recommended_ontap_roles_when_using_vsc_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode configurar várias funções recomendadas do ONTAP para trabalhar com as ferramentas do ONTAP para VMware vSphere e controle de acesso baseado em função (RBAC). Essas funções contêm o ONTAP Privileges necessário para executar as operações de storage necessárias executadas pelas tarefas de ferramentas do ONTAP.' 
+---
+= Funções recomendadas do ONTAP ao usar as ferramentas do ONTAP para VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar várias funções recomendadas do ONTAP para trabalhar com as ferramentas do ONTAP para VMware vSphere e com controle de acesso baseado em funções (RBAC). Essas funções contêm o ONTAP Privileges necessário para executar as operações de storage necessárias executadas pelas tarefas de ferramentas do ONTAP.
+
+Para criar novas funções de usuário, faça login como administrador em sistemas de storage que executam o ONTAP. Você pode criar funções do ONTAP usando o Gerenciador de sistema do ONTAP 9.8P1 ou posterior. Consulte link:../configure/task_configure_user_role_and_privileges.html["Configurar funções de usuário e Privileges"] para obter mais informações.
+
+Cada função do ONTAP tem um nome de usuário e um par de senhas associados, que constituem as credenciais da função. Se você não fizer login usando essas credenciais, não poderá acessar as operações de storage associadas à função.
+
+Como medida de segurança, as funções ONTAP específicas das ferramentas do ONTAP são ordenadas hierarquicamente. Isso significa que a primeira função é a função mais restritiva e tem apenas os Privileges associados ao conjunto mais básico de operações de storage de ferramentas ONTAP. A próxima função inclui o seu próprio Privileges e todos os Privileges associados à função anterior. Cada função adicional é menos restritiva em relação às operações de storage compatíveis.
+
+Veja a seguir algumas das funções de RBAC do ONTAP recomendadas ao usar ferramentas do ONTAP. Depois de criar essas funções, você pode atribuir as funções aos usuários que precisam executar tarefas relacionadas ao storage, como o provisionamento de máquinas virtuais.
+
+. Detecção
++
+Essa função permite adicionar sistemas de storage.
+
+. Crie armazenamento
++
+Essa função permite que você crie armazenamento. Essa função também inclui todos os Privileges associados à função descoberta.
+
+. Modificar armazenamento
++
+Essa função permite modificar o armazenamento. Essa função também inclui todos os Privileges associados à função descoberta e à função criar armazenamento.
+
+. Destrua o armazenamento
++
+Esta função permite que você destrua o armazenamento. Essa função também inclui todos os Privileges associados à função descoberta, à função criar armazenamento e à função Modificar armazenamento.
+
+
+
+Se você estiver usando o provedor VASA para ONTAP, você também deve configurar uma função de gerenciamento baseado em políticas (PBM). Essa função permite gerenciar o storage usando políticas de storage. Essa função requer que você também configure a função "descoberta".

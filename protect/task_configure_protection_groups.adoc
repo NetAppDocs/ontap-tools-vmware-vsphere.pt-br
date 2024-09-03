@@ -1,0 +1,64 @@
+---
+permalink: protect/task_configure_protection_groups.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve criar grupos de proteção para proteger um grupo de máquinas virtuais no site protegido. 
+---
+= Configurar grupos de proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve criar grupos de proteção para proteger um grupo de máquinas virtuais no site protegido.
+
+*O que você vai precisar*
+
+Você deve garantir que ambos os sites de origem e destino estejam configurados para o seguinte:
+
+* Mesma versão do SRM instalada
+* Armazenamento de dados vVols configurado com replicação habilitada e armazenamento de dados montado
+* Perfis de capacidade de armazenamento semelhantes
+* Políticas de armazenamento de VM semelhantes com capacidade de replicação que devem ser mapeadas no SRM
+* Máquinas virtuais
+* Emparelhados sites protegidos e de recuperação
+* Os datastores de origem e destino devem ser montados nos respetivos sites
+
+
+*Passos*
+
+. Faça login no vCenter Server e clique em *Site Recovery* > *Protection Groups*.
+. No painel *grupos de proteção*, clique em *novo*.
+. Especifique um nome e uma descrição para o grupo de proteção, direção e clique em *NEXT*.
+. No campo *Type*, selecione uma das seguintes opções:
++
+|===
+
+
+| *Para...* | *Opção de campo tipo...* 
+
+
+ a| 
+Armazenamento de dados tradicional
+ a| 
+Grupos de datastore (replicação baseada em array)
+
+
+
+ a| 
+Armazenamento de dados vVols
+ a| 
+Volumes virtuais (replicação vVol)
+
+|===
++
+O domínio de falha não é nada além de SVMs com replicação ativada. Os SVMs que só têm peering implementado e sem problemas são exibidos.
+
+. Na guia grupos de replicação, selecione o par de matrizes ativado ou os grupos de replicação que têm a máquina virtual configurada e clique em *NEXT*.
++
+Todas as máquinas virtuais no grupo de replicação são adicionadas ao grupo de proteção.
+
+. Selecione o plano de recuperação existente ou crie um novo plano clicando em *Adicionar ao novo plano de recuperação*.
+. Na guia Pronto para concluir, revise os detalhes do grupo de proteção que você criou e clique em *concluir*.
+

@@ -1,0 +1,202 @@
+---
+permalink: manage/concept_virtual_storage_console_reports.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode usar o menu relatórios do console de ferramentas do ONTAP para exibir relatórios predefinidos para todos os datastores gerenciados por uma instância de ferramentas do ONTAP selecionada em um servidor vCenter específico. Você pode executar operações como classificação e exportação de relatórios. 
+---
+= Visão geral dos relatórios de datastore e vVols do ONTAP Tools
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o menu *relatórios* do console de ferramentas do ONTAP para exibir relatórios predefinidos para todos os datastores gerenciados por uma instância de ferramentas do ONTAP selecionada em um servidor vCenter específico. Você pode executar operações como classificação e exportação de relatórios.
+
+Os relatórios exibem informações detalhadas sobre armazenamentos de dados e máquinas virtuais, que permitem que você analise e identifique possíveis problemas com armazenamentos de dados e máquinas virtuais no vCenter Server
+
+Você pode exibir, classificar e exportar relatórios.
+
+As ferramentas do ONTAP fornecem os seguintes relatórios predefinidos:
+
+* Relatório do datastore
+* Relatório de Máquina Virtual
+* Relatório do vVols datastore
+* Relatório de máquina virtual vVols
+* Relatório de integridade do log
+
+
+
+
+== Relatórios do datastore
+
+Os relatórios do datastore fornecem informações detalhadas sobre os datastores tradicionais e as máquinas virtuais criadas nesses datastores.
+
+O dashboard tradicional permite que você analise e identifique possíveis problemas com os datastores e as máquinas virtuais no vCenter Server. Você pode exibir, classificar e exportar relatórios. Os dados do relatório de datastores tradicionais e máquinas virtuais são fornecidos pelo vCenter Server. Mas, devido à introdução do suporte ao datastore com suporte do FlexGroup, algumas métricas como latência, taxa de transferência e IOPS são obtidas do ONTAP.
+
+
+NOTE: O monitoramento de arquivos não é compatível com datastores FlexGroup configurados em máquinas virtuais de armazenamento direto (SVMs).
+
+O datastore fornece os seguintes relatórios predefinidos:
+
+* Relatório do datastore
+* Relatório de Máquina Virtual
+
+
+*Relatório de armazenamento de dados*
+
+O menu Relatório de datastore fornece informações sobre os seguintes parâmetros para datastores:
+
+* Nome do datastore
+* Tipo de armazenamento de dados: NFS e VMFS
+* Estilo de volume
++
+O estilo de volume pode ser um volume FlexVol volume ou FlexGroup.
+
+* Espaço livre
+* Espaço utilizado
+* Espaço total
+* Porcentagem de espaço utilizado
+* Percentagem de espaço disponível
+* IOPS
++
+O relatório exibe o IOPS do datastore.
+
+* Latência
++
+O relatório exibe as informações de latência do datastore.
+
++
+Você também pode verificar a hora em que o relatório foi gerado. O menu Relatório de armazenamento de dados permite organizar o relatório de acordo com sua exigência e, em seguida, exportar o relatório organizado usando o botão *Exportar para CSV*. Os nomes do datastore no relatório são links que navegam para a guia Monitor do datastore selecionado, onde você pode exibir as métricas de desempenho do datastore.
+
+
+
+*Relatório de Máquina Virtual*
+
+O menu Relatório de Máquina Virtual fornece as métricas de desempenho para todas as máquinas virtuais que usam datastores provisionados pelas ferramentas do ONTAP para um vCenter Server selecionado. As métricas da máquina virtual exibidas nos relatórios de máquina virtual são dados históricos que são coletados a cada 30 minutos para máquinas virtuais em datastores tradicionais. As opções "Last refresh Time" (hora da última atualização) e "Next refresh Time" (hora da próxima atualização) são adicionadas à tabela para fornecer detalhes sobre quando os dados foram recolhidos e quando será a próxima recolha de dados.
+
+* Nome da máquina virtual
+* Nome do datastore
+* Estilo de volume
++
+O estilo de volume pode ser um volume FlexVol volume ou um volume FlexGroup.
+
+* Fonte
++
+A fonte para reunir detalhes da máquina virtual pode ser o ONTAP ou o vCenter Server.
+
+* Latência
++
+O relatório exibe a latência das máquinas virtuais em todos os datastores associados às máquinas virtuais.
+
+* IOPS
+* Taxa de transferência
+* Capacidade comprometida
++
+O relatório exibe o valor da capacidade comprometida de uma máquina virtual.
+
+* Host
++
+O relatório exibe os sistemas host nos quais a máquina virtual está disponível.
+
+* Tempo de atividade
++
+O relatório exibe a hora em que a máquina virtual está ligada e está disponível em um host ESXi.
+
+* Estado de alimentação
++
+O relatório mostra se a máquina virtual está ligada ou desligada.
+
+
+
+Cada nome de máquina virtual no relatório é um link para a guia Monitor da máquina virtual selecionada. Você pode classificar o relatório de máquina virtual de acordo com sua exigência e exportar o relatório em um arquivo .CSV e salvar o relatório em seu sistema local. O carimbo de data/hora do relatório também é anexado ao relatório salvo.
+
+Para máquinas virtuais com suporte do FlexGroup volumes, quando a nova máquina virtual é ativada, os arquivos são registrados para monitoramento no ONTAP. As métricas históricas de latência, taxa de transferência e IOPS são obtidas quando os relatórios de VM são acessados do ONTAP.
+
+
+
+== Relatórios vVols
+
+Os relatórios do vVols exibem informações detalhadas sobre os armazenamentos de dados do VMware Virtual volumes (vVols) e as máquinas virtuais criadas nesses armazenamentos de dados. O dashboard do vVols permite que você analise e identifique possíveis problemas com os datastores e máquinas virtuais do vVols no vCenter Server.
+
+Você pode exibir, organizar e exportar relatórios. Os dados do relatório de datastores e máquinas virtuais do vVols são fornecidos pelo ONTAP.
+
+O vVols fornece os seguintes relatórios pré-definidos:
+
+* Relatório do vVols datastore
+* Relatório vVols VM
+
+
+*Relatório de armazenamento de dados vVols*
+
+O menu Relatório do armazenamento de dados vVols fornece informações sobre os seguintes parâmetros para datastores:
+
+* Nome do datastore do vVols
+* Espaço livre
+* Espaço utilizado
+* Espaço total
+* Porcentagem de espaço utilizado
+* Percentagem de espaço disponível
+* IOPS
+* As métricas de desempenho de latência estão disponíveis para armazenamentos de dados vVols baseados em NFS no ONTAP 9.8 e posterior. Você também pode verificar a hora em que o relatório foi gerado. O menu Relatório de armazenamento de dados vVols permite organizar o relatório de acordo com suas necessidades e, em seguida, exportar o relatório organizado usando o botão *Exportar para CSV*. Cada nome do armazenamento de dados SAN vVols no relatório é um link que navega para a guia Monitor do armazenamento de dados SAN vVols selecionado, que você pode usar para exibir as métricas de desempenho.
+
+
+*Relatório de máquina virtual vVols*
+
+O menu Relatório de Resumo da Máquina Virtual vVols fornece as métricas de desempenho para todas as máquinas virtuais que usam os datastores SAN vVols provisionados pelo Fornecedor VASA para ONTAP para um vCenter Server selecionado. As métricas da máquina virtual exibidas nos relatórios de VM são dados históricos que são coletados a cada 10 minutos para máquinas virtuais em datastores vVols. "Last refresh time" (hora da última atualização) e "Next refresh time" (hora da próxima atualização) são adicionados à tabela para fornecer informações sobre quando os dados foram coletados e quando será a próxima coleta de dados.
+
+* Nome da máquina virtual
+* Capacidade comprometida
+* Tempo de atividade
+* IOPS
+* Taxa de transferência
++
+O relatório mostra se a máquina virtual está ligada ou desligada.
+
+* Espaço lógico
+* Host
+* Estado de alimentação
+* Latência
++
+O relatório exibe a latência das máquinas virtuais em todos os datastores vVols associados às máquinas virtuais.
+
+
+
+Cada nome de máquina virtual no relatório é um link para a guia Monitor da máquina virtual selecionada. Você pode organizar o relatório da máquina virtual de acordo com sua exigência, exportar o relatório em `.CSV` formato e, em seguida, salvar o relatório em seu sistema local. O carimbo de data/hora do relatório é anexado ao relatório salvo.
+
+*Relatório de integridade do Registro*
+
+O Relatório de integridade do log mostra o status de integridade do arquivo. A integridade do log é verificada em intervalos programados e o relatório é exibido na guia Relatório de integridade do log. Ele também fornece o status dos diferentes arquivos de auditoria que estão sendo rolados.
+
+O status do arquivo de log disponível é:
+
+* Ativo: Indica o arquivo ativo atual no qual os logs são gravados.
+* Normal: Indica que o arquivo de arquivo não foi adulterado ou excluído.
+* ADULTERADO: Indica que o arquivo foi modificado após o arquivamento
+* ROLLOVER_DELETE: Indica que o arquivo foi excluído como parte da política de retenção log4j.
+* UNEXPECTED_DELETE: Indica que o arquivo foi excluído manualmente.
+
+
+As ferramentas do ONTAP para o VMware vSphere geram o Registro de auditoria para o seguinte:
+
+* Serviço de ferramentas do ONTAP
++
+Localização do log de auditoria para vscservice: _/opt/NetApp/vscservice/vsc-audit.log_. Você pode alterar os seguintes parâmetros do relatório de integridade de log no arquivo _/opt/NetApp/vscserver/etc/log4j2.properties_:
+
++
+** Tamanho máximo do registo para o rolo sobre.
+** Política de retenção, o valor padrão deste parâmetro é 10 arquivos.
+** Tamanho do arquivo, o valor padrão deste parâmetro é 10MB antes que os arquivos sejam arquivados. Você precisa reiniciar os serviços para que os novos valores entrem em vigor.
+
+
+* Serviço VP
++
+Localização do log de auditoria para o serviço VP: _/opt/NetApp/vpservice/vp-audit.log_ os logs de auditoria VP podem ser modificados no arquivo _/opt/NetApp/vpserver/conf/log4j2.properties_. Você precisa reiniciar os serviços para que os novos valores entrem em vigor.
+
+* Comandos Manut
++
+Localização do log de auditoria para serviços de manutenção: _/opt/NetApp/vscservice/manut-audit.log_ os arquivos de log de manutenção podem ser modificados no arquivo _/opt/NetApp/vscserver/etc/maint_logger.properties_. Quando você alterar os valores padrão, reinicie o servidor para que os novos valores entrem em vigor.
+
+
+
+O agendador pode ser configurado para verificar os logs de auditoria em bases regulares. O valor padrão para o agendador é um dia. Você pode alterar o valor no arquivo _/opt/NetApp/vscserver/etc/maint_logger.properties_.
