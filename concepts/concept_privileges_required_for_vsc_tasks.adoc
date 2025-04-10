@@ -15,7 +15,7 @@ Diferentes ferramentas do ONTAP para tarefas do VMware vSphere exigem combinaç�
 
 Informações sobre as tarefas Privileges Required for ONTAP Tools estão disponíveis no artigo 1032542 da base de conhecimento do NetApp.
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Virtual_Storage_Console_for_VMware_vSphere/How_to_configure_RBAC_for_Virtual_Storage_Console["Como configurar o RBAC para o Virtual Storage Console"]
+https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/VSC_VASA_and_SRA_ONTAP_RBAC_Configuration["Ferramentas do ONTAP para VMware vSphere: Configuração RBAC"]
 
 
 
