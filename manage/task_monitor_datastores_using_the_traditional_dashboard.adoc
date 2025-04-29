@@ -17,7 +17,7 @@ Você pode monitorar os armazenamentos de dados tradicionais e as máquinas virt
 
 Você deve selecionar a opção *Ativar controle de e/S de armazenamento e coleta de estatísticas* ou *Desativar controle de e/S de armazenamento, mas habilitar coleção de estatísticas* na caixa de diálogo Configurar controle de e/S de armazenamento. Você pode ativar o Controle de e/S de storage somente se tiver a licença Enterprise Plus da VMware.
 
-https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-BB5D9BAB-9E0E-4204-A76A-54634CD8AD51.html["Documentação do VMware vSphere: Ative o controle de e/S de armazenamento"]
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/6-5/vsphere-resource-management-6-5.html["Gerenciamento de recursos do vSphere"]
 
 O painel tradicional exibe as métricas de IOPS, espaço utilizado, latência e capacidade comprometida obtidas do vCenter Server. O ONTAP fornece métricas agregadas de economia de espaço ao painel tradicional. Você pode exibir economia de espaço para um agregado específico. Esses parâmetros de desempenho permitem identificar gargalos de desempenho no ambiente virtual e tomar medidas corretivas para resolver os problemas.
 

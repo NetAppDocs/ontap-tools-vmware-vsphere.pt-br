@@ -15,8 +15,6 @@
   <block id="75e793d9133889f56a982d718f5f5c1f" category="paragraph">Você pode configurar seu ambiente vSphere no qual as ferramentas do ONTAP para VMware vSphere são implantadas para alta disponibilidade (HA). O recurso VMware HA oferece proteção contra failover contra falhas de hardware e falhas do sistema operacional em ambientes virtuais.</block>
   <block id="193f5724aa76560510625d6930654372" category="paragraph">O recurso VMware HA monitora as máquinas virtuais para detetar falhas no sistema operacional e no hardware. Quando uma falha é detetada, o recurso VMware HA reinicia as máquinas virtuais nos outros servidores físicos no pool de recursos. A intervenção manual não é necessária quando é detetada uma falha do servidor.</block>
   <block id="fddbfde8381a8cd2ead18c94350d2a14" category="paragraph">O procedimento para configurar o VMware HA depende da versão do vCenter Server. Por exemplo, você pode usar o link de referência a seguir e selecionar a versão do vCenter Server necessária para exibir as etapas para configurar o VMware HA.</block>
-  <block id="1d5795cd94cc0753911dd6bc7e4121e0" category="inline-link">Documentação do VMware vSphere: Criando e usando clusters de HA do vSphere</block>
-  <block id="f1ca65352f21d33a199ffdf014a20d67" category="paragraph"><block ref="f1ca65352f21d33a199ffdf014a20d67" category="inline-link-rx"></block></block>
   <block id="cdfc5a777443e1d48691c26fa9cae9e1" category="section-title">Tolerância de falhas do VMware vSphere</block>
   <block id="bd13f0208899c7acaf359a3a498b1a16" category="paragraph">O recurso VMware vSphere Fault Tolerance (FT) oferece alta disponibilidade (HA) em um nível mais alto e permite proteger máquinas virtuais sem perda de dados ou conexões. Você deve habilitar ou desabilitar as ferramentas do vSphere FT for ONTAP a partir do seu vCenter Server.</block>
   <block id="e7bffdd652c69d058e1d9ea91266c36e" category="paragraph">Garanta que sua licença vSphere ofereça suporte ao FT com o número de vCPUs necessárias para as ferramentas do ONTAP em seu ambiente (pelo menos 2 vCPUs; 4 vCPUs para ambientes de grande escala).</block>
@@ -24,8 +22,6 @@
   <block id="b9284b1fbd19aed3679134bfb4eb640c" category="paragraph">Quando há uma falha de hardware que faz com que a máquina virtual primária falhe, a máquina virtual secundária imediatamente pega onde a máquina virtual principal parou. A máquina virtual secundária continua a funcionar sem perda de conexões de rede, transações ou dados.</block>
   <block id="95954e13c3fd02d60d2176c6788c994a" category="paragraph">Seu sistema deve atender aos requisitos de CPU, requisitos de limite de máquina virtual e requisitos de licenciamento para configurar o vSphere FT para sua instância do vCenter Server.</block>
   <block id="66c5b34575bb610e09f6281aecda93e6" category="paragraph">O procedimento para configurar HA depende da versão do vCenter Server. Por exemplo, você pode usar o link de referência a seguir e selecionar a versão do vCenter Server necessária para exibir as etapas para configurar o HA.</block>
-  <block id="9c506678975809e892cfdd7c14758cae" category="inline-link">Documentação do VMware vSphere: Requisitos, limites e licenciamento de tolerância a falhas</block>
-  <block id="20422418e9f27ff480459f880734075a" category="paragraph"><block ref="20422418e9f27ff480459f880734075a" category="inline-link-rx"></block></block>
   <block id="c69756aca5576df11336d4f750a7fb7d" category="summary">Você pode usar o provedor VASA para ONTAP para criar e gerenciar volumes virtuais VMware (vVols). Você pode provisionar, editar, montar e excluir um datastore vVols. Você também pode adicionar storage ao armazenamento de dados vVols ou remover o armazenamento do armazenamento de dados vVols para oferecer maior flexibilidade. Você pode provisionar e gerenciar cada máquina virtual e o VMDK relacionado.</block>
   <block id="0bc53908165e8112244704360fb1a404" category="doc">Configurações do provedor VASA para vVols</block>
   <block id="c05b981b9e51411011f8958371285b88" category="paragraph">Você pode usar o provedor VASA para ONTAP para criar e gerenciar volumes virtuais VMware (vVols). Você pode provisionar, editar, montar e excluir um datastore vVols. Você também pode adicionar storage ao armazenamento de dados vVols ou remover o armazenamento do armazenamento de dados vVols para oferecer maior flexibilidade. Você pode provisionar e gerenciar cada máquina virtual e o VMDK relacionado.</block>
@@ -174,7 +170,6 @@
   <block id="dd48842c135ca987d437dd7b3093cb9b" category="paragraph">O vCenter Server fornece controle de acesso baseado em função (RBAC) que permite controlar o acesso a objetos vSphere. O ONTAP Server RBAC trabalha com o ONTAP RBAC para determinar quais tarefas de ferramentas do ONTAP um usuário específico pode executar em objetos em um sistema de storage específico.</block>
   <block id="58cdc8e25f9268a11f5f61dd2862e506" category="paragraph">Para concluir uma tarefa com êxito, você precisa ter as permissões RBAC apropriadas do vCenter Server. Durante uma tarefa, as ferramentas do ONTAP verificam as permissões do vCenter Server de um usuário antes de verificar o ONTAP Privileges do usuário.</block>
   <block id="4e97a87c57d50537bba2389e33f34a93" category="paragraph">Você pode definir as permissões do vCenter Server no objeto raiz (também conhecido como a pasta raiz). Em seguida, você pode refinar a segurança restringindo entidades filhas que não precisam dessas permissões.</block>
-  <block id="539018505dde88069c03ead0e16d021b" category="doc">Visão geral das ferramentas do ONTAP</block>
   <block id="35b93a81a0436a7a2cfd708e05194805" category="paragraph">As ferramentas do ONTAP se integram ao vSphere Client e permitem que você use serviços de logon único (SSO). Em um ambiente com várias instâncias do vCenter Server, cada instância do vCenter Server que você deseja gerenciar deve ter sua própria instância registrada de ferramentas do ONTAP.</block>
   <block id="088edf0a41c67ef0d8cab2de751c7631" category="paragraph">Cada componente das ferramentas do ONTAP fornece recursos para ajudar a gerenciar seu storage com mais eficiência.</block>
   <block id="99747ff467bd5f8f3a69eba14ab5a2ce" category="paragraph">A ferramenta de plug-in do VMware vSphere Client foi projetada para integrar a funcionalidade de plug-in ao vSphere Client sem a necessidade de ser executada dentro do vCenter Server. Isso fornece isolamento de plug-ins e permite a escalabilidade horizontal de plug-ins que operam em grandes ambientes vSphere.</block>
@@ -205,7 +200,6 @@
   <block id="cba784dbb6dad30cadc1fcb2d1b5ee81" category="paragraph"><block ref="cba784dbb6dad30cadc1fcb2d1b5ee81" category="inline-link-rx"></block></block>
   <block id="6f34d21822642a48589bd338b41f0924" category="summary">O recurso VMware vSphere Fault Tolerance (FT) fornece alta disponibilidade em um nível mais alto e permite proteger máquinas virtuais sem perda de dados ou conexões. Você deve habilitar ou desabilitar as ferramentas do vSphere FT for ONTAP a partir do seu vCenter Server.</block>
   <block id="431526444f5217c0c4d88bbb5bd31943" category="summary">Você pode configurar seu ambiente vSphere onde as ferramentas do ONTAP para VMware vSphere são implantadas para alta disponibilidade. O recurso VMware HA oferece proteção contra failover contra falhas de hardware e falhas do sistema operacional em ambientes virtuais.</block>
-  <block id="57913afe7758e6ac629330a6211986c2" category="paragraph"><block ref="57913afe7758e6ac629330a6211986c2" category="inline-link-rx"></block></block>
   <block id="a3a3f39887f64ae51ced6d024f11ac31" category="summary">O vCenter Server reconhece permissões, não o Privileges. Cada permissão do vCenter Server consiste em três componentes.</block>
   <block id="054195114e28f4a480374b34e3d89663" category="doc">Componentes das permissões do vCenter Server</block>
   <block id="5c88132196c6909932172f7c24e72f30" category="paragraph">O vCenter Server tem os seguintes componentes:</block>
@@ -846,8 +840,6 @@
   <block id="7fe6d5584982526cfe5bb1b708c9e10f" category="paragraph"><block ref="7fe6d5584982526cfe5bb1b708c9e10f" category="inline-link-rx"></block></block>
   <block id="1a69d38f7b46901c58e85d024e87b034" category="inline-link">Ative o Kerberos em um LIF de dados</block>
   <block id="bcafb10f2c5e3e1c946d39793d902146" category="paragraph"><block ref="bcafb10f2c5e3e1c946d39793d902146" category="inline-link-rx"></block></block>
-  <block id="b292d4b33c15cd5429a4aec0164b62f4" category="inline-link">Configurar hosts ESXi para Autenticação Kerberos</block>
-  <block id="2775eee214a07dd3ad16007a75341d1d" category="paragraph"><block ref="2775eee214a07dd3ad16007a75341d1d" category="inline-link-rx"></block></block>
   <block id="0281c53093873b59b2164833eb939972" category="summary">Você pode provisionar um armazenamento de dados vVols usando o assistente de armazenamento de dados de provisão somente se o provedor VASA estiver habilitado em suas ferramentas do ONTAP.</block>
   <block id="fc7d7e475ac8c3868d7426bb41df9b09" category="doc">Provisione armazenamentos de dados vVols</block>
   <block id="323f5fdeffd3401949bdeb66312e15e4" category="list-text">Você deve garantir que os detalhes da sub-rede de todas as redes às quais o ESXi hospedado está conetado sejam inseridos no Kaminoprefs.xml.</block>
@@ -1010,8 +1002,6 @@
   <block id="a919e368cdc2a31db9bf251c27d9df05" category="paragraph">Para exibir o IOPS de um datastore, você deve habilitar o controle de e/S de armazenamento ou desmarcar a caixa de seleção desabilitar coleção de estatísticas de e/S de armazenamento na configuração de controle de e/S de armazenamento. Você pode ativar o controle de e/S de storage somente se tiver a licença Enterprise Plus da VMware.</block>
   <block id="334d1eb45fc0c2dc8df94b8b513b8df4" category="inline-link">Solução de problemas de controle de e/S de storage</block>
   <block id="1a5f6041f129f43810f85de306ad33b2" category="list-text"><block ref="1a5f6041f129f43810f85de306ad33b2" category="inline-link-rx"></block></block>
-  <block id="6cb4e4fceb86a9c3efe7f9d4e5d29473" category="inline-link">Requisitos de controle de e/S de storage</block>
-  <block id="fcafb33f3f1e5ad308452fccb673af13" category="list-text"><block ref="fcafb33f3f1e5ad308452fccb673af13" category="inline-link-rx"></block></block>
   <block id="0bd6ccfcef65a72190bc8e1de13a8d0a" category="doc">Guia de implementação e configuração</block>
   <block id="105bd7e8e3884c05e1a664cb5cb1d3e0" category="summary">Antes de implantar as ferramentas do ONTAP para o VMware vSphere, é uma prática recomendada Planejar sua implantação e decidir como você deseja configurar as ferramentas do ONTAP em seu ambiente.</block>
   <block id="c02f848254bc595f70fae20634e0b8f1" category="doc">Considerações para a implantação de ferramentas do ONTAP</block>
@@ -1610,8 +1600,6 @@
   <block id="96175e97c8c13423e6a60249fa770130" category="summary">Você pode monitorar os armazenamentos de dados tradicionais e as máquinas virtuais usando o painel tradicional das ferramentas do ONTAP. Os dados do dashboard permitem analisar o uso do armazenamento de dados e tomar medidas corretivas para evitar que as máquinas virtuais sejam executadas em restrições relacionadas ao espaço.</block>
   <block id="211c9db57cb6ce5c2e16c1ff37eaa820" category="doc">Analise dados de desempenho usando o painel tradicional</block>
   <block id="096926a9260db65d51c453dd6fe63a06" category="paragraph">Você deve selecionar a opção *Ativar controle de e/S de armazenamento e coleta de estatísticas* ou *Desativar controle de e/S de armazenamento, mas habilitar coleção de estatísticas* na caixa de diálogo Configurar controle de e/S de armazenamento. Você pode ativar o Controle de e/S de storage somente se tiver a licença Enterprise Plus da VMware.</block>
-  <block id="5900a4191170b6191797e473524d5bfd" category="inline-link">Documentação do VMware vSphere: Ative o controle de e/S de armazenamento</block>
-  <block id="b7a328ea0603bc67c4f6c59226da970a" category="paragraph"><block ref="b7a328ea0603bc67c4f6c59226da970a" category="inline-link-rx"></block></block>
   <block id="4a7619cde2c717f99a4aa51b8332f2e5" category="paragraph">O painel tradicional exibe as métricas de IOPS, espaço utilizado, latência e capacidade comprometida obtidas do vCenter Server. O ONTAP fornece métricas agregadas de economia de espaço ao painel tradicional. Você pode exibir economia de espaço para um agregado específico. Esses parâmetros de desempenho permitem identificar gargalos de desempenho no ambiente virtual e tomar medidas corretivas para resolver os problemas.</block>
   <block id="77fc87b2d4510a0bda82e14b45856ab6" category="paragraph">O dashboard tradicional das ferramentas do ONTAP permite visualizar armazenamentos de dados NFS ou armazenamentos de dados VMFS. Você pode clicar em um datastore para navegar até a visualização de detalhes do datastore fornecida pela instância do vCenter Server para exibir e corrigir quaisquer problemas com os datastores no vCenter Server.</block>
   <block id="63a1762e79217ec6ff7ab30bd38f5de9" category="list-text">Na página inicial do vSphere Client, clique em *Ferramentas do ONTAP para VMware vSphere*.</block>
@@ -1717,12 +1705,9 @@
   <block id="789b3009ddae4bebf767357d7bc5ff04" category="list-text">Atualize suas ferramentas existentes do ONTAP para o dispositivo VMware vSphere para a versão mais recente.</block>
   <block id="ceafa9243433e49b5a0576a4ed1cd4b5" category="list-text">Migrar o adaptador de replicação de armazenamento baseado no Windows para o SRA baseado em appliance.</block>
   <block id="81f65208775e1359f20f81e36c085f41" category="list-text">Migrar dados do Windows SRM para o dispositivo SRM.</block>
-  <block id="3061b3ff6d3a7fe53051f50f814b02de" category="inline-link">Migrar do Site Recovery Manager para Windows para o Site Recovery Manager Virtual Appliance</block>
-  <block id="e98071b2fdde8378fcd32e609913ab66" category="paragraph"><block ref="7cf7ce0cd4f57deb650bf40ef131cabd" category="inline-link-rx"></block>Consulte para obter os passos detalhados</block>
   <block id="6b755c3a1874f7019319a35d01e96329" category="summary">As ferramentas do ONTAP para VMware vSphere suportam a configuração do site de recuperação compartilhada do VMware SRM.</block>
   <block id="5cb1b5d35d8f16f8985026d5b5525e36" category="doc">Configure o SRA com o SRM em uma configuração de site de recuperação compartilhada</block>
   <block id="d2d9d75ad75bd8f07c048d74285c7e91" category="inline-link">Site Recovery Manager em uma configuração de local de recuperação compartilhada</block>
-  <block id="d2762e1fc358c658239fdcddc79a0a08" category="paragraph">As ferramentas do ONTAP para VMware vSphere suportam a configuração do site de recuperação compartilhada SRM da VMware. Para obter mais informações, consulte:<block ref="0ffb02f2a9ebd31e751e8881460965d1" category="inline-link-rx"></block>. As instâncias do Site Recovery Manager Server no site de recuperação se conetam às mesmas instâncias do vCenter Server.</block>
   <block id="c4d7bfe92b4693a00e8289e45547ab0d" category="paragraph">Em uma Configuração do local de recuperação compartilhada SRM, cada servidor SRM precisa ter uma instância SRA dedicada (relação 1:1 entre SRM e SRA). Configure o OTV no modo VCF para atuar como uma instância SRA dedicada para cada servidor SRM. Você também pode ter uma ferramenta ONTAP não habilitada para SRA para o dispositivo VMware vSphere implantada, registrada no vCenter e usada para tarefas que não sejam SRA, como provisionamento de datastore.</block>
   <block id="2ecc9eaf40eeff2a5d5bfdebc62550bb" category="inline-link">Como configurar o SRA em um site de recuperação compartilhada SRM</block>
   <block id="15057a3e38aae03f9f465ba7ab620903" category="paragraph">O<block ref="5415c0f790a03b5f7964b877faa0433d" category="inline-link-rx"></block> artigo da KB detalha o procedimento para configurar o SRA para suportar a Configuração do local de recuperação partilhada SRM.</block>
@@ -1763,18 +1748,12 @@
   <block id="d9ad1cd9ed6154c08811ffdbeec40f42" category="paragraph"><block ref="c1533677fede32792c4b54cf81865145" prefix="" category="inline-code"></block></block>
   <block id="9df3b59d2f557fab39346b37532a0832" category="paragraph">Defina um valor alto (por exemplo: 99999)</block>
   <block id="c30b7c029fe2d9044307db1e0f6ea417" category="paragraph">Você também deve ativar a<block ref="227c938fa0f7b152cce7b139b698bf4c" prefix=" " category="inline-code"></block> opção.</block>
-  <block id="7ab0999b0811be49a9148b1092cf0095" category="paragraph">Consulte a documentação da VMware para obter mais informações sobre como modificar as configurações do provedor de armazenamento.</block>
-  <block id="7ceb96cf2f53ab82cf68115087e42798" category="inline-link">Documentação do VMware vSphere: Altere as configurações do provedor de armazenamento</block>
-  <block id="6b9647887381f9ce12a57a287e1bafbd" category="paragraph"><block ref="6b9647887381f9ce12a57a287e1bafbd" category="inline-link-rx"></block></block>
   <block id="6deaa5e1cafca832bac1b468485b9454" category="section-title">Definições de armazenamento</block>
   <block id="5f479a62f2104046972d10f2cbf88255" category="paragraph">Quando você atinge um tempo limite, aumente os valores de<block ref="e7a7316b2dab3875c5aa0977c256ae38" prefix=" " category="inline-code"></block> e<block ref="b6c033f4806640a2a2858512cf9f8c1b" prefix=" " category="inline-code"></block> para um valor mais alto.</block>
   <block id="00a510939945fb6eb144a70baf6f9fd4" category="admonition">O intervalo de tempo limite especificado é o valor máximo. Não é necessário esperar que o tempo limite máximo seja atingido. A maioria dos comandos termina dentro do intervalo de tempo limite máximo definido.</block>
   <block id="e8e75924ea6b1743aedaf9cdc60f2811" category="paragraph">Você também deve definir o tempo máximo para que o SRA execute uma única operação no arquivo vvol.properties: OFFTAP.operation.timeout.period.seconds=86400.</block>
   <block id="0a757269d3671e08f4647a4a3f39c7af" category="inline-link">Resposta 1001111 da base de conhecimento da NetApp: Adaptador de replicação de armazenamento NetApp 4,0/7.X para Guia de dimensionamento de ONTAP</block>
   <block id="58ea740e145f2581727a12d0fe5a5b26" category="paragraph"><block ref="58ea740e145f2581727a12d0fe5a5b26" category="inline-link-rx"></block></block>
-  <block id="b2dacb077897e6e20eab5019528b0b4d" category="paragraph">A documentação da VMware sobre como modificar as configurações do provedor de SAN tem mais informações.</block>
-  <block id="c106a2cd545fb9665a990784905584ee" category="inline-link">Documentação do VMware Site Recovery Manager: Altere as configurações de armazenamento</block>
-  <block id="9abf7c4d6f8e5b536137c70ad41a5f3b" category="paragraph"><block ref="9abf7c4d6f8e5b536137c70ad41a5f3b" category="inline-link-rx"></block></block>
   <block id="e19aa5b1d5cc9af071d6a8aaa3d6133b" category="doc">Configure o SRA usando o gerenciador de array</block>
   <block id="162e9c2c35038a17f958fbf922755a04" category="paragraph">Você pode configurar o Storage Replication Adapter (SRA) usando o assistente Array Manager do Site Recovery Manager (SRM) para habilitar interações entre SRM e máquinas virtuais de armazenamento (SVMs).</block>
   <block id="39b58596949c4b9771bc20ef05dffce8" category="list-text">Tem de ter emparelhado os locais protegidos e os locais de recuperação no SRM.</block>
@@ -1928,8 +1907,6 @@
   <block id="22bf2e5e3e861785a0e8f1eb7bd7492e" category="doc">Ative o SRA para proteger datastores</block>
   <block id="84bd345b022206ae6f8ba4389abae9b4" category="list-text">Você deve ter implantado ferramentas do ONTAP.</block>
   <block id="1ac5e2b5866d506de780b5946550a0e4" category="list-text">Você deve ter baixado o<block ref="d6f1afa70d6145a212d9dc6bc8a2fa64" prefix=" " category="inline-code"></block> arquivo para o SRM Appliance somente se quiser configurar a solução de recuperação de desastres do Site Recovery Manager (SRM).</block>
-  <block id="ca11a9887f9c1b0920793fa77409fe5e" category="inline-link">Instalação e configuração do Site Recovery Manager 8,2</block>
-  <block id="21413bf2dcddaddb1f8a1454ec4abc3b" category="paragraph"><block ref="e42f99038872ff68e0cbb992333123a1" category="inline-link-rx"></block> tem mais informações.</block>
   <block id="2e325540aabc952fa9cfee2e2d552f85" category="paragraph">A flexibilidade para habilitar os recursos do provedor VASA e do SRA permite que você execute apenas os fluxos de trabalho que você precisa para sua empresa.</block>
   <block id="d04db61ce6dc44c27b00d3ca2edab147" category="list-text">Clique em *Gerenciar recursos* na guia *Configurações administrativas*.</block>
   <block id="60f7799622f57bacad4169ec05a5cf08" category="list-text">Na caixa de diálogo *Manage Capabilities* (gerir capacidades), selecione a extensão SRA que pretende ativar.</block>
@@ -1955,8 +1932,6 @@
   <block id="4ce79230c72f0359b458399d56031022" category="paragraph">Você deve emparelhar os sites protegidos e de recuperação criados usando o vSphere Client para habilitar o Storage Replication Adapter (SRA) para descobrir os sistemas de armazenamento.</block>
   <block id="ebde4da5602c98263fc58710c4b589e0" category="list-text">Você deve ter instalado o Site Recovery Manager (SRM) nos sites protegidos e de recuperação.</block>
   <block id="b5fb2ba5a0a01abb440ea27ebd61c5f1" category="list-text">Você deve ter instalado o SRA nos sites protegidos e de recuperação.</block>
-  <block id="0fefea8dcd9753fb17e8b5ff6b39df51" category="paragraph">As configurações de fan-out do SnapMirror são aquelas em que um volume de origem é replicado para dois destinos diferentes. Estes criam um problema durante a recuperação quando o SRM precisa recuperar a máquina virtual do destino.</block>
-  <block id="5f8d93450cd44e3871d6c107dd6e8857" category="admonition">O adaptador de replicação de armazenamento (SRA) não suporta configurações SnapMirror de fan-out.</block>
   <block id="00e7213846eef210f46aa733cb151439" category="list-text">Clique duas vezes em *Site Recovery* na página inicial do vSphere Client e clique em *Sites*.</block>
   <block id="0cb204757fc030d9ca635551827fb5fc" category="list-text">Clique em *objetos* &gt; *ações* &gt; *Emparelhar sites*.</block>
   <block id="175196fb642ea5ad4b3eb3694afac00f" category="list-text">Na caixa de diálogo Emparelhar servidores do Gerenciador de recuperação de Sites, insira o endereço do controlador de Serviços de Plataforma do site protegido e clique em *Avançar*.</block>
@@ -2142,4 +2117,26 @@
   <block id="7230ef1fabe08177b3b9d5485ebc25c0" category="summary">As ferramentas do ONTAP para VMware vSphere fornecem gerenciamento de ciclo de vida completo para máquinas virtuais em ambientes VMware que usam sistemas de storage NetApp. Ele permite que os administradores gerenciem o storage no vCenter Server diretamente, simplificando o storage e o gerenciamento de dados para ambientes VMware.</block>
   <block id="47635be81cb27fe24be3c1541e49e8c2" category="doc">Visão geral das ferramentas do ONTAP</block>
   <block id="693059892f5ca1ab1683c98e037ee404" category="summary">Se você é novo na VMware e nunca usou um produto de ferramentas do NetApp ONTAP, precisará configurar o vCenter Server e configurar um host ESXi antes de implantar e configurar as ferramentas do ONTAP.</block>
+  <block id="65448065a2f2f124958039e28edbabea" category="inline-link">Disponibilidade do vSphere</block>
+  <block id="fbb57199ec923b67225d34045004bf6b" category="paragraph"><block ref="fbb57199ec923b67225d34045004bf6b" category="inline-link-rx"></block></block>
+  <block id="b43fbfd98dfaf4b96f25257f3e9b2fb2" category="inline-link">Requisitos, limites e Licenciamento de tolerância a falhas</block>
+  <block id="a64b4ff92d509abdca37912d111d8b75" category="paragraph"><block ref="a64b4ff92d509abdca37912d111d8b75" category="inline-link-rx"></block></block>
+  <block id="9eb2bd2480a35c698be7fc3c56207ade" category="inline-link">Criação e uso de clusters de HA do vSphere</block>
+  <block id="8ba8db309cceba7f21a793574c1afe8d" category="paragraph"><block ref="8ba8db309cceba7f21a793574c1afe8d" category="inline-link-rx"></block></block>
+  <block id="d5a602ee44affae0e4490dbbdbaa5f11" category="inline-link">VSphere Storage</block>
+  <block id="d8c3126ce2b45ce0418b727a648690c0" category="paragraph"><block ref="d8c3126ce2b45ce0418b727a648690c0" category="inline-link-rx"></block></block>
+  <block id="98ce2155c1121498c5a221338cbeabba" category="inline-link">Gerenciamento de recursos do vSphere</block>
+  <block id="39fb4c28a1b3e9f759d4f64e35c4a186" category="list-text"><block ref="39fb4c28a1b3e9f759d4f64e35c4a186" category="inline-link-rx"></block></block>
+  <block id="ea27a0fe6615456106a8a8e14128e542" category="inline-link">Instalação e configuração do Site Recovery Manager</block>
+  <block id="c54cdda5633175090273d24b51dc5af3" category="paragraph"><block ref="6cc195dce48bd2dd3ffe672df568b352" category="inline-link-rx"></block>Consulte para obter os passos detalhados</block>
+  <block id="fe59e60e6aae6c7bf8042ac60c40cebe" category="paragraph">As ferramentas do ONTAP para VMware vSphere suportam a configuração do site de recuperação compartilhada SRM da VMware. Para obter mais informações, consulte: <block ref="75e1fea3675e833813f99378d6c8fa43" category="inline-link-rx"></block>. As instâncias do Site Recovery Manager Server no site de recuperação se conetam às mesmas instâncias do vCenter Server.</block>
+  <block id="06c1fc03fbada06f75d3f177d952839e" category="paragraph">Consulte a documentação da Broadcom para obter mais informações sobre como modificar as configurações do provedor de armazenamento.</block>
+  <block id="1766c36b7d852fbd898c8f3e8757adf1" category="inline-link">Altere as definições do fornecedor de armazenamento</block>
+  <block id="41b16f1277747476a53e60ae7f8ab4f1" category="paragraph"><block ref="41b16f1277747476a53e60ae7f8ab4f1" category="inline-link-rx"></block></block>
+  <block id="8238925ee972c823b0ce36f54dc053b2" category="paragraph">A documentação da Broadcom sobre como modificar as configurações do provedor de SAN tem mais informações.</block>
+  <block id="09662246d40be3f3890675feb3a8d887" category="inline-link">Altere as definições de armazenamento</block>
+  <block id="0d951b75f45de16bce85b82098223cfd" category="paragraph"><block ref="0d951b75f45de16bce85b82098223cfd" category="inline-link-rx"></block></block>
+  <block id="d2a8cc12733d837b21d04e966da18849" category="inline-link">Instalação e Configuração do Site Recovery Manager</block>
+  <block id="aa7e72b3419247f39d0e6b1a10ecde90" category="paragraph"><block ref="e8cde9e1b38fd82f2c0a7be37ca3e90f" category="inline-link-rx"></block> tem mais informações.</block>
+  <block id="1131b5ba310f0132fa89f2e2bc52cb0c" category="paragraph">As configurações de fan-out do SnapMirror são aquelas em que um volume de origem é replicado para dois destinos diferentes. Estes criam um problema durante a recuperação quando o SRM precisa recuperar a máquina virtual do destino. *Passos*</block>
 </blocks>
