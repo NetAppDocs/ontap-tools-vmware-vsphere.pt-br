@@ -1193,7 +1193,6 @@
   <block id="4010c02ac99e4b40bb797138975b0752" category="paragraph">openssl dgst -sha256 -verificar csc-prod-OTV-SRA-TGZ.pub -assinatura NetApp-ONTAP-tools-for-VMware-vsphere-9,12-9327-upgrade-iso.sig NetApp-ONTAP-tools-for-vmware-vsphere-9.12-9327-upgrade.iso</block>
   <block id="bc68efb1283f7ffd09ae21c163df3ce0" category="paragraph">O status do provedor VASA da implantação existente é mantido após a atualização. Você deve ativar ou desativar manualmente o provedor VASA com base em suas necessidades após o upgrade. No entanto, é melhor habilitar o provedor VASA mesmo que o VMware Virtual volumes (vVols) não esteja em uso, pois permite perfis de capacidade de armazenamento para provisionamento tradicional de armazenamento de dados e alarmes de armazenamento.</block>
   <block id="23deb0793155947837dd665446bf1830" category="admonition">Você pode executar uma atualização no local para a versão mais recente das ferramentas do ONTAP apenas a partir de suas versões 9,10 ou posteriores existentes.</block>
-  <block id="47036403afaaf8ca717ff4a9ab5e937f" category="admonition">A partir das ferramentas do ONTAP 9,12 atualizar todos os sistemas de armazenamento de autenticação e processo de comunicação são alterados de autenticação básica para autenticação baseada em certificado, confiando automaticamente nos certificados de armazenamento ONTAP. Não é necessária qualquer ação do utilizador.</block>
   <block id="909f197f2c195f18181232c0399d961b" category="paragraph">A adição de um sistema de armazenamento sem autenticação de certificado é restrita.</block>
   <block id="58219ebdf648f85e26c26438bb61d686" category="paragraph">Se o sistema de armazenamento for adicionado ao usuário com escopo de cluster criado personalizado usando o arquivo json e você quiser atualizar para 9,12 e versões posteriores, execute os comandos abaixo na CLI do ONTAP antes de atualizar para habilitar a comunicação baseada em certificado entre as ferramentas do ONTAP para VMware vSphere e ONTAP.</block>
   <block id="f2103c08f15fe6fa42bcf844c2049013" category="list-text">_security login role create -role &lt;existing-role-name&gt; -cmddirname "security login show" -access all_</block>
@@ -1759,7 +1758,6 @@
   <block id="39b58596949c4b9771bc20ef05dffce8" category="list-text">Tem de ter emparelhado os locais protegidos e os locais de recuperação no SRM.</block>
   <block id="0fef91ca040522ee258c514383b22085" category="list-text">Você deve ter configurado o armazenamento antes de configurar o gerenciador de array.</block>
   <block id="c57d1578817fecd8541ae081dd3b752e" category="list-text">Você deve ter configurado e replicado as relações do SnapMirror entre os sites protegidos e os sites de recuperação.</block>
-  <block id="43195d9f7cab578cb244f5f740f6e085" category="list-text">Você precisa habilitar os LIFs de gerenciamento do SVM para habilitar a alocação a vários clientes.</block>
   <block id="7945c1d153109a7470a701147eb9bf91" category="paragraph">SRA é compatível com gerenciamento em nível de cluster e gerenciamento em nível de SVM. Se você adicionar storage em um nível de cluster, poderá descobrir e executar operações em todos os SVMs no cluster. Se você adicionar storage no nível da SVM, poderá gerenciar apenas essa SVM específica.</block>
   <block id="e074ce1ed2ac873058a796fcf283eedd" category="admonition">A VMware não suporta o protocolo NFS4,1 para SRM.</block>
   <block id="7fdab6ccf999bb53d546254efa8e925a" category="list-text">No SRM, clique em *Array Managers* e, em seguida, clique em *Add Array Manager*.</block>
@@ -1872,7 +1870,6 @@
   <block id="56d43ad1a280ada5e16fd2960ae44b32" category="list-text">SRM</block>
   <block id="1eb176cea5abcd7b2040e0863742d426" category="paragraph">A documentação sobre a instalação do SRM pode ser encontrada no site da VMware.</block>
   <block id="4617dd5a7193927c5552182931541c9c" category="inline-link">Documentação do VMware Site Recovery Manager</block>
-  <block id="2b27cdd9529ad91885c6c019ee8329ee" category="paragraph"><block ref="2b27cdd9529ad91885c6c019ee8329ee" category="inline-link-rx"></block></block>
   <block id="406292f3c5b20715e348f48fa5e6d6e3" category="list-text">SRA</block>
   <block id="1a4c02d907de9cf09a31d1f5f6ab334f" category="paragraph">O adaptador é instalado no SRM e no servidor SRA.</block>
   <block id="bdeb77edc25aca768d0b70a5251e91d6" category="list-text">Verifique se os datastores no site protegido contêm máquinas virtuais registradas no vCenter Server.</block>
@@ -2139,4 +2136,7 @@
   <block id="d2a8cc12733d837b21d04e966da18849" category="inline-link">Instalação e Configuração do Site Recovery Manager</block>
   <block id="aa7e72b3419247f39d0e6b1a10ecde90" category="paragraph"><block ref="e8cde9e1b38fd82f2c0a7be37ca3e90f" category="inline-link-rx"></block> tem mais informações.</block>
   <block id="1131b5ba310f0132fa89f2e2bc52cb0c" category="paragraph">As configurações de fan-out do SnapMirror são aquelas em que um volume de origem é replicado para dois destinos diferentes. Estes criam um problema durante a recuperação quando o SRM precisa recuperar a máquina virtual do destino. *Passos*</block>
+  <block id="e9137eaa9a63d9c4bceed13dfb01d6db" category="admonition">A partir da atualização do ONTAP Tools 9.12, todos os processos de autenticação e comunicação dos sistemas de armazenamento foram alterados, passando da autenticação básica para a autenticação baseada em certificado, confiando automaticamente nos certificados de armazenamento do ONTAP .</block>
+  <block id="04afb3bdbc4139cf45256b44141b1a77" category="list-text">Você precisa ter habilitado as LIFs de gerenciamento SVM para suportar multilocação.</block>
+  <block id="0d6d5f3b6b0d7149732baa366c9a237a" category="paragraph"><block ref="0d6d5f3b6b0d7149732baa366c9a237a" category="inline-link-rx"></block></block>
 </blocks>

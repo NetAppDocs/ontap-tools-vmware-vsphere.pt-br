@@ -18,7 +18,7 @@ Você pode configurar o Storage Replication Adapter (SRA) usando o assistente Ar
 * Tem de ter emparelhado os locais protegidos e os locais de recuperação no SRM.
 * Você deve ter configurado o armazenamento antes de configurar o gerenciador de array.
 * Você deve ter configurado e replicado as relações do SnapMirror entre os sites protegidos e os sites de recuperação.
-* Você precisa habilitar os LIFs de gerenciamento do SVM para habilitar a alocação a vários clientes.
+* Você precisa ter habilitado as LIFs de gerenciamento SVM para suportar multilocação.
 
 
 SRA é compatível com gerenciamento em nível de cluster e gerenciamento em nível de SVM. Se você adicionar storage em um nível de cluster, poderá descobrir e executar operações em todos os SVMs no cluster. Se você adicionar storage no nível da SVM, poderá gerenciar apenas essa SVM específica.
