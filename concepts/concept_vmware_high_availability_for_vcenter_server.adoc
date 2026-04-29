@@ -17,4 +17,4 @@ O recurso VMware HA monitora as máquinas virtuais para detetar falhas no sistem
 
 O procedimento para configurar o VMware HA depende da versão do vCenter Server. Por exemplo, você pode usar o link de referência a seguir e selecionar a versão do vCenter Server necessária para exibir as etapas para configurar o VMware HA.
 
-https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/6-5/vsphere-availability.html["Criação e uso de clusters de HA do vSphere"]
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-availability/creating-and-using-vsphere-ha-clusters.html["Criação e uso de clusters de HA do vSphere"^]

@@ -33,6 +33,6 @@ Você deve habilitar a licença FlexClone para executar operações de failover 
 
 Para exibir o IOPS de um datastore, você deve habilitar o controle de e/S de armazenamento ou desmarcar a caixa de seleção desabilitar coleção de estatísticas de e/S de armazenamento na configuração de controle de e/S de armazenamento. Você pode ativar o controle de e/S de storage somente se tiver a licença Enterprise Plus da VMware.
 
-* https://kb.vmware.com/s/article/1022091["Solução de problemas de controle de e/S de storage"]
-* https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/6-5/vsphere-resource-management-6-5.html["Gerenciamento de recursos do vSphere"]
+* https://kb.vmware.com/s/article/1022091["Solução de problemas de controle de e/S de storage"^]
+* https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management.html["Gerenciamento de recursos do vSphere"^]
 

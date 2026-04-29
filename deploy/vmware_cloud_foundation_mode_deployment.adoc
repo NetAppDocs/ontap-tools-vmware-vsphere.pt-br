@@ -18,7 +18,7 @@ O modo VCF permite que você crie contentores para seu armazenamento sem a neces
 
 NOTE: Modificar e excluir o sistema de storage é suportado pelas ferramentas do ONTAP para a versão VMware vSphere 9.13P1 em diante.
 
-O artigo a seguir tem o procedimento para adicionar armazenamento a ferramentas do ONTAP quando o VCF está habilitado, https://kb.netapp.com/mgmt/OTV/SRA/Storage_Replication_Adapter%3A_How_to_configure_SRA_in_a_SRM_Shared_Recovery_Site["Adicione armazenamento a ferramentas do ONTAP a partir da Swagger-UI"].
+O artigo a seguir descreve o procedimento para adicionar armazenamento às ONTAP tools quando o VCF está habilitado, https://kb.netapp.com/mgmt/OTV/SRA/Storage_Replication_Adapter%3A_How_to_configure_SRA_in_a_SRM_Shared_Recovery_Site["Adicione armazenamento a ferramentas do ONTAP a partir da Swagger-UI"^].
 
 Uma nova API é introduzida para gerar o _appliance-api-token_ que autentica chamadas de API. Algumas das APIs existentes são modificadas para incluir o cabeçalho _appliance-api-token_. A partir da versão 9,12 do ONTAP Tools, o Swagger não suporta APIs 1,0. Os ponteiros que estavam anteriormente no 1,0 são movidos para 2,0 ou 3,0 APIs.
 

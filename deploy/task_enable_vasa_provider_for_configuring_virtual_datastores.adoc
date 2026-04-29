@@ -40,4 +40,4 @@ NOTE: Se o status do provedor VASA for exibido como ""Offline"" mesmo depois de 
 
 *Informações relacionadas*
 
-https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"]
+https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"^]

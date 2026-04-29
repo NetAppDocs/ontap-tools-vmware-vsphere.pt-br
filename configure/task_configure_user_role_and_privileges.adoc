@@ -22,7 +22,7 @@ Você pode configurar novas funções de usuário para gerenciar sistemas de sto
 ** Extraia o arquivo VSC_ONTAP_User_Privileges.zip baixado
 ** Acesse o System Manager
 +
-Consulte o artigo da KB https://kb.netapp.com/mgmt/OTV/Virtual_Storage_Console/Virtual_Storage_Console%3A_How_to_retrieve_the_JSON_file_to_configure_user_roles_and_privileges["Console de armazenamento virtual: Como recuperar o arquivo JSON para configurar funções de usuário e Privileges"] - para obter instruções sobre como fazer o download do arquivo ONTAP Privileges a partir da CLI da Web.
+Consulte o artigo da Base de Conhecimento  https://kb.netapp.com/mgmt/OTV/Virtual_Storage_Console/Virtual_Storage_Console%3A_How_to_retrieve_the_JSON_file_to_configure_user_roles_and_privileges["Console de armazenamento virtual: Como recuperar o arquivo JSON para configurar funções de usuário e Privileges"^] para obter instruções sobre como baixar o arquivo ONTAP Privileges a partir da Web-CLI.
 
 
 

@@ -56,7 +56,7 @@ Você também deve ativar a `StorageProvider.autoResignatureMode` opção.
 
 Consulte a documentação da Broadcom para obter mais informações sobre como modificar as configurações do provedor de armazenamento.
 
-https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["Altere as definições do fornecedor de armazenamento"]
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["Altere as definições do fornecedor de armazenamento"^]
 
 
 
@@ -69,8 +69,8 @@ NOTE: O intervalo de tempo limite especificado é o valor máximo. Não é neces
 
 Você também deve definir o tempo máximo para que o SRA execute uma única operação no arquivo vvol.properties: OFFTAP.operation.timeout.period.seconds=86400.
 
-https://kb.netapp.com/mgmt/OTV/SRA/NetApp_Storage_Replication_Adapter_4.0%2F%2F7.X_for_ONTAP_Sizing_Guide["Resposta 1001111 da base de conhecimento da NetApp: Adaptador de replicação de armazenamento NetApp 4,0/7.X para Guia de dimensionamento de ONTAP"]
+https://kb.netapp.com/mgmt/OTV/SRA/NetApp_Storage_Replication_Adapter_4.0%2F%2F7.X_for_ONTAP_Sizing_Guide["Resposta 1001111 da base de conhecimento da NetApp: Adaptador de replicação de armazenamento NetApp 4,0/7.X para Guia de dimensionamento de ONTAP"^]
 
 A documentação da Broadcom sobre como modificar as configurações do provedor de SAN tem mais informações.
 
-https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["Altere as definições de armazenamento"]
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["Altere as definições de armazenamento"^]

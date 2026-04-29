@@ -22,7 +22,7 @@ Você deve ter instalado os seguintes programas no site protegido e no site de r
 A documentação sobre a instalação do SRM pode ser encontrada no site da VMware.
 
 +
-https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-7/site-recovery-manager-installation-and-configuration-8-7/overview-of-vmware-site-recovery-manager.html["Documentação do VMware Site Recovery Manager"]
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-7/site-recovery-manager-installation-and-configuration-8-7/overview-of-vmware-site-recovery-manager.html["Documentação do VMware Site Recovery Manager"^]
 
 * SRA
 +
@@ -38,4 +38,4 @@ O adaptador é instalado no SRM e no servidor SRA.
 . Use o comando ping em cada host ESXi no local de recuperação para verificar se o host tem uma porta VMkernel que pode acessar os endereços IP usados para atender às exportações NFS do SVM.
 
 
-https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"]
+https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"^]

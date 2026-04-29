@@ -23,4 +23,4 @@ link:../deploy/task_upgrade_to_the_9_8_ontap_tools_for_vmware_vsphere.html["Atua
 . Migrar dados do Windows SRM para o dispositivo SRM.
 
 
- https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-installation-and-configuration-8-8.html["Instalação e configuração do Site Recovery Manager"]Consulte para obter os passos detalhados
+Veja  https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-installation-and-configuration-8-8.html["Instalação e configuração do Site Recovery Manager"^]os passos detalhados
